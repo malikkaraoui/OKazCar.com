@@ -13,10 +13,6 @@ concurrency:
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
-    env:
-      SA_PROJECT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_OKAZCAR_79CED }}
-      SA_GENERIC: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-      FB_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 
     steps:
       - name: Checkout
@@ -42,49 +38,10 @@ jobs:
           VITE_FIREBASE_MEASUREMENT_ID: ${{ secrets.VITE_FIREBASE_MEASUREMENT_ID }}
         run: npm run build
 
-      - name: Resolve deploy auth
-        id: auth
-        shell: bash
-        run: |
-          if [[ -n "$SA_PROJECT" ]]; then
-            echo "method=service_account" >> "$GITHUB_OUTPUT"
-            echo "service_account<<EOF" >> "$GITHUB_OUTPUT"
-            echo "$SA_PROJECT" >> "$GITHUB_OUTPUT"
-            echo "EOF" >> "$GITHUB_OUTPUT"
-          elif [[ -n "$SA_GENERIC" ]]; then
-            echo "method=service_account" >> "$GITHUB_OUTPUT"
-            echo "service_account<<EOF" >> "$GITHUB_OUTPUT"
-            echo "$SA_GENERIC" >> "$GITHUB_OUTPUT"
-            echo "EOF" >> "$GITHUB_OUTPUT"
-          elif [[ -n "$FB_TOKEN" ]]; then
-            echo "method=token" >> "$GITHUB_OUTPUT"
-          else
-            echo "method=none" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Deploy (Service Account)
-        if: ${{ steps.auth.outputs.method == 'service_account' }}
+      - name: Deploy
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ steps.auth.outputs.service_account }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           channelId: live
           projectId: okazcar-79ced
-
-      - name: Deploy (fallback token)
-        if: ${{ steps.auth.outputs.method == 'token' }}
-        run: |
-          npm i -g firebase-tools
-          firebase deploy --only hosting --project okazcar-79ced --token "${FB_TOKEN}"
-        env:
-          FB_TOKEN: ${{ env.FB_TOKEN }}
-
-      - name: Fail if missing deploy credentials
-        if: ${{ steps.auth.outputs.method == 'none' }}
-        run: |
-          echo "Missing Firebase deploy credentials." >&2
-          echo "Add one of these GitHub repository secrets:" >&2
-          echo "- FIREBASE_SERVICE_ACCOUNT_OKAZCAR_79CED (recommended)" >&2
-          echo "- FIREBASE_SERVICE_ACCOUNT" >&2
-          echo "- FIREBASE_TOKEN" >&2
-          exit 1
