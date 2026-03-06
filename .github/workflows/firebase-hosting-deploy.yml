@@ -42,6 +42,6 @@ jobs:
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_OKAZCAR_79CED }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_OKAZCAR_79CED || secrets.FIREBASE_SERVICE_ACCOUNT }}
           channelId: live
           projectId: okazcar-79ced
