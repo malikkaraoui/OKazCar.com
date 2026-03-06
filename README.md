@@ -33,6 +33,10 @@ L’initialisation Firebase est dans `src/lib/firebase.js` et utilise :
 
 ## Firebase Hosting : déploiement manuel
 
+> Si `https://okazcar-79ced.web.app` (ou `https://okazcar-79ced.firebaseapp.com`) renvoie **404**, c’est normal tant que :
+> 1) **Hosting n’est pas activé** dans la console Firebase (Hosting → Get started)
+> 2) aucun **déploiement “live”** n’a encore eu lieu.
+
 Prérequis :
 
 - `npm install -g firebase-tools`
