@@ -38,10 +38,38 @@ jobs:
           VITE_FIREBASE_MEASUREMENT_ID: ${{ secrets.VITE_FIREBASE_MEASUREMENT_ID }}
         run: npm run build
 
-      - name: Deploy
+      - name: Deploy (Service Account - project scoped)
+        if: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_OKAZCAR_79CED != '' }}
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_OKAZCAR_79CED || secrets.FIREBASE_SERVICE_ACCOUNT }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_OKAZCAR_79CED }}
           channelId: live
           projectId: okazcar-79ced
+
+      - name: Deploy (Service Account - generic)
+        if: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_OKAZCAR_79CED == '' && secrets.FIREBASE_SERVICE_ACCOUNT != '' }}
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          channelId: live
+          projectId: okazcar-79ced
+
+      - name: Deploy (fallback token)
+        if: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_OKAZCAR_79CED == '' && secrets.FIREBASE_SERVICE_ACCOUNT == '' && secrets.FIREBASE_TOKEN != '' }}
+        run: |
+          npm i -g firebase-tools
+          firebase deploy --only hosting --project okazcar-79ced --token "${FIREBASE_TOKEN}"
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+
+      - name: Fail if missing deploy credentials
+        if: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_OKAZCAR_79CED == '' && secrets.FIREBASE_SERVICE_ACCOUNT == '' && secrets.FIREBASE_TOKEN == '' }}
+        run: |
+          echo "Missing Firebase deploy credentials." >&2
+          echo "Add one of these GitHub repository secrets:" >&2
+          echo "- FIREBASE_SERVICE_ACCOUNT_OKAZCAR_79CED (recommended)" >&2
+          echo "- FIREBASE_SERVICE_ACCOUNT" >&2
+          echo "- FIREBASE_TOKEN" >&2
+          exit 1
