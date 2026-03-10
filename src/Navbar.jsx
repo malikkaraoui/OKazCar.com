@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 
-const CHROME_WEB_STORE_URL = 'https://chromewebstore.google.com/'
+const CHROME_WEB_STORE_URL = 'https://chromewebstore.google.com/detail/okazcar-analyse-annonces/eakomgkenllkkmfccjjfoegealnchmmo'
 
 const navItems = [
     { id: 'features', label: 'Fonctionnalités' },

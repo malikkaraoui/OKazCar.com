@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
@@ -9,11 +10,11 @@ const faqItems = [
     },
     {
         q: 'Quels sites sont supportés ?',
-        a: 'leboncoin.fr et AutoScout24 (France, Allemagne, Belgique, Suisse, Italie, Pays-Bas, Autriche, Espagne, Pologne, Luxembourg, Suède + .com).',
+        a: 'leboncoin.fr, lacentrale.fr et AutoScout24 (France, Allemagne, Belgique, Suisse, Italie, Pays-Bas, Autriche, Espagne, Pologne, Luxembourg, Suède + .com) — soit 3 plateformes et 14 domaines web.',
     },
     {
         q: 'Comment fonctionne le score ?',
-        a: '9 filtres analysent différents aspects de l’annonce (prix, kilométrage, vendeur, téléphone…). Chaque filtre a un poids selon son importance. Le score final est une moyenne pondérée sur 100.',
+        a: '10 filtres analysent différents aspects de l’annonce : Complétude des données, Modèle reconnu, Cohérence km/an, Prix vs marché, Évaluation globale, Prix vs Argus, Analyse téléphone, SIRET vendeur, Détection import, Ancienneté annonce. Chaque filtre a un poids selon son importance. Le score final est une moyenne pondérée sur 100.',
     },
     {
         q: 'Mes données sont-elles collectées ?',

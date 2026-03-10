@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { motion } from 'framer-motion'
 
-const CHROME_WEB_STORE_URL = 'https://chromewebstore.google.com/'
+const CHROME_WEB_STORE_URL = 'https://chromewebstore.google.com/detail/okazcar-analyse-annonces/eakomgkenllkkmfccjjfoegealnchmmo'
 
 const containerVariants = {
     hidden: { opacity: 0 },

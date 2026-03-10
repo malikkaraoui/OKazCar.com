@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { motion } from 'framer-motion'
 import {
     FileText, CarFront, Gauge, LineChart, ShieldCheck,
@@ -5,15 +6,16 @@ import {
 } from 'lucide-react'
 
 const filterCards = [
-    { id: 'L1', title: 'Données complètes', desc: 'Vérifie que toutes les infos essentielles sont renseignées.', icon: FileText },
+    { id: 'L1', title: 'Complétude des données', desc: 'Vérifie que toutes les infos essentielles sont renseignées.', icon: FileText },
     { id: 'L2', title: 'Modèle reconnu', desc: 'Identifie le véhicule dans notre référentiel de plus de 1800 modèles.', icon: CarFront },
     { id: 'L3', title: 'Cohérence km/année', desc: 'Détecte les kilométrages anormalement bas ou élevés.', icon: Gauge },
     { id: 'L4', title: 'Prix vs marché', desc: 'Compare le prix aux annonces similaires en temps réel.', icon: LineChart },
-    { id: 'L5', title: 'Indice de confiance', desc: 'Score composite évaluant la crédibilité globale de l\'annonce.', icon: ShieldCheck },
+    { id: 'L5', title: 'Évaluation globale', desc: 'Score composite évaluant la crédibilité globale de l\'annonce.', icon: ShieldCheck },
     { id: 'L6', title: 'Analyse téléphone', desc: 'Identifie numéros étrangers, fixes, ou à risque.', icon: Phone },
-    { id: 'L7', title: 'Profil vendeur', desc: 'Vérifie SIRET, ancienneté, avis pour les professionnels.', icon: Users },
+    { id: 'L7', title: 'SIRET vendeur', desc: 'Vérifie SIRET, ancienneté, avis pour les professionnels.', icon: Users },
     { id: 'L8', title: 'Détection import', desc: 'Repère les véhicules importés et signale les points d\'attention.', icon: Globe },
-    { id: 'L9', title: 'Couverture annonce', desc: 'Analyse les photos, options et signaux de qualité de l\'annonce.', icon: Images },
+    { id: 'L9', title: 'Prix vs Argus', desc: 'Compare la cote officielle Argus au prix demandé.', icon: Images },
+    { id: 'L10', title: 'Ancienneté annonce', desc: 'Analyse depuis combien de temps l\'annonce est en ligne.', icon: LineChart },
 ]
 
 export default function FiltersGrid() {
@@ -38,7 +40,7 @@ export default function FiltersGrid() {
                         transition={{ delay: 0.1 }}
                         className="text-3xl md:text-5xl font-extrabold text-white leading-tight"
                     >
-                        9 filtres. Zéro angle mort.
+                        10 filtres. Zéro angle mort.
                     </motion.h2>
                 </div>
 

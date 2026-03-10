@@ -1,6 +1,6 @@
 import { Logo } from './Navbar'
 
-const CHROME_WEB_STORE_URL = 'https://chromewebstore.google.com/'
+const CHROME_WEB_STORE_URL = 'https://chromewebstore.google.com/detail/okazcar-analyse-annonces/eakomgkenllkkmfccjjfoegealnchmmo'
 
 export default function Footer() {
     return (
