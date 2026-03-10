@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+/* eslint-disable no-unused-vars */
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Puzzle, Link as LinkIcon, Sparkles } from 'lucide-react'
 
@@ -16,7 +17,7 @@ const processSteps = [
         id: 'step-open',
         icon: LinkIcon,
         title: 'Ouvrez une annonce',
-        description: 'Naviguez sur leboncoin.fr ou autoscout24. L’extension se réveille automatiquement.',
+        description: 'Naviguez sur Leboncoin, La Centrale ou AutoScout24. L’extension se réveille automatiquement.',
         visualLabel: 'Annonce détectée',
         visualTitle: 'Une page auto devient intelligible',
         visualCaption: 'Le panel OKazCar s’injecte sans quitter votre navigation.',
@@ -38,12 +39,6 @@ export default function Process() {
         target: containerRef,
         offset: ["start start", "end end"]
     })
-
-    // Map scroll progress to the active step index (0, 1, or 2)
-    const activeIndex = useTransform(scrollYProgress,
-        [0, 0.33, 0.66, 1],
-        [0, 1, 2, 2]
-    )
 
     const mockUpScale = useTransform(scrollYProgress, [0, 0.1], [0.95, 1])
     const mockUpOpacity = useTransform(scrollYProgress, [0, 0.1], [0, 1])

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { motion } from 'framer-motion'
 
 const CHROME_WEB_STORE_URL = 'https://chromewebstore.google.com/'
@@ -51,14 +52,13 @@ export default function Hero() {
                         EXTENSION CHROME GRATUITE
                     </motion.div>
 
-                    {/* Title */}
                     <motion.h1 variants={itemVariants} className="text-[40px] md:text-[56px] lg:text-[72px] font-extrabold leading-[1.05] tracking-tight mb-6">
-                        Ne vous faites plus<br className="hidden md:block" /> avoir sur <span className="text-transparent bg-clip-text bg-gradient-to-r from-lbc to-orange-400">leboncoin</span>.
+                        Ne vous faites plus<br className="hidden md:block" /> avoir sur vos <span className="text-transparent bg-clip-text bg-gradient-to-r from-lbc to-orange-400">achats auto</span>.
                     </motion.h1>
 
                     {/* Subtitle */}
                     <motion.p variants={itemVariants} className="text-lg md:text-xl text-white/80 font-normal leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0">
-                        OKazCar analyse chaque annonce auto en 1 clic. Score de fiabilité, prix marché, détection d'anomalies. IA intégrée.
+                        OKazCar analyse chaque annonce en 1 clic sur Leboncoin, La Centrale et AutoScout24. Score de fiabilité, prix marché et IA intégrée.
                     </motion.p>
 
                     {/* Buttons */}
@@ -82,10 +82,13 @@ export default function Hero() {
                     {/* Badges */}
                     <motion.div variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { delay: 1, duration: 1 } } }} className="flex flex-wrap justify-center lg:justify-start gap-4 text-sm font-medium">
                         <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/90 backdrop-blur-sm flex items-center gap-2">
-                            <div className="w-2 h-2 rounded-full bg-lbc" /> leboncoin.fr
+                            <img src="https://www.leboncoin.fr/favicon.ico" alt="leboncoin" className="w-4 h-4 rounded-full bg-white" onError={(e) => { e.target.style.display = 'none' }} /> leboncoin
                         </span>
                         <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/90 backdrop-blur-sm flex items-center gap-2">
-                            <div className="w-2 h-2 rounded-full bg-as24" /> AutoScout24 <span className="opacity-60 font-normal">(12 pays)</span>
+                            <img src="https://www.lacentrale.fr/favicon.ico" alt="La Centrale" className="w-4 h-4 rounded-full bg-white" onError={(e) => { e.target.style.display = 'none' }} /> La Centrale
+                        </span>
+                        <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/90 backdrop-blur-sm flex items-center gap-2">
+                            <img src="https://www.autoscout24.fr/favicon.ico" alt="AutoScout24" className="w-4 h-4 rounded-full bg-white" onError={(e) => { e.target.style.display = 'none' }} /> AutoScout24 <span className="opacity-60 font-normal">(12 pays)</span>
                         </span>
                     </motion.div>
 

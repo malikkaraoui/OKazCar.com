@@ -6,7 +6,7 @@ import {
 
 const filterCards = [
     { id: 'L1', title: 'Données complètes', desc: 'Vérifie que toutes les infos essentielles sont renseignées.', icon: FileText },
-    { id: 'L2', title: 'Modèle reconnu', desc: 'Identifie le véhicule dans notre référentiel de 70+ modèles.', icon: CarFront },
+    { id: 'L2', title: 'Modèle reconnu', desc: 'Identifie le véhicule dans notre référentiel de plus de 1800 modèles.', icon: CarFront },
     { id: 'L3', title: 'Cohérence km/année', desc: 'Détecte les kilométrages anormalement bas ou élevés.', icon: Gauge },
     { id: 'L4', title: 'Prix vs marché', desc: 'Compare le prix aux annonces similaires en temps réel.', icon: LineChart },
     { id: 'L5', title: 'Indice de confiance', desc: 'Score composite évaluant la crédibilité globale de l\'annonce.', icon: ShieldCheck },

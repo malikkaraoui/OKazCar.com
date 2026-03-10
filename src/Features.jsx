@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { motion } from 'framer-motion'
 
 
@@ -25,12 +26,12 @@ const features = [
 // Specialized Visual Components for each feature
 
 const ScoreVisual = () => (
-    <div className="w-full h-full relative p-4 flex items-center justify-center bg-bg-light rounded-2xl border border-gray-100 min-h-[300px]">
+    <div className="w-full h-full relative flex items-center justify-center bg-bg-light rounded-2xl border border-gray-100 min-h-[300px] overflow-hidden shadow-floating">
         <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-emerald-50 opacity-50 rounded-2xl"></div>
         <motion.img
             src="/Capture d’écran 2026-03-10 à 15.21.39.png"
             alt="Indice de confiance"
-            className="w-full max-w-[320px] rounded-2xl shadow-floating object-cover relative z-10"
+            className="w-full h-full object-cover object-center absolute inset-0 z-10"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -46,7 +47,7 @@ const PriceVisual = () => (
         <motion.img
             src="/Capture d’écran 2026-03-10 à 15.21.19.png"
             alt="Analyse du prix"
-            className="w-[120%] max-w-none md:w-full md:max-w-[400px] rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 relative z-10 rotate-[-2deg]"
+            className="w-[120%] h-auto max-w-none md:w-full md:max-w-[400px] rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 relative z-10 rotate-[-2deg]"
             initial={{ opacity: 0, x: 50, rotate: 0 }}
             whileInView={{ opacity: 1, x: 0, rotate: -2 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -61,7 +62,7 @@ const AlertsVisual = () => {
             <motion.img
                 src="/Capture d’écran 2026-03-10 à 15.21.29.png"
                 alt="Alertes intelligentes"
-                className="w-full max-w-[280px] rounded-xl shadow-popup relative z-10 translate-x-4 translate-y-4"
+                className="w-full h-auto max-w-[280px] rounded-xl shadow-popup relative z-10 translate-x-4 translate-y-4"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
@@ -69,7 +70,7 @@ const AlertsVisual = () => {
             <motion.img
                 src="/Capture d’écran 2026-03-10 à 15.21.23.png"
                 alt="Détail alerte"
-                className="w-full max-w-[280px] rounded-xl shadow-[0_30px_60px_rgba(0,0,0,0.15)] absolute z-20 left-4 md:left-10 bottom-6"
+                className="w-full h-auto max-w-[280px] rounded-xl shadow-[0_30px_60px_rgba(0,0,0,0.15)] absolute z-20 left-4 md:left-10 bottom-6"
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-50px" }}

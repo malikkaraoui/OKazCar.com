@@ -2,10 +2,10 @@ import { useEffect, useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 
 const stats = [
-    { value: 70, suffix: '+', label: 'Véhicules référencés' },
-    { value: 12, suffix: '', label: 'Pays couverts (AS24)' },
-    { value: 9, suffix: '', label: 'Filtres d’analyse' },
-    { value: 3, suffix: 's', prefix: '<', label: 'Temps d’analyse moyen' },
+    { value: 1885, suffix: '', label: 'Modèles de véhicules' },
+    { value: 57, suffix: '', label: 'Marques distinctes' },
+    { value: 14, suffix: '', label: 'Domaines web couverts' },
+    { value: 3, suffix: 'M+', prefix: '>', label: 'Annonces scannables' },
 ]
 
 function AnimatedCounter({ value, prefix = "", suffix = "", duration = 1.5 }) {
