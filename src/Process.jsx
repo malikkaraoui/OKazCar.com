@@ -48,7 +48,7 @@ export default function Process() {
             <div className="max-w-7xl mx-auto px-6">
 
                 {/* Sticky Container for the entire section layout */}
-                <div className="relative flex flex-col md:flex-row h-[300vh]">
+                <div className="relative flex flex-col md:flex-row h-[200vh]">
 
                     {/* Left Column: Scrolling Texts */}
                     <div className="flex-1 w-full md:w-1/2 flex flex-col pt-32 pb-32 z-10">
@@ -61,7 +61,7 @@ export default function Process() {
                             </h2>
                         </div>
 
-                        <div className="flex-1 flex flex-col justify-between space-y-[40vh] md:space-y-[60vh] pb-[40vh]">
+                        <div className="flex-1 flex flex-col justify-between space-y-[20vh] md:space-y-[35vh] pb-[20vh]">
                             {processSteps.map((step, index) => {
                                 return (
                                     <motion.div
