@@ -81,15 +81,15 @@ export default function Hero() {
 
                     {/* Badges */}
                     <motion.div variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { delay: 1, duration: 1 } } }} className="flex flex-wrap justify-center lg:justify-start gap-4 text-sm font-medium">
-                        <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/90 backdrop-blur-sm flex items-center gap-2">
+                        <a href="https://www.leboncoin.fr" target="_blank" rel="noreferrer" className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/90 backdrop-blur-sm flex items-center gap-2 hover:bg-white/15 hover:border-white/30 transition-all cursor-pointer">
                             <img src="https://www.leboncoin.fr/favicon.ico" alt="leboncoin" className="w-4 h-4 rounded-full bg-white" onError={(e) => { e.target.style.display = 'none' }} /> leboncoin
-                        </span>
-                        <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/90 backdrop-blur-sm flex items-center gap-2">
+                        </a>
+                        <a href="https://www.lacentrale.fr" target="_blank" rel="noreferrer" className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/90 backdrop-blur-sm flex items-center gap-2 hover:bg-white/15 hover:border-white/30 transition-all cursor-pointer">
                             <img src="https://www.lacentrale.fr/favicon.ico" alt="La Centrale" className="w-4 h-4 rounded-full bg-white" onError={(e) => { e.target.style.display = 'none' }} /> La Centrale
-                        </span>
-                        <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/90 backdrop-blur-sm flex items-center gap-2">
+                        </a>
+                        <a href="https://www.autoscout24.ch" target="_blank" rel="noreferrer" className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/90 backdrop-blur-sm flex items-center gap-2 hover:bg-white/15 hover:border-white/30 transition-all cursor-pointer">
                             <img src="https://www.autoscout24.fr/favicon.ico" alt="AutoScout24" className="w-4 h-4 rounded-full bg-white" onError={(e) => { e.target.style.display = 'none' }} /> AutoScout24 <span className="opacity-60 font-normal">(12 pays)</span>
-                        </span>
+                        </a>
                     </motion.div>
 
                 </motion.div>
