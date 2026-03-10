@@ -56,7 +56,9 @@ export default function Showcase() {
 
                             {/* URL Bar reflecting active platform */}
                             <div className="ml-4 flex-1 h-8 bg-white rounded-md border border-gray-200 flex items-center px-4 font-mono text-xs text-muted overflow-hidden">
-                                {activeTab === 'lbc' ? 'https://www.leboncoin.fr/ad/voitures/...' : 'https://www.autoscout24.be/offres/...'}
+                                {activeTab === 'lbc' ? 'https://www.leboncoin.fr/ad/voitures/...' :
+                                    activeTab === 'lc' ? 'https://www.lacentrale.fr/auto-occasion-annonce-...' :
+                                        'https://www.autoscout24.be/offres/...'}
                             </div>
                         </div>
 
@@ -67,14 +69,21 @@ export default function Showcase() {
                             <img
                                 src="/Capture d’écran 2026-03-10 à 15.23.17.png"
                                 alt="Interface OKazCar sur AutoScout24"
-                                className={`absolute inset-0 w-full h-full object-cover object-left-top transition-opacity duration-700 ${activeTab === 'as24' ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                                className={`absolute inset-0 w-full h-full object-cover object-left-top transition-opacity duration-700 ${activeTab === 'as24' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
+                            />
+
+                            {/* La Centrale Screenshot */}
+                            <img
+                                src="/Capture d’écran 2026-03-10 à 17.29.31.png"
+                                alt="Interface OKazCar sur La Centrale"
+                                className={`absolute inset-0 w-full h-full object-cover object-left-top transition-opacity duration-700 ${activeTab === 'lc' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
                             />
 
                             {/* Leboncoin Screenshot */}
                             <img
                                 src="/Capture d’écran 2026-03-10 à 15.24.11.png"
                                 alt="Interface OKazCar sur Leboncoin"
-                                className={`absolute inset-0 w-full h-full object-cover object-left-top transition-opacity duration-700 ${activeTab === 'lbc' ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                                className={`absolute inset-0 w-full h-full object-cover object-left-top transition-opacity duration-700 ${activeTab === 'lbc' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
                             />
 
                             {/* Platform Toggle Overlay */}
@@ -83,14 +92,21 @@ export default function Showcase() {
                                     onClick={() => setActiveTab('lbc')}
                                     className={`px-4 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 ${activeTab === 'lbc' ? 'bg-primary text-white shadow-md' : 'text-slate hover:bg-gray-100'}`}
                                 >
-                                    <img src="https://www.leboncoin.fr/favicon.ico" className="w-4 h-4 rounded-full bg-white" alt="LBC" />
+                                    <img src="https://www.leboncoin.fr/favicon.ico" className="w-4 h-4 rounded-full bg-white" alt="LBC" onError={(e) => { e.target.style.display = 'none' }} />
                                     Leboncoin
+                                </button>
+                                <button
+                                    onClick={() => setActiveTab('lc')}
+                                    className={`px-4 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 ${activeTab === 'lc' ? 'bg-primary text-white shadow-md' : 'text-slate hover:bg-gray-100'}`}
+                                >
+                                    <img src="https://www.lacentrale.fr/favicon.ico" className="w-4 h-4 rounded-full bg-white" alt="LC" onError={(e) => { e.target.style.display = 'none' }} />
+                                    La Centrale
                                 </button>
                                 <button
                                     onClick={() => setActiveTab('as24')}
                                     className={`px-4 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 ${activeTab === 'as24' ? 'bg-primary text-white shadow-md' : 'text-slate hover:bg-gray-100'}`}
                                 >
-                                    <img src="https://www.autoscout24.fr/favicon.ico" className="w-4 h-4 rounded-full bg-white" alt="AS24" />
+                                    <img src="https://www.autoscout24.fr/favicon.ico" className="w-4 h-4 rounded-full bg-white" alt="AS24" onError={(e) => { e.target.style.display = 'none' }} />
                                     AutoScout24
                                 </button>
                             </div>
