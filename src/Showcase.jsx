@@ -67,21 +67,21 @@ export default function Showcase() {
 
                             {/* AutoScout24 Screenshot */}
                             <img
-                                src="/Capture d’écran 2026-03-10 à 15.23.17.png"
+                                src="/img-as24-panel.png"
                                 alt="Interface OKazCar sur AutoScout24"
                                 className={`absolute inset-0 w-full h-full object-cover object-left-top transition-opacity duration-700 ${activeTab === 'as24' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
                             />
 
                             {/* La Centrale Screenshot */}
                             <img
-                                src="/Capture d’écran 2026-03-10 à 17.29.31.png"
+                                src="/img-lc-panel.png"
                                 alt="Interface OKazCar sur La Centrale"
                                 className={`absolute inset-0 w-full h-full object-cover object-left-top transition-opacity duration-700 ${activeTab === 'lc' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
                             />
 
                             {/* Leboncoin Screenshot */}
                             <img
-                                src="/Capture d’écran 2026-03-10 à 15.24.11.png"
+                                src="/img-lbc-panel.png"
                                 alt="Interface OKazCar sur Leboncoin"
                                 className={`absolute inset-0 w-full h-full object-cover object-left-top transition-opacity duration-700 ${activeTab === 'lbc' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
                             />
