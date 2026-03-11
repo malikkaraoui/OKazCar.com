@@ -2,19 +2,20 @@ import { useEffect, useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 
 const stats = [
-    { value: 1885, suffix: '', label: 'Modèles de véhicules' },
-    { value: 57, suffix: '', label: 'Marques distinctes' },
-    { value: 14, suffix: '', label: 'Domaines web couverts' },
-    { value: 3, suffix: 'M+', prefix: '>', label: 'Annonces scannables' },
+    { value: 1965, suffix: '', label: 'Véhicules analysés' },
+    { value: 57, suffix: '', label: 'Marques uniques' },
+    { value: 1885, suffix: '', label: 'Modèles uniques' },
+    { value: 21942, suffix: '', label: 'Fiches specs détaillées' },
+    { value: '1904 → 2025', isString: true, label: 'Couverture années' },
 ]
 
-function AnimatedCounter({ value, prefix = "", suffix = "", duration = 1.5 }) {
+function AnimatedCounter({ value, isString, prefix = "", suffix = "", duration = 1.5 }) {
     const [count, setCount] = useState(0)
     const nodeRef = useRef(null)
     const isInView = useInView(nodeRef, { once: true, margin: "-50px" })
 
     useEffect(() => {
-        if (!isInView) return
+        if (!isInView || isString) return
 
         let startTimestamp = null
         const step = (timestamp) => {
@@ -34,7 +35,15 @@ function AnimatedCounter({ value, prefix = "", suffix = "", duration = 1.5 }) {
         }
 
         window.requestAnimationFrame(step)
-    }, [isInView, value, duration])
+    }, [isInView, value, duration, isString])
+
+    if (isString) {
+        return (
+            <span ref={nodeRef} className="text-3xl md:text-4xl lg:text-5xl font-black text-slate tracking-tighter">
+                {value}
+            </span>
+        )
+    }
 
     return (
         <span ref={nodeRef} className="text-4xl md:text-5xl lg:text-7xl font-black text-slate tabular-nums tracking-tighter">
@@ -70,7 +79,7 @@ export default function NumbersSection() {
                 </div>
 
                 {/* Grid */}
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 divide-x divide-gray-100">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-12 divide-x divide-gray-100">
                     {stats.map((stat, index) => (
                         <motion.div
                             key={index}
@@ -82,6 +91,7 @@ export default function NumbersSection() {
                         >
                             <AnimatedCounter
                                 value={stat.value}
+                                isString={stat.isString}
                                 prefix={stat.prefix}
                                 suffix={stat.suffix}
                             />

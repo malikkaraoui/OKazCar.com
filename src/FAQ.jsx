@@ -10,7 +10,7 @@ const faqItems = [
     },
     {
         q: 'Quels sites sont supportés ?',
-        a: 'leboncoin.fr, lacentrale.fr et AutoScout24 (France, Allemagne, Belgique, Suisse, Italie, Pays-Bas, Autriche, Espagne, Pologne, Luxembourg, Suède + .com) — soit 3 plateformes et 14 domaines web.',
+        a: 'leboncoin.fr, lacentrale.fr et AutoScout24 (France, Allemagne, Belgique, Suisse, Italie, Pays-Bas, Autriche, Espagne, Pologne, Luxembourg, Suède + .com) — soit 3 plateformes et 14 domaines web couverts.',
     },
     {
         q: 'Comment fonctionne le score ?',
