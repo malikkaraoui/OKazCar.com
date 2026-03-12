@@ -26,7 +26,7 @@ const features = [
 // Specialized Visual Components for each feature
 
 const ScoreVisual = () => (
-    <div className="w-full h-full relative flex items-center justify-center bg-bg-light rounded-2xl border border-gray-100 min-h-[300px] overflow-hidden shadow-floating">
+    <div className="w-full h-full relative flex items-center justify-center bg-bg-light rounded-2xl border border-gray-100 min-h-[260px] sm:min-h-[300px] overflow-hidden shadow-floating">
         <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-emerald-50 opacity-50 rounded-2xl"></div>
         <motion.img
             src="/img-score.png"
@@ -40,7 +40,7 @@ const ScoreVisual = () => (
 )
 
 const PriceVisual = () => (
-    <div className="w-full h-full relative p-4 flex items-center justify-center bg-slate text-white overflow-hidden rounded-2xl min-h-[300px]">
+    <div className="w-full h-full relative p-4 flex items-center justify-center bg-slate text-white overflow-hidden rounded-2xl min-h-[260px] sm:min-h-[300px]">
         {/* Grid background */}
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
 
@@ -58,11 +58,11 @@ const PriceVisual = () => (
 
 const AlertsVisual = () => {
     return (
-        <div className="w-full h-full relative p-6 flex flex-col items-center justify-center bg-orange-50 overflow-hidden rounded-2xl border border-orange-100 min-h-[300px]">
+        <div className="w-full h-full relative p-5 sm:p-6 flex flex-col items-center justify-center bg-orange-50 overflow-hidden rounded-2xl border border-orange-100 min-h-[280px] sm:min-h-[300px]">
             <motion.img
                 src="/img-alertes.png"
                 alt="Alertes intelligentes"
-                className="w-full h-auto max-w-[280px] rounded-xl shadow-popup relative z-10 translate-x-4 translate-y-4"
+                className="w-full h-auto max-w-[260px] sm:max-w-[280px] rounded-xl shadow-popup relative z-10 translate-x-2 sm:translate-x-4 translate-y-2 sm:translate-y-4"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
@@ -70,7 +70,7 @@ const AlertsVisual = () => {
             <motion.img
                 src="/img-alerte-detail.png"
                 alt="Détail alerte"
-                className="w-full h-auto max-w-[280px] rounded-xl shadow-[0_30px_60px_rgba(0,0,0,0.15)] absolute z-20 left-4 md:left-10 bottom-6"
+                className="w-full h-auto max-w-[240px] sm:max-w-[280px] rounded-xl shadow-[0_30px_60px_rgba(0,0,0,0.15)] relative md:absolute z-20 mt-4 md:mt-0 md:left-10 md:bottom-6"
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
@@ -84,7 +84,7 @@ const AlertsVisual = () => {
 export default function Features() {
     return (
         <section id="features" className="py-24 md:py-32 bg-white">
-            <div className="max-w-7xl mx-auto px-6">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
                 <div className="max-w-3xl mb-20 md:mb-32">
                     <motion.p
@@ -106,11 +106,11 @@ export default function Features() {
                     </motion.h2>
                 </div>
 
-                <div className="space-y-32 md:space-y-48">
+                <div className="space-y-20 md:space-y-48">
                     {features.map((feature, index) => {
                         const isReversed = index % 2 === 1
                         return (
-                            <div key={feature.id} className={`flex flex-col md:flex-row items-center gap-12 md:gap-24 ${isReversed ? 'md:flex-row-reverse' : ''}`}>
+                            <div key={feature.id} className={`flex flex-col md:flex-row items-center gap-10 md:gap-24 ${isReversed ? 'md:flex-row-reverse' : ''}`}>
 
                                 {/* Text Content */}
                                 <motion.div

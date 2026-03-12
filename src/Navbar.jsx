@@ -12,26 +12,30 @@ const navItems = [
     { id: 'faq', label: 'FAQ' },
 ]
 
-function WheelIcon({ className = '' }) {
+export function WheelIcon({ className = '' }) {
     return (
-        <svg className={className} viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="64" cy="64" r="56" fill="none" stroke="currentColor" strokeWidth="12" />
-            <circle cx="64" cy="64" r="12" fill="currentColor" />
-            <g stroke="currentColor" strokeWidth="8" strokeLinecap="round">
-                <line x1="64" y1="22" x2="64" y2="52" />
-                <line x1="64" y1="22" x2="64" y2="52" transform="rotate(72 64 64)" />
-                <line x1="64" y1="22" x2="64" y2="52" transform="rotate(144 64 64)" />
-                <line x1="64" y1="22" x2="64" y2="52" transform="rotate(216 64 64)" />
-                <line x1="64" y1="22" x2="64" y2="52" transform="rotate(288 64 64)" />
+        <svg className={className} viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none">
+            <circle cx="72" cy="70" r="39" stroke="currentColor" strokeWidth="8" opacity="0.95" />
+            <circle cx="72" cy="70" r="8" fill="currentColor" opacity="0.95" />
+            <g stroke="currentColor" strokeWidth="6" strokeLinecap="round" opacity="0.95">
+                <line x1="72" y1="38" x2="72" y2="62" />
+                <line x1="72" y1="38" x2="72" y2="62" transform="rotate(72 72 70)" />
+                <line x1="72" y1="38" x2="72" y2="62" transform="rotate(144 72 70)" />
+                <line x1="72" y1="38" x2="72" y2="62" transform="rotate(216 72 70)" />
+                <line x1="72" y1="38" x2="72" y2="62" transform="rotate(288 72 70)" />
             </g>
+            <circle cx="30" cy="30" r="15" stroke="#fbbf24" strokeWidth="6" />
+            <path d="M30 20v20M20 30h20" stroke="#fbbf24" strokeWidth="5" strokeLinecap="round" />
         </svg>
     )
 }
 
-export function Logo({ dark = false }) {
+export function Logo({ dark = false, className = '', appIcon = false }) {
     return (
-        <div className={`flex items-center gap-2 font-bold text-xl tracking-tight ${dark ? 'text-slate' : 'text-white'}`}>
-            <WheelIcon className={`w-8 h-8 ${dark ? 'text-slate' : 'text-white'}`} />
+        <div className={`flex items-center gap-2 font-bold text-xl tracking-tight ${dark ? 'text-slate' : 'text-white'} ${className}`}>
+            <span className={`flex items-center justify-center ${appIcon ? 'h-14 w-14 rounded-[18px] bg-white/12 border border-white/16 shadow-[0_12px_34px_rgba(15,23,42,0.18),inset_0_1px_0_rgba(255,255,255,0.14)] backdrop-blur-md' : ''}`}>
+                <WheelIcon className={`object-contain ${appIcon ? 'w-9 h-9' : 'w-8 h-8'}`} />
+            </span>
             <span>
                 OKaz<span className="text-accent">Car</span>
             </span>

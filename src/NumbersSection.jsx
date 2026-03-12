@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion as Motion, useInView } from 'framer-motion'
 
 const stats = [
     { value: 1965, suffix: '', label: 'Véhicules analysés' },
@@ -55,19 +55,19 @@ function AnimatedCounter({ value, isString, prefix = "", suffix = "", duration =
 export default function NumbersSection() {
     return (
         <section id="numbers" className="py-24 md:py-32 bg-white">
-            <div className="max-w-7xl mx-auto px-6">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
                 {/* Header */}
                 <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
-                    <motion.p
+                    <Motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
                         className="text-primary font-bold text-sm tracking-widest uppercase mb-4"
                     >
                         En Chiffres
-                    </motion.p>
-                    <motion.h2
+                    </Motion.p>
+                    <Motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
@@ -75,15 +75,15 @@ export default function NumbersSection() {
                         className="text-3xl md:text-5xl font-extrabold text-slate leading-tight"
                     >
                         Conçu pour les acheteurs exigeants.
-                    </motion.h2>
+                    </Motion.h2>
                 </div>
 
                 {/* Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-12 divide-x divide-gray-100">
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-4 sm:gap-5 md:gap-6">
                     {stats.map((stat, index) => (
-                        <motion.div
+                        <Motion.div
                             key={index}
-                            className="flex flex-col items-center text-center px-4"
+                            className="flex flex-col items-center text-center px-4 py-6 rounded-2xl bg-bg-light border border-gray-100"
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
@@ -95,10 +95,10 @@ export default function NumbersSection() {
                                 prefix={stat.prefix}
                                 suffix={stat.suffix}
                             />
-                            <span className="mt-4 text-sm md:text-base font-medium text-text-secondary max-w-[150px]">
+                            <span className="mt-4 text-sm md:text-base font-medium text-text-secondary max-w-[180px]">
                                 {stat.label}
                             </span>
-                        </motion.div>
+                        </Motion.div>
                     ))}
                 </div>
 

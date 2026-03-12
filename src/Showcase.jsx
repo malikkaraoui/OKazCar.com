@@ -13,7 +13,7 @@ export default function Showcase() {
 
     return (
         <section id="showcase" className="py-24 md:py-32 bg-bg-light overflow-hidden">
-            <div className="max-w-7xl mx-auto px-6">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
                 {/* Section Header */}
                 <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
@@ -46,7 +46,7 @@ export default function Showcase() {
                     transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
                 >
                     {/* Desktop Browser Frame */}
-                    <div className="rounded-2xl bg-white shadow-card hover:shadow-card-hover transition-shadow duration-500 overflow-hidden border border-black/5 flex flex-col min-h-[500px] md:min-h-[600px]">
+                    <div className="rounded-2xl bg-white shadow-card hover:shadow-card-hover transition-shadow duration-500 overflow-hidden border border-black/5 flex flex-col min-h-[360px] sm:min-h-[500px] md:min-h-[600px]">
 
                         {/* Browser Top Bar */}
                         <div className="bg-gray-100 flex items-center px-4 py-3 border-b border-gray-200 gap-2">
@@ -69,42 +69,44 @@ export default function Showcase() {
                             <img
                                 src="/img-as24-panel.png"
                                 alt="Interface OKazCar sur AutoScout24"
-                                className={`absolute inset-0 w-full h-full object-cover object-left-top transition-opacity duration-700 ${activeTab === 'as24' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
+                                className={`absolute inset-0 w-full h-full object-contain sm:object-cover object-left-top bg-white transition-opacity duration-700 ${activeTab === 'as24' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
                             />
 
                             {/* La Centrale Screenshot */}
                             <img
                                 src="/img-lc-panel.png"
                                 alt="Interface OKazCar sur La Centrale"
-                                className={`absolute inset-0 w-full h-full object-cover object-left-top transition-opacity duration-700 ${activeTab === 'lc' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
+                                className={`absolute inset-0 w-full h-full object-contain sm:object-cover object-left-top bg-white transition-opacity duration-700 ${activeTab === 'lc' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
                             />
 
                             {/* Leboncoin Screenshot */}
                             <img
                                 src="/img-lbc-panel.png"
                                 alt="Interface OKazCar sur Leboncoin"
-                                className={`absolute inset-0 w-full h-full object-cover object-left-top transition-opacity duration-700 ${activeTab === 'lbc' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
+                                className={`absolute inset-0 w-full h-full object-contain sm:object-cover object-left-top bg-white transition-opacity duration-700 ${activeTab === 'lbc' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
                             />
 
                             {/* Platform Toggle Overlay */}
-                            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex bg-white/90 backdrop-blur-md p-1.5 rounded-full shadow-floating border border-gray-200">
+                            <div className="absolute bottom-4 sm:bottom-6 left-4 right-4 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 z-20 flex flex-wrap justify-center bg-white/90 backdrop-blur-md p-1.5 rounded-2xl sm:rounded-full shadow-floating border border-gray-200 gap-1.5 sm:gap-0">
                                 <button
                                     onClick={() => setActiveTab('lbc')}
-                                    className={`px-4 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 ${activeTab === 'lbc' ? 'bg-primary text-white shadow-md' : 'text-slate hover:bg-gray-100'}`}
+                                    className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all flex items-center gap-2 ${activeTab === 'lbc' ? 'bg-primary text-white shadow-md' : 'text-slate hover:bg-gray-100'}`}
                                 >
                                     <img src="https://www.leboncoin.fr/favicon.ico" className="w-4 h-4 rounded-full bg-white" alt="LBC" onError={(e) => { e.target.style.display = 'none' }} />
-                                    Leboncoin
+                                    <span className="hidden sm:inline">Leboncoin</span>
+                                    <span className="sm:hidden">LBC</span>
                                 </button>
                                 <button
                                     onClick={() => setActiveTab('lc')}
-                                    className={`px-4 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 ${activeTab === 'lc' ? 'bg-primary text-white shadow-md' : 'text-slate hover:bg-gray-100'}`}
+                                    className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all flex items-center gap-2 ${activeTab === 'lc' ? 'bg-primary text-white shadow-md' : 'text-slate hover:bg-gray-100'}`}
                                 >
                                     <img src="https://www.lacentrale.fr/favicon.ico" className="w-4 h-4 rounded-full bg-white" alt="LC" onError={(e) => { e.target.style.display = 'none' }} />
-                                    La Centrale
+                                    <span className="hidden sm:inline">La Centrale</span>
+                                    <span className="sm:hidden">LC</span>
                                 </button>
                                 <button
                                     onClick={() => setActiveTab('as24')}
-                                    className={`px-4 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 ${activeTab === 'as24' ? 'bg-primary text-white shadow-md' : 'text-slate hover:bg-gray-100'}`}
+                                    className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all flex items-center gap-2 ${activeTab === 'as24' ? 'bg-primary text-white shadow-md' : 'text-slate hover:bg-gray-100'}`}
                                 >
                                     <img src="https://www.autoscout24.fr/favicon.ico" className="w-4 h-4 rounded-full bg-white" alt="AS24" onError={(e) => { e.target.style.display = 'none' }} />
                                     AutoScout24
@@ -116,7 +118,7 @@ export default function Showcase() {
                 </motion.div>
 
                 {/* Highlights below mockup */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mt-12 md:mt-16">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto mt-12 md:mt-16">
                     {showcaseHighlights.map((item, index) => (
                         <motion.div
                             key={item.label}
