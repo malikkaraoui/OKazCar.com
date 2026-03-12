@@ -2,14 +2,14 @@ import { useEffect, useState, useRef } from 'react'
 import { motion as Motion, useInView } from 'framer-motion'
 
 const stats = [
-    { value: 1965, suffix: '', label: 'Véhicules analysés' },
-    { value: 57, suffix: '', label: 'Marques uniques' },
-    { value: 1885, suffix: '', label: 'Modèles uniques' },
-    { value: 21942, suffix: '', label: 'Fiches specs détaillées' },
-    { value: '1904 → 2025', isString: true, label: 'Couverture années' },
+    { value: 1965,  suffix: '+', label: 'Véhicules\nanalysés',         icon: '🚗' },
+    { value: 57,    suffix: '',  label: 'Marques\ncouvertes',           icon: '🏷️' },
+    { value: 1885,  suffix: '+', label: 'Modèles\nen base',             icon: '📋' },
+    { value: 21942, suffix: '+', label: 'Fiches specs\ndétaillées',     icon: '📊' },
+    { value: '121', isString: true, suffix: 'ans', label: 'Années de\ncouverture auto', icon: '📅' },
 ]
 
-function AnimatedCounter({ value, isString, prefix = "", suffix = "", duration = 1.5 }) {
+function AnimatedCounter({ value, isString, suffix = "", duration = 2 }) {
     const [count, setCount] = useState(0)
     const nodeRef = useRef(null)
     const isInView = useInView(nodeRef, { once: true, margin: "-50px" })
@@ -21,83 +21,77 @@ function AnimatedCounter({ value, isString, prefix = "", suffix = "", duration =
         const step = (timestamp) => {
             if (!startTimestamp) startTimestamp = timestamp
             const progress = Math.min((timestamp - startTimestamp) / (duration * 1000), 1)
-
-            // easeOutExpo
             const easing = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress)
-
             setCount(Math.floor(easing * value))
-
-            if (progress < 1) {
-                window.requestAnimationFrame(step)
-            } else {
-                setCount(value)
-            }
+            if (progress < 1) window.requestAnimationFrame(step)
+            else setCount(value)
         }
 
         window.requestAnimationFrame(step)
     }, [isInView, value, duration, isString])
 
-    if (isString) {
-        return (
-            <span ref={nodeRef} className="text-3xl md:text-4xl lg:text-5xl font-black text-slate tracking-tighter">
-                {value}
-            </span>
-        )
-    }
-
     return (
-        <span ref={nodeRef} className="text-4xl md:text-5xl lg:text-7xl font-black text-slate tabular-nums tracking-tighter">
-            {prefix}{count}{suffix}
+        <span ref={nodeRef} className="tabular-nums">
+            {isString ? value : count.toLocaleString('fr-FR')}
+            {suffix && <span className="text-accent ml-1">{suffix}</span>}
         </span>
     )
 }
 
 export default function NumbersSection() {
     return (
-        <section id="numbers" className="py-24 md:py-32 bg-white">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <section id="numbers" className="relative bg-[#0b1628] py-16 md:py-20 overflow-hidden">
 
-                {/* Header */}
-                <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
-                    <Motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-100px" }}
-                        className="text-primary font-bold text-sm tracking-widest uppercase mb-4"
-                    >
-                        En Chiffres
-                    </Motion.p>
-                    <Motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-100px" }}
-                        transition={{ delay: 0.1 }}
-                        className="text-3xl md:text-5xl font-extrabold text-slate leading-tight"
-                    >
-                        Conçu pour les acheteurs exigeants.
-                    </Motion.h2>
-                </div>
+            {/* Glow de fond */}
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-175 h-75 bg-primary/20 rounded-full blur-[100px] opacity-40" />
+            </div>
 
-                {/* Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-4 sm:gap-5 md:gap-6">
+            <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+
+                {/* Titre section */}
+                <Motion.div
+                    className="text-center mb-10 md:mb-14"
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                >
+                    <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-accent/80 mb-3">
+                        Base de données
+                    </span>
+                    <h2 className="text-2xl md:text-3xl font-extrabold text-white">
+                        Des chiffres qui prouvent la profondeur de l'analyse
+                    </h2>
+                </Motion.div>
+
+                {/* Grid chiffres */}
+                <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-px bg-white/5 rounded-2xl overflow-hidden border border-white/8">
                     {stats.map((stat, index) => (
                         <Motion.div
                             key={index}
-                            className="flex flex-col items-center text-center px-4 py-6 rounded-2xl bg-bg-light border border-gray-100"
-                            initial={{ opacity: 0, y: 30 }}
+                            className="flex flex-col items-center text-center px-5 py-8 md:py-10 bg-[#0b1628] hover:bg-white/3 transition-colors duration-300 last:col-span-2 md:last:col-span-1 xl:last:col-span-1"
+                            initial={{ opacity: 0, y: 24 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
+                            viewport={{ once: true, margin: "-40px" }}
+                            transition={{ delay: index * 0.09, duration: 0.5, ease: 'easeOut' }}
                         >
-                            <AnimatedCounter
-                                value={stat.value}
-                                isString={stat.isString}
-                                prefix={stat.prefix}
-                                suffix={stat.suffix}
-                            />
-                            <span className="mt-4 text-sm md:text-base font-medium text-text-secondary max-w-[180px]">
+                            {/* Icône */}
+                            <span className="text-2xl mb-4 opacity-80">{stat.icon}</span>
+
+                            {/* Chiffre */}
+                            <div className="text-4xl md:text-5xl xl:text-6xl font-black text-white tracking-tighter leading-none mb-3">
+                                <AnimatedCounter
+                                    value={stat.value}
+                                    isString={stat.isString}
+                                    suffix={stat.suffix}
+                                />
+                            </div>
+
+                            {/* Label */}
+                            <p className="text-xs md:text-sm font-medium text-white/40 leading-snug whitespace-pre-line">
                                 {stat.label}
-                            </span>
+                            </p>
                         </Motion.div>
                     ))}
                 </div>

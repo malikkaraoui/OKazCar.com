@@ -6,7 +6,7 @@ const features = [
     {
         id: 'score',
         title: 'Un score de fiabilité clair et objectif',
-        description: '9 filtres analysent l’annonce : cohérence km/année, prix vs marché, numéro de téléphone, vendeur pro, véhicule importé, historique de publication… Chaque signal est pondéré pour un score final sur 100.',
+        description: "10 filtres analysent l'annonce : cohérence km/année, prix vs marché, numéro de téléphone, vendeur pro, véhicule importé, historique de publication… Chaque signal est pondéré pour un score final sur 100.",
         type: 'score'
     },
     {

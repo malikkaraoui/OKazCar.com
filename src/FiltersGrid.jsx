@@ -20,7 +20,7 @@ const filterCards = [
 
 export default function FiltersGrid() {
     return (
-        <section className="py-24 md:py-32 bg-bg-dark border-t border-white/5">
+        <section id="filters" className="py-24 md:py-32 bg-bg-dark border-t border-white/5">
             <div className="max-w-7xl mx-auto px-6">
 
                 {/* Header */}

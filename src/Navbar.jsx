@@ -6,9 +6,10 @@ import { Menu, X } from 'lucide-react'
 const CHROME_WEB_STORE_URL = 'https://chromewebstore.google.com/detail/okazcar-analyse-annonces/eakomgkenllkkmfccjjfoegealnchmmo'
 
 const navItems = [
+    { id: 'showcase', label: 'Démo' },
     { id: 'features', label: 'Fonctionnalités' },
     { id: 'process', label: 'Comment ça marche' },
-    { id: 'numbers', label: 'Chiffres' },
+    { id: 'filters', label: 'Les filtres' },
     { id: 'faq', label: 'FAQ' },
 ]
 

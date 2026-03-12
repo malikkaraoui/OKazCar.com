@@ -15,11 +15,11 @@ function App() {
       <Navbar />
       <main>
         <Hero />
+        <NumbersSection />
         <Showcase />
         <Features />
         <Process />
         <FiltersGrid />
-        <NumbersSection />
         <FAQ />
         <CTA />
       </main>
