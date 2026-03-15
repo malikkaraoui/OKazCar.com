@@ -27,7 +27,7 @@ const processSteps = [
 
 const processHighlights = [
     { icon: CheckCircle2, label: 'Installation rapide', value: '10 sec' },
-    { icon: ShieldCheck, label: 'Signaux décisifs', value: '10 filtres' },
+    { icon: ShieldCheck, label: 'Signaux décisifs', value: '11 filtres' },
     { icon: Gauge, label: 'Verdict clair', value: 'Score + alertes' },
 ]
 
