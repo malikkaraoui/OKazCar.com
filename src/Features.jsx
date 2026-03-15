@@ -119,9 +119,9 @@ const AlertsVisual = () => {
 const TiresVisual = () => {
     const tires = ['205/55 R16', '225/45 R17', '225/40 R18']
     return (
-        <div className="w-full h-full relative overflow-hidden rounded-2xl border border-sky-100 min-h-[260px] sm:min-h-[300px] md:min-h-[380px] p-6 md:p-8 bg-linear-to-br from-slate via-[#132a52] to-sky-950">
+        <div className="w-full h-full relative overflow-hidden rounded-2xl border border-sky-100 min-h-[260px] sm:min-h-[300px] md:min-h-[380px] p-6 md:p-8 bg-linear-to-br from-bg-dark via-bg-dark-mid to-sky-950">
             <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.8) 1px, transparent 0)', backgroundSize: '26px 26px' }} />
-            <div className="absolute inset-x-0 bottom-0 h-[44%] bg-linear-to-t from-white via-sky-50/95 to-transparent" />
+            <div className="absolute inset-x-0 top-0 h-24 bg-linear-to-b from-bg-dark/5 to-transparent pointer-events-none" />
 
             <div className="relative z-10 grid h-full items-end gap-5 md:grid-cols-[1.08fr_0.92fr] md:gap-6">
                 <motion.div
@@ -235,7 +235,7 @@ const TiresVisual = () => {
                         {tires.map((tire, i) => (
                             <motion.div
                                 key={tire}
-                                className="flex items-center gap-3 rounded-xl bg-bg-light px-4 py-3 border border-slate-100"
+                                className="flex items-center justify-center gap-3 bg-white px-6 py-4 rounded-2xl shadow-[0_14px_36px_rgba(15,23,42,0.08)] border border-primary/5"
                                 initial={{ opacity: 0, x: 20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}

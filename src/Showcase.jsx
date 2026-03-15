@@ -13,7 +13,7 @@ export default function Showcase() {
 
     return (
         <section id="showcase" className="relative py-20 md:py-32 bg-bg-light overflow-hidden">
-            <div className="absolute inset-x-0 top-0 h-24 bg-linear-to-b from-[#0b1628]/3 to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 top-0 h-24 bg-linear-to-b from-bg-dark/5 to-transparent pointer-events-none" />
             <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
                 {/* Section Header */}
@@ -138,7 +138,7 @@ export default function Showcase() {
                                     <strong className="text-slate font-bold">{item.label}</strong>
                                 </a>
                             ) : (
-                                <div className="flex items-center justify-center gap-3 bg-white px-6 py-4 rounded-2xl shadow-[0_14px_36px_rgba(15,23,42,0.08)] border border-black/5">
+                                <div className="flex items-center justify-center gap-3 bg-white px-6 py-4 rounded-2xl shadow-[0_14px_36px_rgba(15,23,42,0.08)] border border-primary/5">
                                     <span className="text-2xl">{item.icon}</span>
                                     <strong className="text-slate font-bold">{item.label}</strong>
                                 </div>

@@ -35,7 +35,7 @@ export default function Hero() {
 
             {/* Decorative Glow */}
             <div className="absolute inset-0 pointer-events-none gradient-glow opacity-60 mix-blend-overlay" />
-            <div className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-[#0b1628]/22 to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-bg-dark/20 to-transparent pointer-events-none" />
 
             {/* Background patterns/particles can go here */}
 

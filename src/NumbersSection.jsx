@@ -99,7 +99,7 @@ function AnimatedCounter({ value, isString, suffix = "", duration = 2 }) {
 
 export default function NumbersSection() {
     return (
-        <section id="numbers" className="relative bg-[#0b1628] py-[4.5rem] md:py-[5.5rem] overflow-hidden">
+        <section id="numbers" className="relative bg-bg-dark py-[4.5rem] md:py-[5.5rem] overflow-hidden">
 
             {/* Glow de fond */}
             <div className="absolute inset-0 pointer-events-none">
@@ -125,18 +125,18 @@ export default function NumbersSection() {
                 </Motion.div>
 
                 {/* Grid chiffres */}
-                <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-px bg-white/5 rounded-[26px] overflow-hidden border border-white/8 shadow-[0_24px_80px_rgba(2,8,23,0.24)]">
+                <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-px bg-white/6 rounded-[26px] overflow-hidden border border-white/10 shadow-[0_24px_80px_rgba(2,8,23,0.24)]">
                     {stats.map((stat, index) => (
                         <Motion.div
                             key={index}
-                            className="flex min-h-47.5 flex-col items-center justify-center text-center px-4 py-8 md:min-h-55 md:px-5 md:py-10 xl:min-h-59 xl:px-6 bg-[#0b1628] hover:bg-white/3 transition-colors duration-300 last:col-span-2 md:last:col-span-1 xl:last:col-span-1"
+                            className="flex min-h-47.5 flex-col items-center justify-center text-center px-4 py-8 md:min-h-55 md:px-5 md:py-10 xl:min-h-59 xl:px-6 bg-white/5 hover:bg-white/10 transition-colors duration-300 last:col-span-2 md:last:col-span-1 xl:last:col-span-1"
                             initial={{ opacity: 0, y: 24 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-40px" }}
                             transition={{ delay: index * 0.09, duration: 0.5, ease: 'easeOut' }}
                         >
                             {/* Icône */}
-                            <div className="mb-4 text-white/50">{stat.icon}</div>
+                            <div className="mb-4 text-white/65">{stat.icon}</div>
 
                             {/* Chiffre */}
                             <div className={`${stat.valueClassName} max-w-full font-black text-white tracking-[-0.05em] mb-3 text-center`}>
@@ -148,7 +148,7 @@ export default function NumbersSection() {
                             </div>
 
                             {/* Label */}
-                            <p className="text-xs md:text-sm font-medium text-white/40 leading-snug whitespace-pre-line">
+                            <p className="text-sm font-medium text-white/80 leading-snug whitespace-pre-line">
                                 {stat.label}
                             </p>
                         </Motion.div>
@@ -164,7 +164,7 @@ export default function NumbersSection() {
                     transition={{ delay: 0.3, duration: 0.5 }}
                 >
                     {/* AutoScout24 */}
-                    <div className="rounded-2xl border border-white/8 bg-white/3 px-6 py-6 md:px-7 md:py-[1.625rem] shadow-[0_18px_40px_rgba(2,8,23,0.18)]">
+                    <div className="rounded-2xl border border-white/10 bg-white/5 px-6 py-6 md:px-7 md:py-[1.625rem] shadow-[0_18px_40px_rgba(2,8,23,0.18)]">
                         <div className="flex items-center gap-3 mb-[1.125rem]">
                             <img
                                 src="https://www.autoscout24.fr/favicon.ico"
@@ -176,7 +176,7 @@ export default function NumbersSection() {
                                 href="https://www.autoscout24.fr"
                                 target="_blank"
                                 rel="noreferrer"
-                                className="text-[15px] font-bold text-white/92 transition-colors hover:text-white"
+                                className="text-[15px] font-bold text-white transition-colors hover:text-accent"
                             >
                                 AutoScout24
                             </a>
@@ -190,7 +190,7 @@ export default function NumbersSection() {
                                     target="_blank"
                                     rel="noreferrer"
                                     title={country}
-                                    className="px-2.5 py-1.5 text-[11px] font-mono font-semibold text-white/55 bg-white/5 rounded-lg hover:bg-white/10 hover:text-white/85 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/20"
+                                    className="px-2.5 py-1.5 text-[11px] font-mono font-semibold text-white/72 bg-white/7 rounded-lg hover:bg-white/12 hover:text-white transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/20"
                                 >
                                     {tld}
                                 </a>
@@ -199,7 +199,7 @@ export default function NumbersSection() {
                     </div>
 
                     {/* ParuVendu — Bientôt */}
-                    <div className="rounded-2xl border border-white/8 bg-white/3 px-6 py-6 md:px-7 md:py-[1.625rem] relative overflow-hidden shadow-[0_18px_40px_rgba(2,8,23,0.18)]">
+                    <div className="rounded-2xl border border-white/10 bg-white/5 px-6 py-6 md:px-7 md:py-[1.625rem] relative overflow-hidden shadow-[0_18px_40px_rgba(2,8,23,0.18)]">
                         <div className="flex items-center gap-3 mb-[1.125rem]">
                             <img
                                 src="https://www.paruvendu.fr/favicon.ico"
@@ -207,14 +207,14 @@ export default function NumbersSection() {
                                 className="w-5 h-5 rounded bg-white shrink-0"
                                 onError={(e) => { e.target.style.display = 'none' }}
                             />
-                            <span className="text-[15px] font-bold text-white/92">ParuVendu</span>
+                            <span className="text-[15px] font-bold text-white">ParuVendu</span>
                             <span className="ml-auto text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/15 px-2.5 py-1 rounded-full">Bientôt</span>
                         </div>
-                        <p className="text-[15px] text-white/42 leading-relaxed max-w-136">
-                            <span className="text-white/72 font-semibold tabular-nums">{(114645).toLocaleString('fr-FR')}</span> annonces automobiles à intégrer prochainement.
+                        <p className="text-[15px] text-white/62 leading-relaxed max-w-136">
+                            <span className="text-white font-semibold tabular-nums">{(114645).toLocaleString('fr-FR')}</span> annonces automobiles à intégrer prochainement.
                         </p>
                         {/* Ligne de progression subtile */}
-                        <div className="mt-5 h-0.5 bg-white/5 rounded-full overflow-hidden">
+                        <div className="mt-5 h-0.5 bg-white/8 rounded-full overflow-hidden">
                             <div className="h-full w-[38%] bg-linear-to-r from-primary/70 to-primary/25 rounded-full" />
                         </div>
                     </div>
