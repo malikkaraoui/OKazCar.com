@@ -1,26 +1,45 @@
 /* eslint-disable no-unused-vars */
 import { motion } from 'framer-motion'
+import { Snowflake, AlertTriangle, Mail, Copy, Check } from 'lucide-react'
 
 
 const features = [
     {
         id: 'score',
         title: 'Un score de fiabilité clair et objectif',
-        description: "10 filtres analysent l'annonce : cohérence km/année, prix vs marché, numéro de téléphone, vendeur pro, véhicule importé, historique de publication… Chaque signal est pondéré pour un score final sur 100.",
+        description: "11 filtres passent l'annonce au crible : cohérence km/année, prix vs marché, numéro de téléphone, vendeur pro, véhicule importé, rappels constructeur, historique de publication… Chaque signal est pondéré pour un score final sur 100.",
         type: 'score'
     },
     {
         id: 'price',
         title: 'Comparez le prix au marché en temps réel',
-        description: 'OKazCar collecte les prix d’annonces similaires sur leboncoin et AutoScout24 (12 pays européens). Vous voyez instantanément si le prix est dans la norme, une bonne affaire, ou suspect.',
+        description: "OKazCar croise 4 sources de prix — annonces similaires, cote Argus, Leboncoin et La Centrale — sur 12 pays européens. Vous voyez instantanément si le prix est dans la norme, une bonne affaire, ou suspect.",
         type: 'price'
     },
     {
         id: 'alerts',
         title: 'Les signaux que vous ne voyez pas',
-        description: 'Numéro étranger ? Véhicule importé ? Annonce republiée pour paraître récente ? Kilométrage incohérent ? OKazCar détecte les anomalies invisibles et vous alerte avant de contacter le vendeur.',
+        description: "Numéro étranger ou virtuel ? Véhicule importé sans le dire ? Annonce republiée pour paraître récente ? SIRET invalide chez un pro ? OKazCar cumule 7 signaux d'alerte et vous prévient avant de contacter le vendeur.",
         type: 'alerts'
-    }
+    },
+    {
+        id: 'tires',
+        title: 'Les dimensions de pneus, sans chercher',
+        description: "OKazCar affiche automatiquement les dimensions de pneus compatibles avec le véhicule. Loi Montagne incluse : si le véhicule est dans l'un des 34 départements concernés, vous êtes alerté sur l'obligation de pneus hiver (novembre à mars).",
+        type: 'tires'
+    },
+    {
+        id: 'recalls',
+        title: 'Rappels constructeur : on vérifie pour vous',
+        description: "Airbags Takata, freins, direction… OKazCar vérifie automatiquement si le véhicule est concerné par un rappel constructeur. Si c'est le cas, le score tombe à zéro et un lien officiel du gouvernement est fourni pour agir.",
+        type: 'recalls'
+    },
+    {
+        id: 'email',
+        title: 'Un email au vendeur en 1 clic',
+        description: "OKazCar rédige un email personnalisé basé sur l'analyse complète de l'annonce. Les bonnes questions sont posées, le ton est professionnel, sans jargon. Vous copiez, vous envoyez — le vendeur reçoit un message crédible, pas un template générique.",
+        type: 'email'
+    },
 ]
 
 // Specialized Visual Components for each feature
@@ -81,6 +100,111 @@ const AlertsVisual = () => {
 }
 
 
+const TiresVisual = () => {
+    const tires = ['205/55 R16', '225/45 R17', '225/40 R18']
+    return (
+        <div className="w-full h-full relative flex flex-col items-center justify-center bg-slate text-white overflow-hidden rounded-2xl min-h-[260px] sm:min-h-[300px] p-6">
+            <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '20px 20px' }} />
+            <div className="relative z-10 w-full max-w-[280px] space-y-3">
+                {tires.map((tire, i) => (
+                    <motion.div
+                        key={tire}
+                        className="flex items-center gap-3 bg-white/10 rounded-xl px-4 py-3 border border-white/10"
+                        initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.15 * i }}
+                    >
+                        <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-xs font-bold text-white/60">
+                            R{16 + i}
+                        </div>
+                        <span className="font-mono font-semibold text-sm tracking-wide">{tire}</span>
+                        {i === 0 && <span className="ml-auto text-[10px] font-bold uppercase bg-primary/30 text-primary-light px-2 py-0.5 rounded-full">Origine</span>}
+                    </motion.div>
+                ))}
+                <motion.div
+                    className="flex items-center gap-2 mt-4 bg-accent/15 rounded-lg px-4 py-2.5 border border-accent/20"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5 }}
+                >
+                    <Snowflake className="w-4 h-4 text-accent" />
+                    <span className="text-xs font-semibold text-accent/90">Loi Montagne — pneus hiver obligatoires</span>
+                </motion.div>
+            </div>
+        </div>
+    )
+}
+
+const RecallsVisual = () => (
+    <div className="w-full h-full relative flex items-center justify-center bg-red-50 overflow-hidden rounded-2xl border border-red-100 min-h-[260px] sm:min-h-[300px] p-6">
+        <motion.div
+            className="relative z-10 w-full max-w-[300px] bg-white rounded-xl shadow-popup p-5 border border-red-200"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+        >
+            <div className="flex items-start gap-3 mb-4">
+                <div className="w-9 h-9 rounded-lg bg-red-100 flex items-center justify-center shrink-0">
+                    <AlertTriangle className="w-5 h-5 text-red-600" />
+                </div>
+                <div>
+                    <p className="font-bold text-slate text-sm">Rappel constructeur</p>
+                    <p className="text-xs text-red-600 font-semibold mt-0.5">Airbag Takata</p>
+                </div>
+                <span className="ml-auto text-[10px] font-bold uppercase bg-red-100 text-red-700 px-2 py-0.5 rounded-full whitespace-nowrap">Score 0/100</span>
+            </div>
+            <p className="text-xs text-text-secondary leading-relaxed mb-3">
+                Ce véhicule est concerné par le rappel Takata (airbags défectueux). Demandez impérativement au vendeur si le remplacement a été effectué.
+            </p>
+            <div className="flex items-center gap-2 text-xs text-primary font-semibold">
+                <span className="underline underline-offset-2">Voir sur ecologie.gouv.fr</span>
+                <span className="text-primary/40">→</span>
+            </div>
+        </motion.div>
+    </div>
+)
+
+const EmailVisual = () => (
+    <div className="w-full h-full relative flex items-center justify-center bg-bg-light overflow-hidden rounded-2xl border border-gray-100 min-h-[260px] sm:min-h-[300px] p-6">
+        <motion.div
+            className="relative z-10 w-full max-w-[300px] bg-white rounded-xl shadow-popup p-5 border border-gray-200"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+        >
+            <div className="flex items-center gap-2 mb-4 pb-3 border-b border-gray-100">
+                <Mail className="w-4 h-4 text-primary" />
+                <span className="text-xs font-bold text-slate">Email au vendeur</span>
+                <span className="ml-auto text-[10px] bg-primary/10 text-primary font-semibold px-2 py-0.5 rounded-full">Généré par IA</span>
+            </div>
+            <div className="space-y-2 mb-4">
+                <div className="h-2 bg-gray-100 rounded-full w-full" />
+                <div className="h-2 bg-gray-100 rounded-full w-11/12" />
+                <div className="h-2 bg-gray-100 rounded-full w-full" />
+                <div className="h-2 bg-primary/10 rounded-full w-9/12" />
+                <div className="h-2 bg-gray-100 rounded-full w-full" />
+                <div className="h-2 bg-gray-100 rounded-full w-7/12" />
+            </div>
+            <motion.div
+                className="flex items-center gap-2"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 }}
+            >
+                <button className="flex items-center gap-1.5 bg-primary text-white text-xs font-bold px-4 py-2 rounded-lg">
+                    <Copy className="w-3 h-3" /> Copier
+                </button>
+                <span className="flex items-center gap-1 text-[11px] text-green-600 font-semibold">
+                    <Check className="w-3.5 h-3.5" /> Prêt à envoyer
+                </span>
+            </motion.div>
+        </motion.div>
+    </div>
+)
+
 export default function Features() {
     return (
         <section id="features" className="py-24 md:py-32 bg-white">
@@ -102,7 +226,7 @@ export default function Features() {
                         transition={{ delay: 0.1 }}
                         className="text-3xl md:text-5xl font-extrabold text-slate leading-tight"
                     >
-                        3 blocs qui évitent<br className="hidden md:block" /> les mauvaises surprises.
+                        6 outils qui évitent<br className="hidden md:block" /> les mauvaises surprises.
                     </motion.h2>
                 </div>
 
@@ -133,6 +257,9 @@ export default function Features() {
                                     {feature.type === 'score' && <ScoreVisual />}
                                     {feature.type === 'price' && <PriceVisual />}
                                     {feature.type === 'alerts' && <AlertsVisual />}
+                                    {feature.type === 'tires' && <TiresVisual />}
+                                    {feature.type === 'recalls' && <RecallsVisual />}
+                                    {feature.type === 'email' && <EmailVisual />}
                                 </div>
                             </div>
                         )

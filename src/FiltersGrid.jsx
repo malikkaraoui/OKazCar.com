@@ -1,21 +1,55 @@
 /* eslint-disable no-unused-vars */
 import { motion } from 'framer-motion'
 import {
-    FileText, CarFront, Gauge, LineChart, ShieldCheck,
-    Phone, Users, Globe, Images
+    FileText, CarFront, Gauge, LineChart, BarChart3,
+    Phone, Building2, Globe, ClipboardCheck, Clock, AlertTriangle
 } from 'lucide-react'
 
 const filterCards = [
-    { id: 'L1', title: 'Complétude des données', desc: 'Vérifie que toutes les infos essentielles sont renseignées.', icon: FileText },
-    { id: 'L2', title: 'Modèle reconnu', desc: 'Identifie le véhicule dans notre référentiel de plus de 1 885 modèles.', icon: CarFront },
-    { id: 'L3', title: 'Cohérence km/année', desc: 'Détecte les kilométrages anormalement bas ou élevés.', icon: Gauge },
-    { id: 'L4', title: 'Prix vs marché', desc: 'Compare le prix aux annonces similaires en temps réel.', icon: LineChart },
-    { id: 'L5', title: 'Évaluation globale', desc: 'Score composite évaluant la crédibilité globale de l\'annonce.', icon: ShieldCheck },
-    { id: 'L6', title: 'Analyse téléphone', desc: 'Identifie numéros étrangers, fixes, ou à risque.', icon: Phone },
-    { id: 'L7', title: 'SIRET vendeur', desc: 'Vérifie SIRET, ancienneté, avis pour les professionnels.', icon: Users },
-    { id: 'L8', title: 'Détection import', desc: 'Repère les véhicules importés et signale les points d\'attention.', icon: Globe },
-    { id: 'L9', title: 'Prix vs Argus', desc: 'Compare la cote officielle Argus au prix demandé.', icon: Images },
-    { id: 'L10', title: 'Ancienneté annonce', desc: 'Analyse depuis combien de temps l\'annonce est en ligne.', icon: LineChart },
+    {
+        id: 'L1', title: 'Qualité d\'extraction', icon: FileText,
+        desc: 'Vérifie la complétude des données extraites : prix, marque, modèle, année, km et 5 champs secondaires. Fail si 3 champs critiques ou plus sont manquants.',
+    },
+    {
+        id: 'L2', title: 'Référentiel véhicule', icon: CarFront,
+        desc: 'Vérifie que le make/model existe dans la base OKazCar (3 218 modèles, 546 000+ versions). Auto-création depuis CSV d\'enrichissement si véhicule inconnu.',
+    },
+    {
+        id: 'L3', title: 'Cohérence données', icon: Gauge,
+        desc: 'Croise année, km, prix et catégorie. Détecte les km suspects avec un ratio km/an adapté par type : citadine ~10k, SUV ~17k, sportive ~12k. Tolérance de 50 %.',
+    },
+    {
+        id: 'L4', title: 'Prix vs marché', icon: LineChart,
+        desc: 'Compare le prix à 4 sources en cascade : MarketPrice crowdsourcé, ArgusPrice, estimations LBC, La Centrale. ±10 % = pass, ±25 % = warning, au-delà = fail.',
+    },
+    {
+        id: 'L5', title: 'Analyse statistique', icon: BarChart3,
+        desc: 'Z-score sur les prix de référence. z > 3 = outlier, z > 2 = marginal. Applique un malus diesel urbain en zone dense (risque FAP bouché au-delà de 30 000 km).',
+    },
+    {
+        id: 'L6', title: 'Téléphone vendeur', icon: Phone,
+        desc: 'Validation multi-pays (FR, CH, DE…). Détecte les préfixes ARCEP de démarchage, les numéros virtuels OnOff, les indicatifs étrangers et l\'absence de téléphone chez un pro.',
+    },
+    {
+        id: 'L7', title: 'SIRET / UID', icon: Building2,
+        desc: 'Vérifie l\'immatriculation pro : SIRET via API SIRENE (FR), UID CHE avec checksum modulo-11 (CH). Fallback sur le rating vendeur (≥ 4.0/5, 20+ avis). Skip si particulier.',
+    },
+    {
+        id: 'L8', title: 'Détection import', icon: Globe,
+        desc: 'Accumule 7 signaux pondérés : préfixe étranger, mots-clés import, langue étrangère, signaux fiscaux, immatriculation WW/COC/RTI, prix anormalement bas, pro sans ID.',
+    },
+    {
+        id: 'L9', title: 'Qualité de l\'annonce', icon: ClipboardCheck,
+        desc: 'Évalue les signaux de confiance : longueur description (≥ 200 car. = fort), type vendeur, nombre de photos, options Urgent/Boost, visibilité téléphone et précision de la localisation.',
+    },
+    {
+        id: 'L10', title: 'Ancienneté annonce', icon: Clock,
+        desc: 'Seuils dynamiques par segment : populaire ~21j, milieu de gamme ~35j, premium ~50-75j. Utilise la médiane réelle du marché (fenêtre 90j, ≥ 5 échantillons). Malus republication.',
+    },
+    {
+        id: 'L11', title: 'Rappel constructeur', icon: AlertTriangle,
+        desc: 'Interroge la base des rappels constructeur par véhicule et plage d\'années. Fail immédiat (score 0.0) si rappel trouvé. Lien vers le site gouvernemental inclus.',
+    },
 ]
 
 export default function FiltersGrid() {
@@ -40,7 +74,7 @@ export default function FiltersGrid() {
                         transition={{ delay: 0.1 }}
                         className="text-3xl md:text-5xl font-extrabold text-white leading-tight"
                     >
-                        10 filtres. Zéro angle mort.
+                        11 filtres. Zéro angle mort.
                     </motion.h2>
                 </div>
 
