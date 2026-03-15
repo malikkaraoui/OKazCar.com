@@ -103,34 +103,142 @@ const AlertsVisual = () => {
 const TiresVisual = () => {
     const tires = ['205/55 R16', '225/45 R17', '225/40 R18']
     return (
-        <div className="w-full h-full relative flex flex-col items-center justify-center bg-slate text-white overflow-hidden rounded-2xl min-h-[260px] sm:min-h-[300px] md:min-h-[380px] p-6 md:p-8">
-            <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '20px 20px' }} />
-            <div className="relative z-10 w-full max-w-[280px] md:max-w-[420px] space-y-3 md:space-y-4">
-                {tires.map((tire, i) => (
-                    <motion.div
-                        key={tire}
-                        className="flex items-center gap-3 bg-white/10 rounded-xl px-4 py-3.5 border border-white/10"
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.15 * i }}
-                    >
-                        <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/10 flex items-center justify-center text-xs font-bold text-white/60">
-                            R{16 + i}
-                        </div>
-                        <span className="font-mono font-semibold text-sm md:text-base tracking-wide">{tire}</span>
-                        {i === 0 && <span className="ml-auto text-[10px] font-bold uppercase bg-primary/30 text-primary-light px-2 py-0.5 rounded-full">Origine</span>}
-                    </motion.div>
-                ))}
+        <div className="w-full h-full relative overflow-hidden rounded-2xl border border-sky-100 min-h-[260px] sm:min-h-[300px] md:min-h-[380px] p-6 md:p-8 bg-linear-to-br from-slate via-[#132a52] to-sky-950">
+            <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.8) 1px, transparent 0)', backgroundSize: '26px 26px' }} />
+            <div className="absolute inset-x-0 bottom-0 h-[44%] bg-linear-to-t from-white via-sky-50/95 to-transparent" />
+
+            <div className="relative z-10 grid h-full items-end gap-5 md:grid-cols-[1.08fr_0.92fr] md:gap-6">
                 <motion.div
-                    className="flex items-center gap-2 mt-5 bg-accent/15 rounded-xl px-4 py-3 border border-accent/20"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
+                    className="relative min-h-65 md:min-h-95"
+                    initial={{ opacity: 0, x: -24 }}
+                    whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.5 }}
                 >
-                    <Snowflake className="w-4 h-4 text-accent" />
-                    <span className="text-xs font-semibold text-accent/90">Loi Montagne — pneus hiver obligatoires</span>
+                    <div className="absolute left-2 top-2 flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-white/85 backdrop-blur-sm">
+                        <Snowflake className="h-3.5 w-3.5 text-accent" />
+                        Hiver / Loi Montagne
+                    </div>
+
+                    <svg viewBox="0 0 520 360" className="h-full w-full overflow-visible">
+                        <defs>
+                            <linearGradient id="snowTrack" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stopColor="#ffffff" stopOpacity="0.96" />
+                                <stop offset="100%" stopColor="#dbeafe" stopOpacity="0.96" />
+                            </linearGradient>
+                            <linearGradient id="tireSide" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stopColor="#334155" />
+                                <stop offset="55%" stopColor="#0f172a" />
+                                <stop offset="100%" stopColor="#020617" />
+                            </linearGradient>
+                            <radialGradient id="rimCore" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stopColor="#f8fafc" />
+                                <stop offset="100%" stopColor="#94a3b8" />
+                            </radialGradient>
+                            <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+                                <feGaussianBlur stdDeviation="10" result="blur" />
+                                <feMerge>
+                                    <feMergeNode in="blur" />
+                                    <feMergeNode in="SourceGraphic" />
+                                </feMerge>
+                            </filter>
+                        </defs>
+
+                        <path
+                            d="M30 282C120 258 192 248 268 255C342 262 400 288 486 322"
+                            fill="none"
+                            stroke="url(#snowTrack)"
+                            strokeWidth="46"
+                            strokeLinecap="round"
+                            opacity="0.96"
+                            filter="url(#softGlow)"
+                        />
+                        <path
+                            d="M34 282C124 260 194 251 268 257C341 263 399 289 480 320"
+                            fill="none"
+                            stroke="#cbd5e1"
+                            strokeWidth="18"
+                            strokeLinecap="round"
+                            strokeDasharray="8 11"
+                            opacity="0.9"
+                        />
+
+                        <g transform="translate(184 74)">
+                            <ellipse cx="110" cy="206" rx="112" ry="22" fill="#0f172a" opacity="0.18" />
+                            <circle cx="110" cy="140" r="96" fill="url(#tireSide)" />
+                            <circle cx="110" cy="140" r="70" fill="#111827" stroke="#475569" strokeWidth="14" />
+                            <circle cx="110" cy="140" r="42" fill="url(#rimCore)" />
+                            <circle cx="110" cy="140" r="10" fill="#64748b" />
+
+                            {[0, 30, 60, 90, 120, 150].map((angle) => (
+                                <rect
+                                    key={angle}
+                                    x="103"
+                                    y="82"
+                                    width="14"
+                                    height="34"
+                                    rx="7"
+                                    fill="#e2e8f0"
+                                    transform={`rotate(${angle} 110 140)`}
+                                />
+                            ))}
+
+                            {[0, 16, 32, 48, 64, 80, 96, 112, 128, 144, 160].map((angle) => (
+                                <rect
+                                    key={angle}
+                                    x="101"
+                                    y="38"
+                                    width="18"
+                                    height="22"
+                                    rx="6"
+                                    fill="#64748b"
+                                    opacity="0.65"
+                                    transform={`rotate(${angle} 110 140)`}
+                                />
+                            ))}
+
+                            <path d="M18 188c34-18 57-26 93-28" fill="none" stroke="#f8fafc" strokeWidth="8" strokeLinecap="round" opacity="0.7" />
+                            <path d="M198 166c26 7 44 16 69 31" fill="none" stroke="#f8fafc" strokeWidth="8" strokeLinecap="round" opacity="0.55" />
+                        </g>
+                    </svg>
+                </motion.div>
+
+                <motion.div
+                    className="w-full max-w-75 md:max-w-97.5 justify-self-center md:justify-self-end rounded-xl border border-white/70 bg-white/96 p-5 md:p-6 text-slate shadow-[0_24px_60px_rgba(15,23,42,0.18)]"
+                    initial={{ opacity: 0, y: 22 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.1 }}
+                >
+                    <div className="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
+                        <Snowflake className="w-4 h-4 text-primary" />
+                        <span className="text-xs font-bold text-slate">Pneus hiver</span>
+                        <span className="ml-auto text-[10px] bg-primary/10 text-primary font-semibold px-2 py-0.5 rounded-full">Loi Montagne</span>
+                    </div>
+
+                    <div className="space-y-3 mb-4">
+                        {tires.map((tire, i) => (
+                            <motion.div
+                                key={tire}
+                                className="flex items-center gap-3 rounded-xl bg-bg-light px-4 py-3 border border-slate-100"
+                                initial={{ opacity: 0, x: 20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.12 * i }}
+                            >
+                                <div className="w-9 h-9 rounded-full bg-primary/8 flex items-center justify-center text-[11px] font-bold text-primary">
+                                    R{16 + i}
+                                </div>
+                                <span className="font-mono font-semibold text-sm tracking-wide text-slate">{tire}</span>
+                            </motion.div>
+                        ))}
+                    </div>
+
+                    <div className="rounded-xl bg-warning/10 border border-warning/20 px-4 py-3.5">
+                        <p className="text-sm font-bold text-warning">Pneus hiver obligatoires</p>
+                        <p className="mt-1.5 text-xs leading-relaxed text-warning/85">
+                            Alerte affichée automatiquement si le véhicule entre dans la période et la zone concernées.
+                        </p>
+                    </div>
                 </motion.div>
             </div>
         </div>
