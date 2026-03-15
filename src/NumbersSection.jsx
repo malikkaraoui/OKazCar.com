@@ -54,18 +54,18 @@ const stats = [
 ]
 
 const autoscoutCountries = [
-    { tld: '.ch', country: 'Suisse' },
-    { tld: '.de', country: 'Allemagne' },
-    { tld: '.fr', country: 'France' },
-    { tld: '.it', country: 'Italie' },
-    { tld: '.be', country: 'Belgique' },
-    { tld: '.nl', country: 'Pays-Bas' },
-    { tld: '.at', country: 'Autriche' },
-    { tld: '.es', country: 'Espagne' },
-    { tld: '.pl', country: 'Pologne' },
-    { tld: '.lu', country: 'Luxembourg' },
-    { tld: '.se', country: 'Suède' },
-    { tld: '.com', country: 'International' },
+    { tld: '.ch', country: 'Suisse', url: 'https://www.autoscout24.ch' },
+    { tld: '.de', country: 'Allemagne', url: 'https://www.autoscout24.de' },
+    { tld: '.fr', country: 'France', url: 'https://www.autoscout24.fr' },
+    { tld: '.it', country: 'Italie', url: 'https://www.autoscout24.it' },
+    { tld: '.be', country: 'Belgique', url: 'https://www.autoscout24.be' },
+    { tld: '.nl', country: 'Pays-Bas', url: 'https://www.autoscout24.nl' },
+    { tld: '.at', country: 'Autriche', url: 'https://www.autoscout24.at' },
+    { tld: '.es', country: 'Espagne', url: 'https://www.autoscout24.es' },
+    { tld: '.pl', country: 'Pologne', url: 'https://www.autoscout24.pl' },
+    { tld: '.lu', country: 'Luxembourg', url: 'https://www.autoscout24.lu' },
+    { tld: '.se', country: 'Suède', url: 'https://www.autoscout24.se' },
+    { tld: '.com', country: 'International', url: 'https://www.autoscout24.com' },
 ]
 
 function AnimatedCounter({ value, isString, suffix = "", duration = 2 }) {
@@ -172,18 +172,28 @@ export default function NumbersSection() {
                                 className="w-5 h-5 rounded bg-white shrink-0"
                                 onError={(e) => { e.target.style.display = 'none' }}
                             />
-                            <span className="text-[15px] font-bold text-white/92">AutoScout24</span>
+                            <a
+                                href="https://www.autoscout24.fr"
+                                target="_blank"
+                                rel="noreferrer"
+                                className="text-[15px] font-bold text-white/92 transition-colors hover:text-white"
+                            >
+                                AutoScout24
+                            </a>
                             <span className="ml-auto text-xs font-semibold text-accent/85 bg-accent/10 px-2.5 py-1 rounded-full">12 pays</span>
                         </div>
                         <div className="flex flex-wrap gap-2">
-                            {autoscoutCountries.map(({ tld, country }) => (
-                                <span
+                            {autoscoutCountries.map(({ tld, country, url }) => (
+                                <a
                                     key={tld}
+                                    href={url}
+                                    target="_blank"
+                                    rel="noreferrer"
                                     title={country}
-                                    className="px-2.5 py-1.5 text-[11px] font-mono font-semibold text-white/55 bg-white/5 rounded-lg hover:bg-white/10 hover:text-white/85 transition-colors cursor-default"
+                                    className="px-2.5 py-1.5 text-[11px] font-mono font-semibold text-white/55 bg-white/5 rounded-lg hover:bg-white/10 hover:text-white/85 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/20"
                                 >
                                     {tld}
-                                </span>
+                                </a>
                             ))}
                         </div>
                     </div>
