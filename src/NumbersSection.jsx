@@ -46,11 +46,26 @@ const icons = {
 }
 
 const stats = [
-    { value: 178,    suffix: '',  label: 'Marques\ncouvertes',           icon: icons.marques },
-    { value: 1389,   suffix: '',  label: 'Générations\nen base',         icon: icons.generations },
-    { value: 3218,   suffix: '',  label: 'Modèles\nen base',             icon: icons.modeles },
-    { value: 546000, suffix: '+', label: 'Versions\nréférencées',       icon: icons.versions },
-    { value: '2000 – 2026', isString: true, suffix: '', label: 'Couverture\nmaintenue à jour', icon: icons.couverture },
+    { value: 178, suffix: '', label: 'Marques\ncouvertes', icon: icons.marques, valueClassName: 'text-4xl md:text-5xl xl:text-[3.6rem]' },
+    { value: 1389, suffix: '', label: 'Générations\nen base', icon: icons.generations, valueClassName: 'text-4xl md:text-5xl xl:text-[3.6rem]' },
+    { value: 3218, suffix: '', label: 'Modèles\nen base', icon: icons.modeles, valueClassName: 'text-4xl md:text-5xl xl:text-[3.6rem]' },
+    { value: 546000, suffix: '+', label: 'Versions\nréférencées', icon: icons.versions, valueClassName: 'text-[2.6rem] md:text-5xl xl:text-[3.9rem]' },
+    { value: '2000 – 2026', isString: true, suffix: '', label: 'Couverture\nmaintenue à jour', icon: icons.couverture, valueClassName: 'text-[1.95rem] md:text-[2.35rem] xl:text-[2.6rem] leading-tight' },
+]
+
+const autoscoutCountries = [
+    { tld: '.ch', country: 'Suisse' },
+    { tld: '.de', country: 'Allemagne' },
+    { tld: '.fr', country: 'France' },
+    { tld: '.it', country: 'Italie' },
+    { tld: '.be', country: 'Belgique' },
+    { tld: '.nl', country: 'Pays-Bas' },
+    { tld: '.at', country: 'Autriche' },
+    { tld: '.es', country: 'Espagne' },
+    { tld: '.pl', country: 'Pologne' },
+    { tld: '.lu', country: 'Luxembourg' },
+    { tld: '.se', country: 'Suède' },
+    { tld: '.com', country: 'International' },
 ]
 
 function AnimatedCounter({ value, isString, suffix = "", duration = 2 }) {
@@ -84,14 +99,14 @@ function AnimatedCounter({ value, isString, suffix = "", duration = 2 }) {
 
 export default function NumbersSection() {
     return (
-        <section id="numbers" className="relative bg-[#0b1628] py-16 md:py-20 overflow-hidden">
+        <section id="numbers" className="relative bg-[#0b1628] py-[4.5rem] md:py-[5.5rem] overflow-hidden">
 
             {/* Glow de fond */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-175 h-75 bg-primary/20 rounded-full blur-[100px] opacity-40" />
             </div>
 
-            <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="relative mx-auto max-w-330 px-4 sm:px-6 lg:px-8">
 
                 {/* Titre section */}
                 <Motion.div
@@ -110,11 +125,11 @@ export default function NumbersSection() {
                 </Motion.div>
 
                 {/* Grid chiffres */}
-                <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-px bg-white/5 rounded-2xl overflow-hidden border border-white/8">
+                <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-px bg-white/5 rounded-[26px] overflow-hidden border border-white/8 shadow-[0_24px_80px_rgba(2,8,23,0.24)]">
                     {stats.map((stat, index) => (
                         <Motion.div
                             key={index}
-                            className="flex flex-col items-center text-center px-5 py-8 md:py-10 bg-[#0b1628] hover:bg-white/3 transition-colors duration-300 last:col-span-2 md:last:col-span-1 xl:last:col-span-1"
+                            className="flex min-h-47.5 flex-col items-center justify-center text-center px-4 py-8 md:min-h-55 md:px-5 md:py-10 xl:min-h-59 xl:px-6 bg-[#0b1628] hover:bg-white/3 transition-colors duration-300 last:col-span-2 md:last:col-span-1 xl:last:col-span-1"
                             initial={{ opacity: 0, y: 24 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-40px" }}
@@ -124,7 +139,7 @@ export default function NumbersSection() {
                             <div className="mb-4 text-white/50">{stat.icon}</div>
 
                             {/* Chiffre */}
-                            <div className={`${stat.isString ? 'text-2xl md:text-3xl xl:text-4xl' : 'text-4xl md:text-5xl xl:text-6xl'} font-black text-white tracking-tighter leading-none mb-3`}>
+                            <div className={`${stat.valueClassName} max-w-full font-black text-white tracking-[-0.05em] mb-3 text-center`}>
                                 <AnimatedCounter
                                     value={stat.value}
                                     isString={stat.isString}
@@ -142,43 +157,30 @@ export default function NumbersSection() {
 
                 {/* — Couverture plateformes — */}
                 <Motion.div
-                    className="mt-8 md:mt-10 grid grid-cols-1 md:grid-cols-2 gap-4"
+                    className="mt-10 md:mt-12 grid grid-cols-1 md:grid-cols-2 gap-5"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.3, duration: 0.5 }}
                 >
                     {/* AutoScout24 */}
-                    <div className="rounded-xl border border-white/8 bg-white/[0.02] px-6 py-5">
-                        <div className="flex items-center gap-3 mb-4">
+                    <div className="rounded-2xl border border-white/8 bg-white/3 px-6 py-6 md:px-7 md:py-[1.625rem] shadow-[0_18px_40px_rgba(2,8,23,0.18)]">
+                        <div className="flex items-center gap-3 mb-[1.125rem]">
                             <img
                                 src="https://www.autoscout24.fr/favicon.ico"
                                 alt="AutoScout24"
-                                className="w-5 h-5 rounded bg-white"
+                                className="w-5 h-5 rounded bg-white shrink-0"
                                 onError={(e) => { e.target.style.display = 'none' }}
                             />
-                            <span className="text-sm font-bold text-white/90">AutoScout24</span>
-                            <span className="ml-auto text-xs font-semibold text-accent/80 bg-accent/10 px-2.5 py-0.5 rounded-full">12 pays</span>
+                            <span className="text-[15px] font-bold text-white/92">AutoScout24</span>
+                            <span className="ml-auto text-xs font-semibold text-accent/85 bg-accent/10 px-2.5 py-1 rounded-full">12 pays</span>
                         </div>
-                        <div className="flex flex-wrap gap-1.5">
-                            {[
-                                { tld: '.ch', country: 'Suisse' },
-                                { tld: '.de', country: 'Allemagne' },
-                                { tld: '.fr', country: 'France' },
-                                { tld: '.it', country: 'Italie' },
-                                { tld: '.be', country: 'Belgique' },
-                                { tld: '.nl', country: 'Pays-Bas' },
-                                { tld: '.at', country: 'Autriche' },
-                                { tld: '.es', country: 'Espagne' },
-                                { tld: '.pl', country: 'Pologne' },
-                                { tld: '.lu', country: 'Luxembourg' },
-                                { tld: '.se', country: 'Suède' },
-                                { tld: '.com', country: 'International' },
-                            ].map(({ tld, country }) => (
+                        <div className="flex flex-wrap gap-2">
+                            {autoscoutCountries.map(({ tld, country }) => (
                                 <span
                                     key={tld}
                                     title={country}
-                                    className="px-2 py-1 text-[11px] font-mono font-semibold text-white/50 bg-white/5 rounded-md hover:bg-white/10 hover:text-white/80 transition-colors cursor-default"
+                                    className="px-2.5 py-1.5 text-[11px] font-mono font-semibold text-white/55 bg-white/5 rounded-lg hover:bg-white/10 hover:text-white/85 transition-colors cursor-default"
                                 >
                                     {tld}
                                 </span>
@@ -187,23 +189,23 @@ export default function NumbersSection() {
                     </div>
 
                     {/* ParuVendu — Bientôt */}
-                    <div className="rounded-xl border border-white/8 bg-white/[0.02] px-6 py-5 relative overflow-hidden">
-                        <div className="flex items-center gap-3 mb-4">
+                    <div className="rounded-2xl border border-white/8 bg-white/3 px-6 py-6 md:px-7 md:py-[1.625rem] relative overflow-hidden shadow-[0_18px_40px_rgba(2,8,23,0.18)]">
+                        <div className="flex items-center gap-3 mb-[1.125rem]">
                             <img
                                 src="https://www.paruvendu.fr/favicon.ico"
                                 alt="ParuVendu"
-                                className="w-5 h-5 rounded bg-white"
+                                className="w-5 h-5 rounded bg-white shrink-0"
                                 onError={(e) => { e.target.style.display = 'none' }}
                             />
-                            <span className="text-sm font-bold text-white/90">ParuVendu</span>
-                            <span className="ml-auto text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/15 px-2.5 py-0.5 rounded-full">Bientôt</span>
+                            <span className="text-[15px] font-bold text-white/92">ParuVendu</span>
+                            <span className="ml-auto text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/15 px-2.5 py-1 rounded-full">Bientôt</span>
                         </div>
-                        <p className="text-sm text-white/40 leading-relaxed">
-                            <span className="text-white/70 font-semibold tabular-nums">{(114645).toLocaleString('fr-FR')}</span> annonces automobiles à intégrer prochainement.
+                        <p className="text-[15px] text-white/42 leading-relaxed max-w-136">
+                            <span className="text-white/72 font-semibold tabular-nums">{(114645).toLocaleString('fr-FR')}</span> annonces automobiles à intégrer prochainement.
                         </p>
                         {/* Ligne de progression subtile */}
-                        <div className="mt-4 h-px bg-white/5 rounded-full overflow-hidden">
-                            <div className="h-full w-1/3 bg-gradient-to-r from-primary/60 to-primary/20 rounded-full" />
+                        <div className="mt-5 h-0.5 bg-white/5 rounded-full overflow-hidden">
+                            <div className="h-full w-[38%] bg-linear-to-r from-primary/70 to-primary/25 rounded-full" />
                         </div>
                     </div>
                 </Motion.div>

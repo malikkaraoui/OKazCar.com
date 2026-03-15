@@ -67,7 +67,7 @@ export default function Process() {
                     </motion.p>
                 </div>
 
-                <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(360px,460px)] lg:gap-10 items-start">
+                <div className="grid gap-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(340px,420px)] lg:gap-10 items-start">
                     <div className="space-y-4 md:space-y-5">
                         {processSteps.map((step, index) => (
                             <motion.article
@@ -76,7 +76,7 @@ export default function Process() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: '-50px' }}
                                 transition={{ duration: 0.45, delay: index * 0.08 }}
-                                className="rounded-3xl border border-slate-200 bg-bg-light p-6 md:p-7 shadow-[0_10px_30px_rgba(15,23,42,0.05)]"
+                                className="rounded-[28px] border border-slate-200 bg-bg-light p-6 md:p-7 shadow-[0_10px_30px_rgba(15,23,42,0.05)]"
                             >
                                 <div className="flex items-start gap-4 md:gap-5">
                                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary text-white shadow-cta">
@@ -111,10 +111,10 @@ export default function Process() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: '-80px' }}
                         transition={{ duration: 0.5, delay: 0.15 }}
-                        className="self-start"
+                        className="self-start w-full lg:max-w-105 lg:ml-auto"
                     >
-                        <div className="overflow-hidden rounded-[28px] bg-[#0f1d4a] p-5 md:p-6 text-white shadow-popup border border-slate-900/10">
-                            <div className="rounded-2xl border border-white/15 bg-white/10 p-4 md:p-5 backdrop-blur-sm">
+                        <div className="overflow-hidden rounded-[28px] bg-[#0f1d4a] p-4 md:p-5 text-white shadow-[0_18px_50px_rgba(15,23,42,0.18)] border border-slate-900/10">
+                            <div className="rounded-3xl border border-white/15 bg-white/10 p-4 md:p-5 backdrop-blur-sm">
                                 <span className="text-xs font-bold uppercase tracking-[0.2em] text-white/75">
                                     En pratique
                                 </span>
@@ -126,11 +126,11 @@ export default function Process() {
                                 </p>
                             </div>
 
-                            <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+                            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
                                 {processHighlights.map((item, index) => (
                                     <div
                                         key={item.label}
-                                        className={`rounded-2xl border p-4 md:p-5 ${index === 1 ? 'bg-primary/25 border-primary/35' : 'bg-white/10 border-white/15'}`}
+                                        className={`rounded-[22px] border p-4 md:p-5 ${index === 1 ? 'bg-primary/25 border-primary/35' : 'bg-white/10 border-white/15'}`}
                                     >
                                         <div className="flex items-center gap-3">
                                             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.15)]">
@@ -145,7 +145,7 @@ export default function Process() {
                                 ))}
                             </div>
 
-                            <div className="mt-5 rounded-2xl bg-white p-5 md:p-6 text-slate shadow-[0_20px_50px_rgba(2,6,23,0.25)]">
+                            <div className="mt-4 rounded-3xl bg-white p-5 md:p-6 text-slate shadow-[0_20px_50px_rgba(2,6,23,0.25)]">
                                 <div className="flex items-center justify-between border-b border-slate-100 pb-4 gap-4">
                                     <div>
                                         <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary">Verdict OKazCar</p>

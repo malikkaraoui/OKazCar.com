@@ -32,12 +32,12 @@ const faqItems = [
 
 function AccordionItem({ item, isOpen, onClick }) {
     return (
-        <div className="border border-gray-200 rounded-xl mb-4 overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow">
+        <div className="border border-gray-200 rounded-2xl mb-3 sm:mb-4 overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow">
             <button
-                className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none"
+                className="w-full px-5 sm:px-6 py-4 sm:py-5 flex items-center justify-between text-left focus:outline-none gap-4"
                 onClick={onClick}
             >
-                <span className="font-bold text-slate text-lg">{item.q}</span>
+                <span className="font-bold text-slate text-base sm:text-lg leading-snug">{item.q}</span>
                 <motion.div
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
@@ -55,7 +55,7 @@ function AccordionItem({ item, isOpen, onClick }) {
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3, ease: 'easeInOut' }}
                     >
-                        <div className="px-6 pb-5 text-text-secondary leading-relaxed border-t border-gray-50 pt-3">
+                        <div className="px-5 sm:px-6 pb-4 sm:pb-5 text-sm sm:text-base text-text-secondary leading-relaxed border-t border-gray-50 pt-3">
                             {item.a}
                         </div>
                     </motion.div>
@@ -69,11 +69,11 @@ export default function FAQ() {
     const [openIndex, setOpenIndex] = useState(null)
 
     return (
-        <section id="faq" className="py-24 md:py-32 bg-bg-light">
-            <div className="max-w-3xl mx-auto px-6">
+        <section id="faq" className="py-20 md:py-32 bg-bg-light">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6">
 
                 {/* Header */}
-                <div className="text-center mb-16 md:mb-24">
+                <div className="text-center mb-12 md:mb-24">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}

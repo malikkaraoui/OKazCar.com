@@ -71,6 +71,13 @@ export default function Navbar() {
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
+    useEffect(() => {
+        document.body.style.overflow = isMenuOpen ? 'hidden' : ''
+        return () => {
+            document.body.style.overflow = ''
+        }
+    }, [isMenuOpen])
+
     return (
         <>
             <motion.header
@@ -79,7 +86,7 @@ export default function Navbar() {
                 animate={{ y: isHidden ? '-100%' : 0 }}
                 transition={{ duration: 0.3, ease: 'easeInOut' }}
             >
-                <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 h-17 sm:h-20 flex items-center justify-between">
                     <a href="#hero" aria-label="Retour en haut" className="z-50 relative">
                         <Logo dark={isScrolled || isMenuOpen} />
                     </a>
@@ -107,14 +114,14 @@ export default function Navbar() {
 
                     {/* Mobile Menu Toggle */}
                     <button
-                        className="md:hidden z-50 relative p-2"
+                        className={`md:hidden z-50 relative flex h-11 w-11 items-center justify-center rounded-2xl border transition-colors ${isMenuOpen || isScrolled ? 'border-slate-200 bg-white text-slate shadow-[0_10px_30px_rgba(15,23,42,0.08)]' : 'border-white/15 bg-white/10 text-white backdrop-blur-md'}`}
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         aria-label="Toggle menu"
                     >
                         {isMenuOpen ? (
-                            <X className="w-6 h-6 text-slate" />
+                            <X className="w-5 h-5" />
                         ) : (
-                            <Menu className={`w-6 h-6 ${isScrolled ? 'text-slate' : 'text-white'}`} />
+                            <Menu className="w-5 h-5" />
                         )}
                     </button>
                 </div>
@@ -123,34 +130,50 @@ export default function Navbar() {
             {/* Mobile Menu Overlay */}
             <AnimatePresence>
                 {isMenuOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        transition={{ duration: 0.2 }}
-                        className="fixed inset-0 z-40 bg-white pt-24 px-6 md:hidden"
-                    >
-                        <nav className="flex flex-col gap-6 text-lg font-medium text-slate">
-                            {navItems.map((item) => (
-                                <a
-                                    key={item.id}
-                                    href={`#${item.id}`}
-                                    onClick={() => setIsMenuOpen(false)}
-                                    className="border-b border-gray-100 pb-4"
-                                >
-                                    {item.label}
-                                </a>
-                            ))}
-                            <a
-                                href={CHROME_WEB_STORE_URL}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="gradient-cta text-white px-6 py-4 rounded-xl font-bold text-center mt-4 shadow-cta"
-                            >
-                                Installer gratuitement
-                            </a>
-                        </nav>
-                    </motion.div>
+                    <>
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="fixed inset-0 z-40 bg-slate/45 backdrop-blur-sm md:hidden"
+                            onClick={() => setIsMenuOpen(false)}
+                        />
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 28 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 28 }}
+                            transition={{ duration: 0.24, ease: 'easeOut' }}
+                            className="fixed inset-x-0 bottom-0 z-40 rounded-t-[28px] bg-white px-5 pb-[calc(env(safe-area-inset-bottom)+1rem)] pt-5 shadow-[0_-10px_40px_rgba(15,23,42,0.16)] md:hidden"
+                        >
+                            <div className="mx-auto max-w-md">
+                                <div className="mx-auto mb-5 h-1.5 w-14 rounded-full bg-slate-200" />
+
+                                <nav className="flex flex-col gap-2 text-slate">
+                                    {navItems.map((item) => (
+                                        <a
+                                            key={item.id}
+                                            href={`#${item.id}`}
+                                            onClick={() => setIsMenuOpen(false)}
+                                            className="flex items-center justify-between rounded-2xl border border-slate-100 px-4 py-4 text-base font-semibold"
+                                        >
+                                            <span>{item.label}</span>
+                                            <span className="text-slate-300">→</span>
+                                        </a>
+                                    ))}
+                                    <a
+                                        href={CHROME_WEB_STORE_URL}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="mt-3 gradient-cta text-white px-6 py-4 rounded-2xl font-bold text-center shadow-cta"
+                                    >
+                                        Installer gratuitement
+                                    </a>
+                                </nav>
+                            </div>
+                        </motion.div>
+                    </>
                 )}
             </AnimatePresence>
         </>

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 const showcaseHighlights = [
     { icon: '📊', label: 'Score global' },
-    { icon: '🔍', label: '11 filtres IA' },
+    { icon: '🔍', label: '11 filtres IA', href: '#filters' },
     { icon: '⚡', label: 'Analyse en 3 sec' },
 ]
 
@@ -12,11 +12,12 @@ export default function Showcase() {
     const [activeTab, setActiveTab] = useState('lbc')
 
     return (
-        <section id="showcase" className="py-24 md:py-32 bg-bg-light overflow-hidden">
+        <section id="showcase" className="relative py-20 md:py-32 bg-bg-light overflow-hidden">
+            <div className="absolute inset-x-0 top-0 h-24 bg-linear-to-b from-[#0b1628]/3 to-transparent pointer-events-none" />
             <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
                 {/* Section Header */}
-                <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+                <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -46,7 +47,7 @@ export default function Showcase() {
                     transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
                 >
                     {/* Desktop Browser Frame */}
-                    <div className="rounded-2xl bg-white shadow-card hover:shadow-card-hover transition-shadow duration-500 overflow-hidden border border-black/5 flex flex-col min-h-[360px] sm:min-h-[500px] md:min-h-[600px]">
+                    <div className="rounded-3xl sm:rounded-[28px] bg-white shadow-[0_22px_70px_rgba(15,23,42,0.12)] hover:shadow-[0_28px_90px_rgba(15,23,42,0.16)] transition-shadow duration-500 overflow-hidden border border-black/5 flex flex-col min-h-75 sm:min-h-125 md:min-h-150">
 
                         {/* Browser Top Bar */}
                         <div className="bg-gray-100 flex items-center px-4 py-3 border-b border-gray-200 gap-2">
@@ -63,34 +64,34 @@ export default function Showcase() {
                         </div>
 
                         {/* Image Content */}
-                        <div className="flex-1 bg-gray-50 relative overflow-hidden group">
+                        <div className="flex-1 bg-gray-50 relative overflow-hidden group min-h-75 sm:min-h-0">
 
                             {/* AutoScout24 Screenshot */}
                             <img
                                 src="/img-as24-panel.png"
                                 alt="Interface OKazCar sur AutoScout24"
-                                className={`absolute inset-0 w-full h-full object-contain sm:object-cover object-left-top bg-white transition-opacity duration-700 ${activeTab === 'as24' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
+                                className={`absolute inset-0 w-full h-full object-contain sm:object-cover object-top-left bg-white transition-opacity duration-700 ${activeTab === 'as24' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
                             />
 
                             {/* La Centrale Screenshot */}
                             <img
                                 src="/img-lc-panel.png"
                                 alt="Interface OKazCar sur La Centrale"
-                                className={`absolute inset-0 w-full h-full object-contain sm:object-cover object-left-top bg-white transition-opacity duration-700 ${activeTab === 'lc' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
+                                className={`absolute inset-0 w-full h-full object-contain sm:object-cover object-top-left bg-white transition-opacity duration-700 ${activeTab === 'lc' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
                             />
 
                             {/* Leboncoin Screenshot */}
                             <img
                                 src="/img-lbc-panel.png"
                                 alt="Interface OKazCar sur Leboncoin"
-                                className={`absolute inset-0 w-full h-full object-contain sm:object-cover object-left-top bg-white transition-opacity duration-700 ${activeTab === 'lbc' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
+                                className={`absolute inset-0 w-full h-full object-contain sm:object-cover object-top-left bg-white transition-opacity duration-700 ${activeTab === 'lbc' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
                             />
 
                             {/* Platform Toggle Overlay */}
-                            <div className="absolute bottom-4 sm:bottom-6 left-4 right-4 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 z-20 flex flex-wrap justify-center bg-white/90 backdrop-blur-md p-1.5 rounded-2xl sm:rounded-full shadow-floating border border-gray-200 gap-1.5 sm:gap-0">
+                            <div className="absolute bottom-3 sm:bottom-6 left-3 right-3 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 z-20 grid grid-cols-3 sm:flex sm:flex-wrap justify-center bg-white/92 backdrop-blur-xl p-1.5 rounded-2xl sm:rounded-full shadow-[0_16px_45px_rgba(15,23,42,0.16)] border border-white gap-1.5 sm:gap-0">
                                 <button
                                     onClick={() => setActiveTab('lbc')}
-                                    className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all flex items-center gap-2 ${activeTab === 'lbc' ? 'bg-primary text-white shadow-md' : 'text-slate hover:bg-gray-100'}`}
+                                    className={`px-2.5 sm:px-4 py-2.5 rounded-xl sm:rounded-full text-[11px] sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 sm:gap-2 ${activeTab === 'lbc' ? 'bg-primary text-white shadow-md' : 'text-slate hover:bg-gray-100/90'}`}
                                 >
                                     <img src="https://www.leboncoin.fr/favicon.ico" className="w-4 h-4 rounded-full bg-white" alt="LBC" onError={(e) => { e.target.style.display = 'none' }} />
                                     <span className="hidden sm:inline">Leboncoin</span>
@@ -98,7 +99,7 @@ export default function Showcase() {
                                 </button>
                                 <button
                                     onClick={() => setActiveTab('lc')}
-                                    className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all flex items-center gap-2 ${activeTab === 'lc' ? 'bg-primary text-white shadow-md' : 'text-slate hover:bg-gray-100'}`}
+                                    className={`px-2.5 sm:px-4 py-2.5 rounded-xl sm:rounded-full text-[11px] sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 sm:gap-2 ${activeTab === 'lc' ? 'bg-primary text-white shadow-md' : 'text-slate hover:bg-gray-100/90'}`}
                                 >
                                     <img src="https://www.lacentrale.fr/favicon.ico" className="w-4 h-4 rounded-full bg-white" alt="LC" onError={(e) => { e.target.style.display = 'none' }} />
                                     <span className="hidden sm:inline">La Centrale</span>
@@ -106,10 +107,11 @@ export default function Showcase() {
                                 </button>
                                 <button
                                     onClick={() => setActiveTab('as24')}
-                                    className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all flex items-center gap-2 ${activeTab === 'as24' ? 'bg-primary text-white shadow-md' : 'text-slate hover:bg-gray-100'}`}
+                                    className={`px-2.5 sm:px-4 py-2.5 rounded-xl sm:rounded-full text-[11px] sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 sm:gap-2 ${activeTab === 'as24' ? 'bg-primary text-white shadow-md' : 'text-slate hover:bg-gray-100/90'}`}
                                 >
                                     <img src="https://www.autoscout24.fr/favicon.ico" className="w-4 h-4 rounded-full bg-white" alt="AS24" onError={(e) => { e.target.style.display = 'none' }} />
-                                    AutoScout24
+                                    <span className="hidden sm:inline">AutoScout24</span>
+                                    <span className="sm:hidden">AS24</span>
                                 </button>
                             </div>
 
@@ -118,7 +120,7 @@ export default function Showcase() {
                 </motion.div>
 
                 {/* Highlights below mockup */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto mt-12 md:mt-16">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-6 max-w-4xl mx-auto mt-10 md:mt-16">
                     {showcaseHighlights.map((item, index) => (
                         <motion.div
                             key={item.label}
@@ -126,10 +128,21 @@ export default function Showcase() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ delay: 0.4 + index * 0.1 }}
-                            className="flex items-center justify-center gap-3 bg-white px-6 py-4 rounded-xl shadow-glass border border-black/5"
                         >
-                            <span className="text-2xl">{item.icon}</span>
-                            <strong className="text-slate font-bold">{item.label}</strong>
+                            {item.href ? (
+                                <a
+                                    href={item.href}
+                                    className="flex items-center justify-center gap-3 bg-white px-6 py-4 rounded-2xl shadow-[0_14px_36px_rgba(15,23,42,0.08)] border border-black/5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_42px_rgba(15,23,42,0.12)] hover:border-primary/15 focus:outline-none focus:ring-4 focus:ring-primary/10"
+                                >
+                                    <span className="text-2xl">{item.icon}</span>
+                                    <strong className="text-slate font-bold">{item.label}</strong>
+                                </a>
+                            ) : (
+                                <div className="flex items-center justify-center gap-3 bg-white px-6 py-4 rounded-2xl shadow-[0_14px_36px_rgba(15,23,42,0.08)] border border-black/5">
+                                    <span className="text-2xl">{item.icon}</span>
+                                    <strong className="text-slate font-bold">{item.label}</strong>
+                                </div>
+                            )}
                         </motion.div>
                     ))}
                 </div>

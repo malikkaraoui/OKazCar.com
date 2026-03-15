@@ -54,11 +54,11 @@ const filterCards = [
 
 export default function FiltersGrid() {
     return (
-        <section id="filters" className="py-24 md:py-32 bg-bg-dark border-t border-white/5">
-            <div className="max-w-7xl mx-auto px-6">
+        <section id="filters" className="py-20 md:py-32 bg-bg-dark border-t border-white/5">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
                 {/* Header */}
-                <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+                <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -79,12 +79,12 @@ export default function FiltersGrid() {
                 </div>
 
                 {/* Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                     {filterCards.map((card, index) => {
                         return (
                             <motion.article
                                 key={card.id}
-                                className="group relative bg-bg-dark-mid rounded-2xl p-8 border border-white/5 transition-all duration-300 hover:border-white/20 hover:-translate-y-1"
+                                className="group relative bg-bg-dark-mid rounded-2xl p-5 sm:p-8 border border-white/5 transition-all duration-300 hover:border-white/20 hover:-translate-y-1"
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-50px" }}
@@ -94,14 +94,14 @@ export default function FiltersGrid() {
                                 <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors duration-500 rounded-2xl" />
 
                                 <div className="relative z-10">
-                                    <div className="flex items-center justify-between mb-6">
+                                    <div className="flex items-center justify-between mb-4 sm:mb-6">
                                         <span className="text-primary-light font-bold font-mono tracking-wider">{card.id}</span>
                                         <card.icon className="w-5 h-5 text-white/40 group-hover:text-primary-light transition-colors duration-300" />
                                     </div>
-                                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-white transition-colors">
+                                    <h3 className="text-lg sm:text-xl font-bold text-white mb-2.5 sm:mb-3 group-hover:text-white transition-colors">
                                         {card.title}
                                     </h3>
-                                    <p className="text-white/60 leading-relaxed text-sm">
+                                    <p className="text-white/60 leading-relaxed text-[0.95rem] sm:text-sm">
                                         {card.desc}
                                     </p>
                                 </div>

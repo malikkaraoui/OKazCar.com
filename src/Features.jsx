@@ -45,7 +45,7 @@ const features = [
 // Specialized Visual Components for each feature
 
 const ScoreVisual = () => (
-    <div className="w-full h-full relative flex items-center justify-center bg-bg-light rounded-2xl border border-gray-100 min-h-[260px] sm:min-h-[300px] overflow-hidden shadow-floating">
+    <div className="w-full h-full relative flex items-center justify-center bg-bg-light rounded-2xl border border-gray-100 min-h-[260px] sm:min-h-[300px] md:min-h-[380px] overflow-hidden shadow-floating">
         <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-emerald-50 opacity-50 rounded-2xl"></div>
         <motion.img
             src="/img-score.png"
@@ -59,14 +59,14 @@ const ScoreVisual = () => (
 )
 
 const PriceVisual = () => (
-    <div className="w-full h-full relative p-4 flex items-center justify-center bg-slate text-white overflow-hidden rounded-2xl min-h-[260px] sm:min-h-[300px]">
+    <div className="w-full h-full relative p-4 md:p-6 flex items-center justify-center bg-slate text-white overflow-hidden rounded-2xl min-h-[260px] sm:min-h-[300px] md:min-h-[380px]">
         {/* Grid background */}
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
 
         <motion.img
             src="/img-prix-analyse.png"
             alt="Analyse du prix"
-            className="w-[120%] h-auto max-w-none md:w-full md:max-w-[400px] rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 relative z-10 rotate-[-2deg]"
+            className="w-[120%] h-auto max-w-none md:w-[115%] md:max-w-[560px] rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 relative z-10 rotate-[-2deg]"
             initial={{ opacity: 0, x: 50, rotate: 0 }}
             whileInView={{ opacity: 1, x: 0, rotate: -2 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -77,11 +77,11 @@ const PriceVisual = () => (
 
 const AlertsVisual = () => {
     return (
-        <div className="w-full h-full relative p-5 sm:p-6 flex flex-col items-center justify-center bg-orange-50 overflow-hidden rounded-2xl border border-orange-100 min-h-[280px] sm:min-h-[300px]">
+        <div className="w-full h-full relative p-5 sm:p-6 md:p-8 flex flex-col items-center justify-center bg-orange-50 overflow-hidden rounded-2xl border border-orange-100 min-h-[280px] sm:min-h-[300px] md:min-h-[390px]">
             <motion.img
                 src="/img-alertes.png"
                 alt="Alertes intelligentes"
-                className="w-full h-auto max-w-[260px] sm:max-w-[280px] rounded-xl shadow-popup relative z-10 translate-x-2 sm:translate-x-4 translate-y-2 sm:translate-y-4"
+                className="w-full h-auto max-w-[260px] sm:max-w-[280px] md:max-w-[360px] rounded-xl shadow-popup relative z-10 translate-x-2 sm:translate-x-4 md:translate-x-10 translate-y-2 sm:translate-y-4 md:translate-y-8"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
@@ -89,7 +89,7 @@ const AlertsVisual = () => {
             <motion.img
                 src="/img-alerte-detail.png"
                 alt="Détail alerte"
-                className="w-full h-auto max-w-[240px] sm:max-w-[280px] rounded-xl shadow-[0_30px_60px_rgba(0,0,0,0.15)] relative md:absolute z-20 mt-4 md:mt-0 md:left-10 md:bottom-6"
+                className="w-full h-auto max-w-[240px] sm:max-w-[280px] md:max-w-[330px] rounded-xl shadow-[0_30px_60px_rgba(0,0,0,0.15)] relative md:absolute z-20 mt-4 md:mt-0 md:left-8 md:bottom-8"
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
@@ -103,27 +103,27 @@ const AlertsVisual = () => {
 const TiresVisual = () => {
     const tires = ['205/55 R16', '225/45 R17', '225/40 R18']
     return (
-        <div className="w-full h-full relative flex flex-col items-center justify-center bg-slate text-white overflow-hidden rounded-2xl min-h-[260px] sm:min-h-[300px] p-6">
+        <div className="w-full h-full relative flex flex-col items-center justify-center bg-slate text-white overflow-hidden rounded-2xl min-h-[260px] sm:min-h-[300px] md:min-h-[380px] p-6 md:p-8">
             <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '20px 20px' }} />
-            <div className="relative z-10 w-full max-w-[280px] space-y-3">
+            <div className="relative z-10 w-full max-w-[280px] md:max-w-[420px] space-y-3 md:space-y-4">
                 {tires.map((tire, i) => (
                     <motion.div
                         key={tire}
-                        className="flex items-center gap-3 bg-white/10 rounded-xl px-4 py-3 border border-white/10"
+                        className="flex items-center gap-3 bg-white/10 rounded-xl px-4 py-3.5 border border-white/10"
                         initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.15 * i }}
                     >
-                        <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-xs font-bold text-white/60">
+                        <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/10 flex items-center justify-center text-xs font-bold text-white/60">
                             R{16 + i}
                         </div>
-                        <span className="font-mono font-semibold text-sm tracking-wide">{tire}</span>
+                        <span className="font-mono font-semibold text-sm md:text-base tracking-wide">{tire}</span>
                         {i === 0 && <span className="ml-auto text-[10px] font-bold uppercase bg-primary/30 text-primary-light px-2 py-0.5 rounded-full">Origine</span>}
                     </motion.div>
                 ))}
                 <motion.div
-                    className="flex items-center gap-2 mt-4 bg-accent/15 rounded-lg px-4 py-2.5 border border-accent/20"
+                    className="flex items-center gap-2 mt-5 bg-accent/15 rounded-xl px-4 py-3 border border-accent/20"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
@@ -138,9 +138,9 @@ const TiresVisual = () => {
 }
 
 const RecallsVisual = () => (
-    <div className="w-full h-full relative flex items-center justify-center bg-red-50 overflow-hidden rounded-2xl border border-red-100 min-h-[260px] sm:min-h-[300px] p-6">
+    <div className="w-full h-full relative flex items-center justify-center bg-red-50 overflow-hidden rounded-2xl border border-red-100 min-h-[260px] sm:min-h-[300px] md:min-h-[380px] p-6 md:p-8">
         <motion.div
-            className="relative z-10 w-full max-w-[300px] bg-white rounded-xl shadow-popup p-5 border border-red-200"
+            className="relative z-10 w-full max-w-[300px] md:max-w-[390px] bg-white rounded-xl shadow-popup p-5 md:p-6 border border-red-200"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -167,9 +167,9 @@ const RecallsVisual = () => (
 )
 
 const EmailVisual = () => (
-    <div className="w-full h-full relative flex items-center justify-center bg-bg-light overflow-hidden rounded-2xl border border-gray-100 min-h-[260px] sm:min-h-[300px] p-6">
+    <div className="w-full h-full relative flex items-center justify-center bg-bg-light overflow-hidden rounded-2xl border border-gray-100 min-h-[260px] sm:min-h-[300px] md:min-h-[380px] p-6 md:p-8">
         <motion.div
-            className="relative z-10 w-full max-w-[300px] bg-white rounded-xl shadow-popup p-5 border border-gray-200"
+            className="relative z-10 w-full max-w-[300px] md:max-w-[390px] bg-white rounded-xl shadow-popup p-5 md:p-6 border border-gray-200"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -207,10 +207,10 @@ const EmailVisual = () => (
 
 export default function Features() {
     return (
-        <section id="features" className="py-24 md:py-32 bg-white">
+        <section id="features" className="py-20 md:py-32 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
-                <div className="max-w-3xl mb-20 md:mb-32">
+                <div className="max-w-3xl mb-14 md:mb-32">
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -230,11 +230,11 @@ export default function Features() {
                     </motion.h2>
                 </div>
 
-                <div className="space-y-20 md:space-y-48">
+                <div className="space-y-8 md:space-y-48">
                     {features.map((feature, index) => {
                         const isReversed = index % 2 === 1
                         return (
-                            <div key={feature.id} className={`flex flex-col md:flex-row items-center gap-10 md:gap-24 ${isReversed ? 'md:flex-row-reverse' : ''}`}>
+                            <div key={feature.id} className={`rounded-[28px] border border-slate-100 bg-white p-5 shadow-[0_16px_40px_rgba(15,23,42,0.06)] flex flex-col md:flex-row items-center gap-8 md:gap-24 md:rounded-none md:border-0 md:bg-transparent md:p-0 md:shadow-none ${isReversed ? 'md:flex-row-reverse' : ''}`}>
 
                                 {/* Text Content */}
                                 <motion.div
@@ -244,16 +244,16 @@ export default function Features() {
                                     viewport={{ once: true, margin: "-100px" }}
                                     transition={{ duration: 0.7, ease: "easeOut" }}
                                 >
-                                    <h3 className="text-2xl md:text-[28px] font-bold text-slate mb-6 leading-snug">
+                                    <h3 className="text-[1.6rem] md:text-[28px] font-bold text-slate mb-4 md:mb-6 leading-snug">
                                         {feature.title}
                                     </h3>
-                                    <p className="text-lg text-text-secondary leading-relaxed">
+                                    <p className="text-base md:text-lg text-text-secondary leading-relaxed">
                                         {feature.description}
                                     </p>
                                 </motion.div>
 
                                 {/* Visual Content */}
-                                <div className="flex-1 w-full max-w-[500px]">
+                                <div className="flex-1 w-full max-w-[620px] md:max-w-none">
                                     {feature.type === 'score' && <ScoreVisual />}
                                     {feature.type === 'price' && <PriceVisual />}
                                     {feature.type === 'alerts' && <AlertsVisual />}
