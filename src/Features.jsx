@@ -233,11 +233,24 @@ const TiresVisual = () => {
                         ))}
                     </div>
 
-                    <div className="rounded-xl bg-warning/10 border border-warning/20 px-4 py-3.5">
-                        <p className="text-sm font-bold text-warning">Pneus hiver obligatoires</p>
-                        <p className="mt-1.5 text-xs leading-relaxed text-warning/85">
-                            Alerte affichée automatiquement si le véhicule entre dans la période et la zone concernées.
-                        </p>
+                    <div className="rounded-xl bg-warning/10 border border-warning/20 px-4 py-4">
+                        <div className="flex items-start gap-3">
+                            <div className="w-9 h-9 rounded-lg bg-warning/15 flex items-center justify-center shrink-0">
+                                <Snowflake className="w-4.5 h-4.5 text-warning" />
+                            </div>
+                            <div className="min-w-0">
+                                <div className="flex items-center gap-2 flex-wrap">
+                                    <p className="text-sm font-bold text-warning">Loi Montagne</p>
+                                    <span className="text-[10px] font-bold uppercase bg-warning/15 text-warning px-2 py-0.5 rounded-full whitespace-nowrap">
+                                        Alerte hiver
+                                    </span>
+                                </div>
+                                <p className="mt-1 text-sm font-semibold text-warning">Pneus hiver obligatoires</p>
+                                <p className="mt-1.5 text-xs leading-relaxed text-warning/85">
+                                    Alerte affichée automatiquement si le véhicule entre dans la période et la zone concernées.
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </motion.div>
             </div>
