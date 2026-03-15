@@ -2,6 +2,22 @@
 import { motion } from 'framer-motion'
 import { Snowflake, AlertTriangle, Mail, Copy, Check } from 'lucide-react'
 
+const GeminiBadge = ({ className = '' }) => (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="none">
+        <defs>
+            <linearGradient id="geminiGradient" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stopColor="#4285F4" />
+                <stop offset="0.45" stopColor="#7C4DFF" />
+                <stop offset="1" stopColor="#00C2FF" />
+            </linearGradient>
+        </defs>
+        <path
+            d="M12 3.5c.85 3.45 1.9 4.5 5.35 5.35-3.45.85-4.5 1.9-5.35 5.35-.85-3.45-1.9-4.5-5.35-5.35 3.45-.85 4.5-1.9 5.35-5.35Zm5.7 9.55c.45 1.8 1 2.35 2.8 2.8-1.8.45-2.35 1-2.8 2.8-.45-1.8-1-2.35-2.8-2.8 1.8-.45 2.35-1 2.8-2.8Z"
+            fill="url(#geminiGradient)"
+        />
+    </svg>
+)
+
 
 const features = [
     {
@@ -298,7 +314,10 @@ const EmailVisual = () => (
             <div className="flex items-center gap-2 mb-4 pb-3 border-b border-gray-100">
                 <Mail className="w-4 h-4 text-primary" />
                 <span className="text-xs font-bold text-slate">Email au vendeur</span>
-                <span className="ml-auto text-[10px] bg-primary/10 text-primary font-semibold px-2 py-0.5 rounded-full">Généré par IA</span>
+                <span className="ml-auto inline-flex items-center gap-1.5 text-[10px] bg-primary/10 text-primary font-semibold px-2 py-0.5 rounded-full">
+                    <GeminiBadge className="w-3.5 h-3.5" />
+                    Gemini
+                </span>
             </div>
             <div className="space-y-2 mb-4">
                 <div className="h-2 bg-gray-100 rounded-full w-full" />
