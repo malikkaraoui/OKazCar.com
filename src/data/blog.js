@@ -2,6 +2,10 @@ import CompteurTrafique from '../pages/blog/CompteurTrafique'
 import PrixMedianRegional from '../pages/blog/PrixMedianRegional'
 import MoteursEviter from '../pages/blog/MoteursEviter'
 import OrigineGeneve from '../pages/blog/OrigineGeneve'
+import IlluCompteur from '../components/illustrations/IlluCompteur'
+import IlluPrix from '../components/illustrations/IlluPrix'
+import IlluMoteurs from '../components/illustrations/IlluMoteurs'
+import IlluGeneve from '../components/illustrations/IlluGeneve'
 
 export const BLOG_POSTS = [
   {
@@ -12,6 +16,7 @@ export const BLOG_POSTS = [
     date: 'Avr. 2026',
     read: '8 min',
     component: CompteurTrafique,
+    illustration: IlluCompteur,
   },
   {
     slug: 'prix-median-regional-vs-argus',
@@ -21,6 +26,7 @@ export const BLOG_POSTS = [
     date: 'Mar. 2026',
     read: '6 min',
     component: PrixMedianRegional,
+    illustration: IlluPrix,
   },
   {
     slug: 'moteurs-eviter-occasion',
@@ -30,14 +36,16 @@ export const BLOG_POSTS = [
     date: 'Mar. 2026',
     read: '12 min',
     component: MoteursEviter,
+    illustration: IlluMoteurs,
   },
   {
     slug: 'origine-okazcar-geneve',
     tag: 'Histoire',
     title: 'Une idée née pendant une formation Python à Genève',
-    intro: "OKazCar a commencé comme un script Python basique pendant une formation chez Noamdes Technologie à Genève. Voici comment un exercice de web scraping est devenu une extension Chrome utilisée sur 14 domaines.",
+    intro: "OKazCar a commencé comme un script Python basique pendant une formation chez Noamdes Technologie à Genève. Voici comment un exercice de web scraping est devenu une extension Chrome sur 14 domaines.",
     date: 'Fév. 2026',
     read: '7 min',
     component: OrigineGeneve,
+    illustration: IlluGeneve,
   },
 ]
