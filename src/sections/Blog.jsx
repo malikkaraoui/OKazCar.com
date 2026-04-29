@@ -1,13 +1,8 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
+import { BLOG_POSTS } from '../data/blog'
 
 const ease = [0.22, 1, 0.36, 1]
-
-const POSTS = [
-  { tag: 'Guide',   title: 'Détecter un compteur trafiqué : 7 signaux à croiser', date: 'Avr. 2026', read: '8 min' },
-  { tag: 'Méthode', title: "Pourquoi le prix médian régional bat l'argus national", date: 'Mar. 2026', read: '6 min' },
-  { tag: 'Moteurs', title: 'Les 12 moteurs à éviter en occasion (et pourquoi)',    date: 'Mar. 2026', read: '12 min' },
-  { tag: 'Légal',   title: 'Vendeur pro déguisé en particulier : que dit la loi',  date: 'Fév. 2026', read: '5 min' },
-]
 
 export default function Blog() {
   return (
@@ -34,40 +29,47 @@ export default function Blog() {
         </div>
 
         <div className="okc-grid-12">
-          {POSTS.map((p, i) => (
-            <motion.a key={i} href="#"
+          {BLOG_POSTS.map((p, i) => (
+            <motion.div key={p.slug}
               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-30px' }}
               transition={{ duration: 0.6, delay: i * 0.08, ease }}
-              style={{
-                gridColumn: i === 0 ? 'span 6' : 'span 3',
+              style={{ gridColumn: i === 0 ? 'span 6' : 'span 3' }}>
+              <Link to={`/blog/${p.slug}`} style={{
+                display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
                 borderTop: '1px solid var(--okc-text-primary)',
                 paddingTop: 20,
                 minHeight: i === 0 ? 320 : 220,
-                display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
                 textDecoration: 'none',
+                transition: 'opacity 0.2s',
               }}
-              whileHover={{ opacity: 0.75 }}>
-              <div style={{
-                aspectRatio: i === 0 ? '16/9' : '4/3',
-                background: 'var(--okc-bg-light)',
-                borderRadius: 4, marginBottom: 16,
-                position: 'relative', overflow: 'hidden',
-                border: '1px solid var(--okc-border)',
-              }}>
-                <div style={{ position: 'absolute', inset: 0, backgroundImage: 'repeating-linear-gradient(45deg, transparent 0 8px, rgba(0,0,0,0.04) 8px 9px)' }} />
-                <div style={{ position: 'absolute', bottom: 12, left: 12, fontFamily: 'var(--okc-font-mono)', fontSize: 10, color: 'var(--okc-text-muted)', textTransform: 'uppercase', letterSpacing: 1 }}>
-                  [ illustration {p.tag.toLowerCase()} ]
+              onMouseEnter={(e) => e.currentTarget.style.opacity = '0.72'}
+              onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}>
+                {/* Illustration placeholder */}
+                <div style={{
+                  aspectRatio: i === 0 ? '16/9' : '4/3',
+                  background: 'var(--okc-bg-light)',
+                  borderRadius: 4, marginBottom: 16,
+                  position: 'relative', overflow: 'hidden',
+                  border: '1px solid var(--okc-border)',
+                }}>
+                  <div style={{ position: 'absolute', inset: 0, backgroundImage: 'repeating-linear-gradient(45deg, transparent 0 8px, rgba(0,0,0,0.04) 8px 9px)' }} />
+                  <div style={{ position: 'absolute', bottom: 12, left: 12, fontFamily: 'var(--okc-font-mono)', fontSize: 10, color: 'var(--okc-text-muted)', textTransform: 'uppercase', letterSpacing: 1 }}>
+                    [ {p.tag.toLowerCase()} ]
+                  </div>
                 </div>
-              </div>
-              <div>
-                <span className="okc-mono" style={{ color: 'var(--okc-text-muted)', fontSize: 11, textTransform: 'uppercase', letterSpacing: 1 }}>{p.tag}</span>
-                <h3 style={{ fontSize: i === 0 ? 24 : 17, fontWeight: 500, marginTop: 8, letterSpacing: '-0.4px', lineHeight: 1.2 }}>{p.title}</h3>
-                <div style={{ marginTop: 14, fontFamily: 'var(--okc-font-mono)', fontSize: 11, color: 'var(--okc-text-muted)', textTransform: 'uppercase', letterSpacing: 1 }}>
-                  {p.date} · {p.read}
+                {/* Meta */}
+                <div>
+                  <span className="okc-mono" style={{ color: 'var(--okc-text-muted)', fontSize: 11, textTransform: 'uppercase', letterSpacing: 1 }}>{p.tag}</span>
+                  <h3 style={{ fontSize: i === 0 ? 24 : 17, fontWeight: 500, marginTop: 8, letterSpacing: '-0.4px', lineHeight: 1.2, color: 'var(--okc-text-primary)' }}>
+                    {p.title}
+                  </h3>
+                  <div style={{ marginTop: 14, fontFamily: 'var(--okc-font-mono)', fontSize: 11, color: 'var(--okc-text-muted)', textTransform: 'uppercase', letterSpacing: 1 }}>
+                    {p.date} · {p.read}
+                  </div>
                 </div>
-              </div>
-            </motion.a>
+              </Link>
+            </motion.div>
           ))}
         </div>
       </div>
