@@ -14,7 +14,7 @@ const faqItems = [
     },
     {
         q: 'Comment fonctionne le score ?',
-        a: "11 filtres analysent différents aspects de l’annonce : Qualité d’extraction, Référentiel véhicule, Cohérence données, Prix vs marché, Analyse statistique, Téléphone vendeur, SIRET / UID, Détection import, Qualité de l’annonce, Ancienneté annonce et Rappel constructeur. Chaque filtre a un poids selon son importance. Le score final est une moyenne pondérée sur 100.",
+        a: "12 filtres analysent différents aspects de l’annonce : Qualité d’extraction, Référentiel véhicule, Cohérence données, Prix vs marché, Analyse statistique, Téléphone vendeur, SIRET / UID, Détection import, Qualité de l’annonce, Ancienneté annonce, Rappel constructeur et Fiabilité moteur. Chaque filtre a un poids selon son importance. Le score final est une moyenne pondérée sur 100.",
     },
     {
         q: 'Mes données sont-elles collectées ?',

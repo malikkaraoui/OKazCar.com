@@ -1,0 +1,192 @@
+{
+  "nav": {
+    "extension": "Extension",
+    "filters": "Filters",
+    "method": "Method",
+    "audience": "Who it's for",
+    "blog": "Tips",
+    "faq": "FAQ",
+    "install": "Install — Free"
+  },
+  "hero": {
+    "eyebrow": "Chrome Extension — Free",
+    "title": "One car listing.<br/>Twelve filters.<br/>",
+    "titleMuted": "One rational decision.",
+    "lead": "OKazCar analyses car listings from leboncoin, La Centrale, ParuVendu and AutoScout24 across 11 countries in real time. Score out of 100, geolocated market price, anomaly detection — directly in your browser.",
+    "cta_primary": "Add to Chrome →",
+    "cta_ghost": "See the demo",
+    "badge_version": "v1.0 · 2026",
+    "badge_no_account": "No account required",
+    "badge_speed": "Analysis in <3s",
+    "label_before": "Without OKazCar",
+    "label_after": "With OKazCar"
+  },
+  "showcase": {
+    "eyebrow": "02 — The extension",
+    "title": "The OKazCar panel,<br/>injected into the listing.",
+    "lead": "When you open a listing on one of the 14 supported platforms, the extension detects the vehicle, triggers the analysis pipeline, and displays a side panel with the verdict in seconds.",
+    "h01_title": "Silent extraction",
+    "h01_desc": "DOM parsed, critical fields (price, km, year, make, engine) captured. If extraction is incomplete, the pipeline stops — no dubious score.",
+    "h02_title": "Market price cascade",
+    "h02_desc": "Multi-strategy search: geolocation (30km radius), regional expansion, national market. Median by power range.",
+    "h03_title": "Weighted verdict",
+    "h03_desc": "Score out of 100 = weighted sum of 12 filters. L2 and L4 (reference + market price) each weigh 2.0, total weight = 16.0."
+  },
+  "filters": {
+    "eyebrow": "03 — Analysis method",
+    "title": "12 filters.<br/>16 weight points.<br/>Zero blind spots.",
+    "lead_pre": "Each filter checks one dimension of the vehicle or the listing, with a weight according to its criticality.",
+    "lead_ref": "(reference) and",
+    "lead_market": "(market price) each weigh",
+    "lead_suffix": "— total weight:",
+    "lead_end": ".",
+    "filter_label": "Filter",
+    "weight_label": "Weight",
+    "status_label": "Typical status",
+    "critical_badge": "Critical",
+    "status_blocking": "Blocking",
+    "status_weighted": "Weighted"
+  },
+  "howitworks": {
+    "eyebrow": "05 — How it works",
+    "title": "Four steps.<br/>Three seconds.",
+    "steps": [
+      {
+        "t": "Installation",
+        "d": "Add OKazCar from the Chrome Web Store. No account, no excessive permissions — only the domains of supported platforms."
+      },
+      {
+        "t": "Detection",
+        "d": "When the listing loads, the extension detects the platform (LBC, LC, PV, AS24), parses the DOM and extracts critical fields."
+      },
+      {
+        "t": "Pipeline",
+        "d": "12 filters run in parallel (max 11 workers): reference database, geolocated market price, statistics, seller, import, engine reliability."
+      },
+      {
+        "t": "Verdict",
+        "d": "Weighted score out of 100 displayed in an injected panel. Filter-by-filter details, sources, recommendations."
+      }
+    ]
+  },
+  "audience": {
+    "eyebrow": "06 — Who it's for",
+    "title": "Three use cases.<br/>One extension.",
+    "learn_more": "Learn more →",
+    "items": [
+      {
+        "t": "Private buyer",
+        "d": "Avoid scams, identify good deals, negotiate with objective data.",
+        "tag": "Main audience"
+      },
+      {
+        "t": "Private seller",
+        "d": "Set the right price before publishing. Compare your listing against local competition.",
+        "tag": "Coming Q2 2026"
+      },
+      {
+        "t": "Auto professional",
+        "d": "Accelerated sourcing, competitor stock audit, alerts on unaddressed manufacturer recalls.",
+        "tag": "Pro mode"
+      }
+    ]
+  },
+  "coverage": {
+    "eyebrow": "07 — Coverage",
+    "title": "4 platforms.<br/>14 domains.<br/>11 countries + .com.",
+    "lead": "The market price cascade queries all 14 domains based on vehicle geolocation. AutoScout24 = 12 domains (11 named countries + .com international).",
+    "col_platform": "Platform",
+    "col_domain": "Domain",
+    "col_country": "Country",
+    "col_status": "Status",
+    "status_active": "Active"
+  },
+  "numbers": {
+    "eyebrow": "08 — Numbers",
+    "title": "A substantial<br/>technical database.",
+    "stats": [
+      { "label": "Referenced vehicles" },
+      { "label": "Versions in database" },
+      { "label": "Domains covered" },
+      { "label": "Analysis filters" }
+    ]
+  },
+  "comparison": {
+    "eyebrow": "09 — Comparison",
+    "title": "Before. After.<br/>The difference is measurable.",
+    "col_feature": "Feature",
+    "col_without": "Without OKazCar",
+    "col_with": "With OKazCar",
+    "rows": [
+      { "feat": "Reliability score out of 100",  "without": "—",                       "with": "12 weighted filters" },
+      { "feat": "Geolocated market price",       "without": "Generic valuation guide",  "with": "Real-time regional median" },
+      { "feat": "Imported vehicle detection",    "without": "—",                       "with": "12 combined signals" },
+      { "feat": "Seller SIRET verification",     "without": "Manual",                  "with": "API recherche-entreprises.gouv.fr" },
+      { "feat": "Manufacturer recalls",          "without": "Search manually",          "with": "Auto-checked (Takata, etc.)" },
+      { "feat": "Known engine reliability",      "without": "—",                       "with": "BMW N47, VW EA189, K9K database…" },
+      { "feat": "Statistical Z-score",           "without": "—",                       "with": "NumPy on hp_range bracket" },
+      { "feat": "Analysis time",                "without": "Hours of research",        "with": "A few seconds" }
+    ]
+  },
+  "blog": {
+    "eyebrow": "10 — Buying tips",
+    "title": "The method<br/>behind the score.",
+    "lead": "Technical articles on anomaly detection, the used car market, engine reliability. No bullshit, no keyword stuffing, just the facts."
+  },
+  "faq": {
+    "eyebrow": "11 — FAQ",
+    "title": "Frequently asked<br/>questions.",
+    "items": [
+      {
+        "q": "Is it really free?",
+        "a": "Yes, 100% free. No account, no subscription, no personal data collected. The extension runs entirely locally in your browser."
+      },
+      {
+        "q": "Which sites are supported?",
+        "a": "4 platforms and 14 domains: leboncoin.fr, lacentrale.fr, paruvendu.fr, and AutoScout24 across 11 countries (France, Germany, Switzerland, Belgium, Italy, Netherlands, Austria, Spain, Poland, Luxembourg, Sweden) + the international .com."
+      },
+      {
+        "q": "How does the score work?",
+        "a": "12 filters analyse the listing across 16 cumulative weight points. Each filter has a weight based on its criticality (L2 and L4 are critical with 2.0 each). The final score is a weighted average rounded to 100."
+      },
+      {
+        "q": "Is my data collected?",
+        "a": "No. The extension only analyses the listing you are viewing. No personal data is stored or transmitted to a third-party server."
+      },
+      {
+        "q": "Which browsers are supported?",
+        "a": "Currently, OKazCar is available on Google Chrome and Chromium-compatible browsers (Brave, Edge, Opera, Arc)."
+      },
+      {
+        "q": "How is the market price calculated?",
+        "a": "L4 compares the price to a geolocated valuation guide (region + DIN power), with a dynamic threshold based on power. L5 applies a NumPy Z-score on reference prices filtered by hp_range bracket to detect statistical outliers."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to buy<br/>rationally?",
+    "lead": "Installation in 10 seconds. No account. No data collected. Your next car purchase deserves better than gut feeling.",
+    "btn_primary": "Add to Chrome — Free →",
+    "btn_ghost": "See the method",
+    "badge": "Chrome Extension · v1.0 · No sign-up"
+  },
+  "footer": {
+    "tagline": "Real-time car listing analysis. 4 platforms, 14 domains, 12 filters.",
+    "product": "Product",
+    "resources": "Resources",
+    "legal": "Legal",
+    "link_extension": "Extension",
+    "link_filters": "12 filters",
+    "link_coverage": "Coverage",
+    "link_install": "Install",
+    "link_blog": "Buying tips",
+    "link_method": "Method",
+    "link_faq": "FAQ",
+    "link_changelog": "Changelog",
+    "link_privacy": "Privacy policy",
+    "link_legal": "Legal notice",
+    "link_contact": "Contact",
+    "copyright": "© 2026 OKazCar",
+    "version": "v1.0 · build 2026.04"
+  }
+}

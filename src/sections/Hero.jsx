@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import RadarMini from '../components/RadarMini'
 import { CHROME_WEB_STORE_URL } from '../data/index'
 
@@ -114,6 +115,7 @@ function BeforeAfterAfter() {
 }
 
 export default function Hero() {
+  const { t } = useTranslation()
   const [pos, setPos] = useState(50)
   const sliderRef = useRef()
   const dragging = useRef(false)
@@ -150,38 +152,39 @@ export default function Hero() {
             <motion.div className="okc-eyebrow"
               initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease }}>
-              Extension Chrome — Gratuite
+              {t('hero.eyebrow')}
             </motion.div>
             <motion.h1 className="okc-h1" style={{ marginTop: 24 }}
               initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1, ease }}>
-              Une annonce auto.<br />
-              Douze filtres.<br />
-              <span style={{ color: 'var(--okc-text-muted)' }}>Une décision rationnelle.</span>
+              {t('hero.title').split('<br/>').map((line, i, arr) => (
+                <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
+              ))}
+              <span style={{ color: 'var(--okc-text-muted)' }}>{t('hero.titleMuted')}</span>
             </motion.h1>
           </div>
           <div style={{ gridColumn: 'span 5', paddingBottom: 8 }}>
             <motion.p className="okc-lead"
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2, ease }}>
-              OKazCar analyse en temps réel les annonces de leboncoin, La Centrale, ParuVendu et AutoScout24 sur 11 pays. Score sur 100, prix de marché géolocalisé, détection d'anomalies — directement dans votre navigateur.
+              {t('hero.lead')}
             </motion.p>
             <motion.div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap' }}
               initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3, ease }}>
               <a href={CHROME_WEB_STORE_URL} target="_blank" rel="noreferrer" className="okc-btn okc-btn--primary okc-btn--lg">
-                Ajouter à Chrome →
+                {t('hero.cta_primary')}
               </a>
-              <a href="#showcase" className="okc-btn okc-btn--ghost okc-btn--lg">Voir la démo</a>
+              <a href="#showcase" className="okc-btn okc-btn--ghost okc-btn--lg">{t('hero.cta_ghost')}</a>
             </motion.div>
             <motion.div style={{ marginTop: 20, display: 'flex', gap: 16, fontSize: 12, color: 'var(--okc-text-muted)', fontFamily: 'var(--okc-font-mono)' }}
               initial={{ opacity: 0 }} animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.45, ease }}>
-              <span>v1.0 · 2026</span>
+              <span>{t('hero.badge_version')}</span>
               <span style={{ opacity: 0.4 }}>—</span>
-              <span>Aucun compte requis</span>
+              <span>{t('hero.badge_no_account')}</span>
               <span style={{ opacity: 0.4 }}>—</span>
-              <span>Analyse en &lt;3s</span>
+              <span>{t('hero.badge_speed')}</span>
             </motion.div>
           </div>
         </div>
@@ -234,10 +237,10 @@ export default function Hero() {
           </div>
           {/* Labels */}
           <div style={{ position: 'absolute', top: 14, left: 14, padding: '5px 9px', background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(8px)', borderRadius: 3, fontFamily: 'var(--okc-font-mono)', fontSize: 10, textTransform: 'uppercase', letterSpacing: 1, color: '#0a0a0a', zIndex: 4 }}>
-            Sans OKazCar
+            {t('hero.label_before')}
           </div>
           <div style={{ position: 'absolute', top: 14, right: 14, padding: '5px 9px', background: '#0a0a0a', color: '#fff', borderRadius: 3, fontFamily: 'var(--okc-font-mono)', fontSize: 10, textTransform: 'uppercase', letterSpacing: 1, zIndex: 4 }}>
-            Avec OKazCar
+            {t('hero.label_after')}
           </div>
         </motion.div>
       </div>

@@ -74,7 +74,7 @@ export default function FiltersGrid() {
                         transition={{ delay: 0.1 }}
                         className="text-3xl md:text-5xl font-extrabold text-white leading-tight"
                     >
-                        11 filtres. Zéro angle mort.
+                        12 filtres. Zéro angle mort.
                     </motion.h2>
                 </div>
 

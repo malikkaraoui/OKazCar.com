@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import OKCLogo from '../components/OKCLogo'
 import { BLOG_POSTS } from '../data/blog'
+import { BLOG_POSTS_EN } from '../data/blog.en'
 
 const ease = [0.22, 1, 0.36, 1]
 
@@ -63,8 +65,9 @@ function Card({ post, featured = false }) {
 
 export default function BlogIndex() {
   useEffect(() => { window.scrollTo(0, 0) }, [])
-
-  const [featured, ...rest] = BLOG_POSTS
+  const { i18n } = useTranslation()
+  const posts = i18n.language.startsWith('en') ? BLOG_POSTS_EN : BLOG_POSTS
+  const [featured, ...rest] = posts
 
   return (
     <div style={{ minHeight: '100vh', background: 'var(--okc-bg-white)' }}>

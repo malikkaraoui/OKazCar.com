@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 const showcaseHighlights = [
     { icon: '📊', label: 'Score global' },
-    { icon: '🔍', label: '11 filtres IA', href: '#filters' },
+    { icon: '🔍', label: '12 filtres IA', href: '#filters' },
     { icon: '⚡', label: 'Analyse en 3 sec' },
 ]
 

@@ -1,0 +1,192 @@
+{
+  "nav": {
+    "extension": "Extension",
+    "filters": "Filtres",
+    "method": "Méthode",
+    "audience": "Pour qui",
+    "blog": "Conseils",
+    "faq": "FAQ",
+    "install": "Installer — Gratuit"
+  },
+  "hero": {
+    "eyebrow": "Extension Chrome — Gratuite",
+    "title": "Une annonce auto.<br/>Douze filtres.<br/>",
+    "titleMuted": "Une décision rationnelle.",
+    "lead": "OKazCar analyse en temps réel les annonces de leboncoin, La Centrale, ParuVendu et AutoScout24 sur 11 pays. Score sur 100, prix de marché géolocalisé, détection d'anomalies — directement dans votre navigateur.",
+    "cta_primary": "Ajouter à Chrome →",
+    "cta_ghost": "Voir la démo",
+    "badge_version": "v1.0 · 2026",
+    "badge_no_account": "Aucun compte requis",
+    "badge_speed": "Analyse en <3s",
+    "label_before": "Sans OKazCar",
+    "label_after": "Avec OKazCar"
+  },
+  "showcase": {
+    "eyebrow": "02 — L'extension",
+    "title": "Le panel OKazCar,<br/>injecté dans l'annonce.",
+    "lead": "Lorsque vous ouvrez une annonce sur l'une des 14 plateformes supportées, l'extension détecte le véhicule, lance la chaîne d'analyse, et affiche un panel latéral avec le verdict en quelques secondes.",
+    "h01_title": "Extraction silencieuse",
+    "h01_desc": "DOM parsé, champs critiques (prix, km, année, marque, motorisation) capturés. Si extraction incomplète, la chaîne se bloque — pas de score douteux.",
+    "h02_title": "Cascade prix marché",
+    "h02_desc": "Recherche multi-stratégies : géolocalisation (rayon 30km), élargissement régional, marché national. Médiane sur tranche de puissance.",
+    "h03_title": "Verdict pondéré",
+    "h03_desc": "Score sur 100 = somme pondérée des 12 filtres. L2 et L4 (référentiel + prix marché) pèsent 2.0 chacun, total des poids = 16.0."
+  },
+  "filters": {
+    "eyebrow": "03 — Méthode d'analyse",
+    "title": "12 filtres.<br/>16 points de poids.<br/>Zéro angle mort.",
+    "lead_pre": "Chaque filtre vérifie une dimension du véhicule ou de l'annonce, avec un poids selon sa criticité.",
+    "lead_ref": "(référentiel) et",
+    "lead_market": "(prix marché) pèsent",
+    "lead_suffix": "chacun — total des poids :",
+    "lead_end": ".",
+    "filter_label": "Filtre",
+    "weight_label": "Poids",
+    "status_label": "Statut typique",
+    "critical_badge": "Critique",
+    "status_blocking": "Bloquant",
+    "status_weighted": "Pondéré"
+  },
+  "howitworks": {
+    "eyebrow": "05 — Comment ça marche",
+    "title": "Quatre étapes.<br/>Trois secondes.",
+    "steps": [
+      {
+        "t": "Installation",
+        "d": "Ajoutez OKazCar depuis le Chrome Web Store. Aucun compte, aucune permission excessive — uniquement les domaines des plateformes supportées."
+      },
+      {
+        "t": "Détection",
+        "d": "Au chargement de l'annonce, l'extension détecte la plateforme (LBC, LC, PV, AS24), parse le DOM et extrait les champs critiques."
+      },
+      {
+        "t": "Pipeline",
+        "d": "12 filtres exécutés en parallèle (max 11 workers) : référentiel, prix marché géolocalisé, statistiques, vendeur, import, fiabilité moteur."
+      },
+      {
+        "t": "Verdict",
+        "d": "Score pondéré sur 100 affiché dans un panel injecté. Détails par filtre, sources, recommandations."
+      }
+    ]
+  },
+  "audience": {
+    "eyebrow": "06 — Pour qui",
+    "title": "Trois usages.<br/>Une seule extension.",
+    "learn_more": "En savoir plus →",
+    "items": [
+      {
+        "t": "Acheteur particulier",
+        "d": "Évitez les arnaques, identifiez la bonne affaire, négociez avec des données objectives.",
+        "tag": "Public principal"
+      },
+      {
+        "t": "Vendeur particulier",
+        "d": "Positionnez votre prix juste avant publication. Comparez votre annonce à la concurrence locale.",
+        "tag": "À venir Q2 2026"
+      },
+      {
+        "t": "Professionnel auto",
+        "d": "Sourcing accéléré, audit de stock concurrent, alerte sur les rappels constructeur non traités.",
+        "tag": "Mode pro"
+      }
+    ]
+  },
+  "coverage": {
+    "eyebrow": "07 — Couverture",
+    "title": "4 plateformes.<br/>14 domaines.<br/>11 pays + .com.",
+    "lead": "La cascade prix marché interroge les 14 domaines selon la géolocalisation du véhicule. AutoScout24 = 12 domaines (11 pays nommés + .com international).",
+    "col_platform": "Plateforme",
+    "col_domain": "Domaine",
+    "col_country": "Pays",
+    "col_status": "Statut",
+    "status_active": "Actif"
+  },
+  "numbers": {
+    "eyebrow": "08 — Chiffres",
+    "title": "Une base technique<br/>conséquente.",
+    "stats": [
+      { "label": "Véhicules référencés" },
+      { "label": "Versions en base" },
+      { "label": "Domaines couverts" },
+      { "label": "Filtres d'analyse" }
+    ]
+  },
+  "comparison": {
+    "eyebrow": "09 — Comparatif",
+    "title": "Avant. Après.<br/>La différence est mesurable.",
+    "col_feature": "Critère",
+    "col_without": "Sans OKazCar",
+    "col_with": "Avec OKazCar",
+    "rows": [
+      { "feat": "Score de fiabilité sur 100",    "without": "—",                       "with": "12 filtres pondérés" },
+      { "feat": "Prix marché géolocalisé",        "without": "Argus générique",          "with": "Médiane temps réel régionale" },
+      { "feat": "Détection véhicule importé",    "without": "—",                       "with": "Cumul de 12 signaux" },
+      { "feat": "Vérification SIRET vendeur",    "without": "Manuelle",                 "with": "API recherche-entreprises.gouv.fr" },
+      { "feat": "Rappels constructeur",          "without": "À chercher manuellement",  "with": "Vérifié auto. (Takata, etc.)" },
+      { "feat": "Fiabilité moteur connue",       "without": "—",                       "with": "Base BMW N47, VW EA189, K9K…" },
+      { "feat": "Z-score statistique",           "without": "—",                       "with": "NumPy sur tranche hp_range" },
+      { "feat": "Temps d'analyse",              "without": "Heures de recherche",      "with": "Quelques secondes" }
+    ]
+  },
+  "blog": {
+    "eyebrow": "10 — Conseils achat",
+    "title": "La méthode<br/>derrière le score.",
+    "lead": "Articles techniques sur la détection d'anomalies, le marché de l'occasion, la fiabilité moteur. Sans bullshit, sans SEO bourré, juste les faits."
+  },
+  "faq": {
+    "eyebrow": "11 — FAQ",
+    "title": "Questions<br/>fréquentes.",
+    "items": [
+      {
+        "q": "C'est vraiment gratuit ?",
+        "a": "Oui, 100% gratuit. Pas de compte, pas d'abonnement, pas de données personnelles collectées. L'extension fonctionne entièrement en local sur votre navigateur."
+      },
+      {
+        "q": "Quels sites sont supportés ?",
+        "a": "4 plateformes et 14 domaines : leboncoin.fr, lacentrale.fr, paruvendu.fr, et AutoScout24 sur 11 pays (France, Allemagne, Suisse, Belgique, Italie, Pays-Bas, Autriche, Espagne, Pologne, Luxembourg, Suède) + le .com international."
+      },
+      {
+        "q": "Comment fonctionne le score ?",
+        "a": "12 filtres analysent l'annonce sur 16 points de poids cumulés. Chaque filtre a un poids selon sa criticité (L2 et L4 sont critiques avec 2.0 chacun). Le score final est une moyenne pondérée arrondie sur 100."
+      },
+      {
+        "q": "Mes données sont-elles collectées ?",
+        "a": "Non. L'extension analyse uniquement l'annonce que vous consultez. Aucune donnée personnelle n'est stockée ni transmise à un serveur tiers."
+      },
+      {
+        "q": "Sur quels navigateurs ça fonctionne ?",
+        "a": "Pour l'instant, OKazCar est disponible sur Google Chrome et les navigateurs compatibles Chromium (Brave, Edge, Opera, Arc)."
+      },
+      {
+        "q": "Comment le prix marché est-il calculé ?",
+        "a": "L4 compare le prix à un argus géolocalisé (région + puissance DIN), avec un seuil dynamique selon la puissance. L5 applique un Z-score NumPy sur les prix de référence filtrés par tranche hp_range pour détecter les outliers statistiques."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Prêt à acheter<br/>rationnel ?",
+    "lead": "Installation en 10 secondes. Aucun compte. Aucune donnée collectée. Votre prochain achat auto mérite mieux qu'un coup de cœur.",
+    "btn_primary": "Ajouter à Chrome — Gratuit →",
+    "btn_ghost": "Voir la méthode",
+    "badge": "Extension Chrome · v1.0 · Sans inscription"
+  },
+  "footer": {
+    "tagline": "Analyse en temps réel des annonces auto. 4 plateformes, 14 domaines, 12 filtres.",
+    "product": "Produit",
+    "resources": "Ressources",
+    "legal": "Légal",
+    "link_extension": "Extension",
+    "link_filters": "12 filtres",
+    "link_coverage": "Couverture",
+    "link_install": "Installer",
+    "link_blog": "Conseils achat",
+    "link_method": "Méthode",
+    "link_faq": "FAQ",
+    "link_changelog": "Changelog",
+    "link_privacy": "Politique de confidentialité",
+    "link_legal": "Mentions légales",
+    "link_contact": "Contact",
+    "copyright": "© 2026 OKazCar",
+    "version": "v1.0 · build 2026.04"
+  }
+}

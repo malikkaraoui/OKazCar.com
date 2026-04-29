@@ -1,9 +1,12 @@
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { PLATFORMS } from '../data/index'
 
 const ease = [0.22, 1, 0.36, 1]
 
 export default function Coverage() {
+  const { t } = useTranslation()
+
   return (
     <section id="coverage" className="okc-section">
       <div className="okc-page">
@@ -12,18 +15,20 @@ export default function Coverage() {
             <motion.div className="okc-eyebrow"
               initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.6, ease }}>
-              07 — Couverture
+              {t('coverage.eyebrow')}
             </motion.div>
             <motion.h2 className="okc-h2" style={{ marginTop: 20 }}
               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.7, delay: 0.1, ease }}>
-              4 plateformes.<br />14 domaines.<br />11 pays + .com.
+              {t('coverage.title').split('<br/>').map((line, i, arr) => (
+                <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
+              ))}
             </motion.h2>
           </div>
           <motion.p className="okc-lead"
             initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.6, delay: 0.15, ease }}>
-            La cascade prix marché interroge les 14 domaines selon la géolocalisation du véhicule. AutoScout24 = 12 domaines (11 pays nommés + .com international).
+            {t('coverage.lead')}
           </motion.p>
         </div>
 
@@ -39,10 +44,10 @@ export default function Coverage() {
             fontFamily: 'var(--okc-font-mono)', fontSize: 11,
             textTransform: 'uppercase', letterSpacing: 1,
           }}>
-            <span>Plateforme</span>
-            <span>Domaine</span>
-            <span>Pays</span>
-            <span style={{ textAlign: 'right' }}>Statut</span>
+            <span>{t('coverage.col_platform')}</span>
+            <span>{t('coverage.col_domain')}</span>
+            <span>{t('coverage.col_country')}</span>
+            <span style={{ textAlign: 'right' }}>{t('coverage.col_status')}</span>
           </div>
           {PLATFORMS.map((p, i) => (
             <div key={i} style={{
@@ -59,7 +64,7 @@ export default function Coverage() {
                 {p.country}
               </span>
               <span style={{ textAlign: 'right' }}>
-                <span className="okc-pill okc-pill--pass">Actif</span>
+                <span className="okc-pill okc-pill--pass">{t('coverage.status_active')}</span>
               </span>
             </div>
           ))}

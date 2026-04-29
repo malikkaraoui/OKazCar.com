@@ -41,7 +41,7 @@ export const BLOG_POSTS = [
   {
     slug: 'origine-okazcar-geneve',
     tag: 'Histoire',
-    title: 'Une idée née pendant une formation Python à Genève',
+    title: 'Une idée née pendant une formation Python à Genève 🇨🇭',
     intro: "OKazCar a commencé comme un script Python basique pendant une formation chez Noamdes Technologie à Genève. Voici comment un exercice de web scraping est devenu une extension Chrome sur 14 domaines.",
     date: 'Fév. 2026',
     read: '7 min',

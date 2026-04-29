@@ -23,7 +23,7 @@ const features = [
     {
         id: 'score',
         title: 'Un score de fiabilité clair et objectif',
-        description: "11 filtres passent l'annonce au crible : cohérence km/année, prix vs marché, numéro de téléphone, vendeur pro, véhicule importé, rappels constructeur, historique de publication… Chaque signal est pondéré pour un score final sur 100.",
+        description: "12 filtres passent l'annonce au crible : cohérence km/année, prix vs marché, numéro de téléphone, vendeur pro, véhicule importé, rappels constructeur, fiabilité moteur, historique de publication… Chaque signal est pondéré pour un score final sur 100.",
         type: 'score'
     },
     {

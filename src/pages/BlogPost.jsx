@@ -1,6 +1,8 @@
 import { useParams, Link } from 'react-router-dom'
 import { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { BLOG_POSTS } from '../data/blog'
+import { BLOG_POSTS_EN } from '../data/blog.en'
 import OKCLogo from '../components/OKCLogo'
 
 const mono = {
@@ -13,7 +15,9 @@ const mono = {
 
 export default function BlogPost() {
   const { slug } = useParams()
-  const post = BLOG_POSTS.find((p) => p.slug === slug)
+  const { i18n } = useTranslation()
+  const posts = i18n.language.startsWith('en') ? BLOG_POSTS_EN : BLOG_POSTS
+  const post = posts.find((p) => p.slug === slug)
 
   useEffect(() => { window.scrollTo(0, 0) }, [slug])
 
@@ -105,7 +109,7 @@ export default function BlogPost() {
       </article>
 
       {/* Autres articles */}
-      <RelatedPosts current={post.slug} />
+      <RelatedPosts current={post.slug} posts={posts} lang={i18n.language} />
 
       {/* Footer */}
       <footer style={{ borderTop: '1px solid var(--okc-border)', padding: '40px 56px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', maxWidth: 1440, margin: '0 auto' }}>
@@ -118,8 +122,9 @@ export default function BlogPost() {
   )
 }
 
-function RelatedPosts({ current }) {
-  const others = BLOG_POSTS.filter((p) => p.slug !== current).slice(0, 2)
+function RelatedPosts({ current, posts, lang }) {
+  const label = lang.startsWith('en') ? 'Read next' : 'À lire aussi'
+  const others = posts.filter((p) => p.slug !== current).slice(0, 2)
   if (others.length === 0) return null
   return (
     <section style={{ borderTop: '1px solid var(--okc-border)', background: 'var(--okc-bg-light)', padding: '64px 56px' }}>
@@ -131,7 +136,7 @@ function RelatedPosts({ current }) {
           gap: 10, marginBottom: 40,
         }}>
           <span style={{ display: 'inline-block', width: 24, height: 1, background: 'var(--okc-text-muted)' }} />
-          À lire aussi
+          {label}
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40 }}>
           {others.map((p) => {

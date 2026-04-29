@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { BLOG_POSTS } from '../data/blog'
 
 const ease = [0.22, 1, 0.36, 1]
@@ -42,6 +43,8 @@ function BlogCard({ p, i }) {
 }
 
 export default function Blog() {
+  const { t } = useTranslation()
+
   return (
     <section id="blog" className="okc-section">
       <div className="okc-page">
@@ -50,18 +53,20 @@ export default function Blog() {
             <motion.div className="okc-eyebrow"
               initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.6, ease }}>
-              10 — Conseils achat
+              {t('blog.eyebrow')}
             </motion.div>
             <motion.h2 className="okc-h2" style={{ marginTop: 20 }}
               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.7, delay: 0.1, ease }}>
-              La méthode<br />derrière le score.
+              {t('blog.title').split('<br/>').map((line, i, arr) => (
+                <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
+              ))}
             </motion.h2>
           </div>
           <motion.p className="okc-lead"
             initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.6, delay: 0.15, ease }}>
-            Articles techniques sur la détection d'anomalies, le marché de l'occasion, la fiabilité moteur. Sans bullshit, sans SEO bourré, juste les faits.
+            {t('blog.lead')}
           </motion.p>
         </div>
 

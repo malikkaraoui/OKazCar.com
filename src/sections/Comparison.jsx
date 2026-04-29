@@ -1,19 +1,12 @@
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 
 const ease = [0.22, 1, 0.36, 1]
 
-const ROWS = [
-  { feat: 'Score de fiabilité sur 100',    without: '—',                     with: '12 filtres pondérés' },
-  { feat: 'Prix marché géolocalisé',        without: 'Argus générique',        with: 'Médiane temps réel régionale' },
-  { feat: 'Détection véhicule importé',    without: '—',                     with: 'Cumul de 12 signaux' },
-  { feat: 'Vérification SIRET vendeur',    without: 'Manuelle',               with: 'API recherche-entreprises.gouv.fr' },
-  { feat: 'Rappels constructeur',          without: 'À chercher manuellement',with: 'Vérifié auto. (Takata, etc.)' },
-  { feat: 'Fiabilité moteur connue',       without: '—',                     with: 'Base BMW N47, VW EA189, K9K…' },
-  { feat: 'Z-score statistique',           without: '—',                     with: 'NumPy sur tranche hp_range' },
-  { feat: "Temps d'analyse",              without: 'Heures de recherche',    with: 'Quelques secondes' },
-]
-
 export default function Comparison() {
+  const { t } = useTranslation()
+  const rows = t('comparison.rows', { returnObjects: true })
+
   return (
     <section id="compare" className="okc-section" style={{ background: 'var(--okc-bg-light)' }}>
       <div className="okc-page">
@@ -22,12 +15,14 @@ export default function Comparison() {
             <motion.div className="okc-eyebrow"
               initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.6, ease }}>
-              09 — Comparatif
+              {t('comparison.eyebrow')}
             </motion.div>
             <motion.h2 className="okc-h2" style={{ marginTop: 20 }}
               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.7, delay: 0.1, ease }}>
-              Avant. Après.<br />La différence est mesurable.
+              {t('comparison.title').split('<br/>').map((line, i, arr) => (
+                <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
+              ))}
             </motion.h2>
           </div>
         </div>
@@ -42,15 +37,15 @@ export default function Comparison() {
             padding: '18px 24px', borderBottom: '1px solid var(--okc-border)',
             alignItems: 'baseline',
           }}>
-            <span className="okc-mono" style={{ color: 'var(--okc-text-muted)', fontSize: 11, textTransform: 'uppercase', letterSpacing: 1 }}>Critère</span>
-            <span style={{ fontSize: 14, fontWeight: 500, color: 'var(--okc-text-muted)' }}>Sans OKazCar</span>
-            <span style={{ fontSize: 14, fontWeight: 500 }}>Avec OKazCar</span>
+            <span className="okc-mono" style={{ color: 'var(--okc-text-muted)', fontSize: 11, textTransform: 'uppercase', letterSpacing: 1 }}>{t('comparison.col_feature')}</span>
+            <span style={{ fontSize: 14, fontWeight: 500, color: 'var(--okc-text-muted)' }}>{t('comparison.col_without')}</span>
+            <span style={{ fontSize: 14, fontWeight: 500 }}>{t('comparison.col_with')}</span>
           </div>
-          {ROWS.map((r, i) => (
+          {rows.map((r, i) => (
             <div key={i} style={{
               display: 'grid', gridTemplateColumns: '2fr 1.5fr 1.5fr',
               padding: '16px 24px',
-              borderBottom: i < ROWS.length - 1 ? '1px solid var(--okc-border)' : 'none',
+              borderBottom: i < rows.length - 1 ? '1px solid var(--okc-border)' : 'none',
               alignItems: 'center', fontSize: 14,
             }}>
               <span style={{ fontWeight: 500 }}>{r.feat}</span>

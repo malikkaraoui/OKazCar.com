@@ -16,14 +16,14 @@ OKazCar est une extension Chrome gratuite qui analyse les annonces auto et affic
 - **3 218** modeles en base
 - **~546 000** versions referencees
 - Couverture annees : **2000 - 2026** (maintenue a jour)
-- **11 filtres** d'analyse
+- **12 filtres** d'analyse
 - **3 plateformes** couvertes : leboncoin, La Centrale, AutoScout24
 - **12 pays** couverts cote AutoScout24
 - **ParuVendu** bientot integre (114 645 annonces)
 
 ## Fonctionnalites mises en avant
 
-- Score de fiabilite (11 filtres, score sur 100)
+- Score de fiabilite (12 filtres, score sur 100)
 - Comparaison prix marche (4 sources en cascade)
 - Detection import / telephone / vendeur / anciennete
 - Dimensions de pneus automatiques + alertes Loi Montagne

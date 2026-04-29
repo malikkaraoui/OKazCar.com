@@ -1,14 +1,12 @@
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 
 const ease = [0.22, 1, 0.36, 1]
 
-const ITEMS = [
-  { t: 'Acheteur particulier', d: 'Évitez les arnaques, identifiez la bonne affaire, négociez avec des données objectives.', tag: 'Public principal' },
-  { t: 'Vendeur particulier', d: 'Positionnez votre prix juste avant publication. Comparez votre annonce à la concurrence locale.', tag: 'À venir Q2 2026' },
-  { t: 'Professionnel auto', d: 'Sourcing accéléré, audit de stock concurrent, alerte sur les rappels constructeur non traités.', tag: 'Mode pro' },
-]
-
 export default function Audience() {
+  const { t } = useTranslation()
+  const items = t('audience.items', { returnObjects: true })
+
   return (
     <section id="audience" className="okc-section" style={{ background: 'var(--okc-bg-light)' }}>
       <div className="okc-page">
@@ -17,17 +15,19 @@ export default function Audience() {
             <motion.div className="okc-eyebrow"
               initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.6, ease }}>
-              06 — Pour qui
+              {t('audience.eyebrow')}
             </motion.div>
             <motion.h2 className="okc-h2" style={{ marginTop: 20 }}
               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.7, delay: 0.1, ease }}>
-              Trois usages.<br />Une seule extension.
+              {t('audience.title').split('<br/>').map((line, i, arr) => (
+                <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
+              ))}
             </motion.h2>
           </div>
         </div>
         <div className="okc-grid-12">
-          {ITEMS.map((it, i) => (
+          {items.map((it, i) => (
             <motion.div key={i}
               initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-30px' }}
@@ -54,7 +54,7 @@ export default function Audience() {
                 borderBottom: '1px solid var(--okc-text-primary)',
                 alignSelf: 'flex-start', paddingBottom: 2,
               }}>
-                En savoir plus →
+                {t('audience.learn_more')}
               </a>
             </motion.div>
           ))}

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { FILTERS } from '../data/index'
 
 const ease = [0.22, 1, 0.36, 1]
@@ -102,20 +103,24 @@ function Highlight({ n, title, desc }) {
 }
 
 export default function Showcase() {
+  const { t } = useTranslation()
+
   return (
     <section id="showcase" className="okc-section">
       <div className="okc-page">
         <div className="okc-sec-head">
           <div>
             <motion.div className="okc-eyebrow" {...fadeUp} transition={{ duration: 0.6, ease }}>
-              02 — L'extension
+              {t('showcase.eyebrow')}
             </motion.div>
             <motion.h2 className="okc-h2" style={{ marginTop: 20 }} {...fadeUp} transition={{ duration: 0.7, delay: 0.1, ease }}>
-              Le panel OKazCar,<br />injecté dans l'annonce.
+              {t('showcase.title').split('<br/>').map((line, i, arr) => (
+                <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
+              ))}
             </motion.h2>
           </div>
           <motion.p className="okc-lead" {...fadeUp} transition={{ duration: 0.6, delay: 0.15, ease }}>
-            Lorsque vous ouvrez une annonce sur l'une des 14 plateformes supportées, l'extension détecte le véhicule, lance la chaîne d'analyse, et affiche un panel latéral avec le verdict en quelques secondes.
+            {t('showcase.lead')}
           </motion.p>
         </div>
 
@@ -126,9 +131,9 @@ export default function Showcase() {
             <BrowserMock />
           </motion.div>
           <div style={{ gridColumn: 'span 5', display: 'flex', flexDirection: 'column', gap: 28 }}>
-            <Highlight n="01" title="Extraction silencieuse" desc="DOM parsé, champs critiques (prix, km, année, marque, motorisation) capturés. Si extraction incomplète, la chaîne se bloque — pas de score douteux." />
-            <Highlight n="02" title="Cascade prix marché" desc="Recherche multi-stratégies : géolocalisation (rayon 30km), élargissement régional, marché national. Médiane sur tranche de puissance." />
-            <Highlight n="03" title="Verdict pondéré" desc="Score sur 100 = somme pondérée des 12 filtres. L2 et L4 (référentiel + prix marché) pèsent 2.0 chacun, total des poids = 16.0." />
+            <Highlight n="01" title={t('showcase.h01_title')} desc={t('showcase.h01_desc')} />
+            <Highlight n="02" title={t('showcase.h02_title')} desc={t('showcase.h02_desc')} />
+            <Highlight n="03" title={t('showcase.h03_title')} desc={t('showcase.h03_desc')} />
           </div>
         </div>
       </div>
