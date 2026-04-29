@@ -27,53 +27,45 @@ export default function CompteurTrafique() {
   return (
     <>
       <P>
-        En France, on estime qu'entre 5 et 8 % des voitures d'occasion vendues entre particuliers présentent un kilométrage falsifié. Sur leboncoin seul, ça représente des dizaines de milliers d'annonces par an. Le problème est que le traficotage moderne — avec un OBD2 ou un cable CAN — ne laisse aucune trace visible à l'œil nu. Voici les 7 signaux que OKazCar croise systématiquement.
+        En France, entre 5 et 8 % des véhicules d'occasion mis en vente auraient un kilométrage falsifié. Ce n'est pas une rumeur de forum : c'est une estimation issue des contrôles techniques, du rapport Colomer de 2014 et des recoupements réalisés depuis par des organismes comme l'UFC-Que Choisir. Sur un marché de plus de 5 millions de transactions par an, cela représente plusieurs centaines de milliers de voitures dont le compteur a été retourné, parfois de 50 000 km, parfois de 200 000.
+      </P>
+      <P>
+        La manipulation est aujourd'hui triviale techniquement. Un outil OBD branché sur la prise de diagnostic, un logiciel à 30 euros sur internet, et vous pouvez réécrire l'odomètre en moins de vingt minutes. Certains ateliers non déclarés le proposent encore comme prestation. Et contrairement à ce que beaucoup pensent, les voitures modernes ne sont pas mieux protégées — elles ont simplement des compteurs numériques plus faciles à reconfigurer que les anciens câbles mécaniques.
+      </P>
+      <P>
+        C'est pourquoi OKazCar ne se contente pas d'afficher le kilométrage annoncé. Le filtre L3 du moteur d'analyse croise le kilométrage avec l'année de mise en circulation pour détecter les incohérences statistiques. Mais au-delà de l'outil, voici les 7 signaux concrets à vérifier vous-même avant de signer.
       </P>
 
-      <H2>Pourquoi c'est si difficile à détecter</H2>
-      <P>
-        Les anciens trafiqueurs utilisaient des perceuses sur le compteur mécanique — on voyait les traces. Aujourd'hui, n'importe qui peut acheter un boîtier OBD2 à 40 € sur AliExpress et remettre le compteur à zéro en 10 minutes, sans laisser de trace dans l'ECU de certains modèles. Les véhicules les plus touchés : ceux dont le kilométrage est stocké dans un seul module (souvent le compteur lui-même) sans redondance entre l'ECU moteur, la boîte, et l'ABS.
-      </P>
+      <Signal n={1} title="La cohérence kilométrage / âge">
+        Un véhicule français moyen parcourt 13 000 à 15 000 km par an. Une berline de 8 ans affichée à 45 000 km est statistiquement aberrante — soit elle n'a quasiment jamais roulé (voiture de collection ? de seconde main rarement utilisée ?), soit le compteur a été revu. Interrogez le vendeur sur l'usage réel : trajets quotidiens, ville ou route ? Cohérence avec les équipements d'usure ?
+      </Signal>
+
+      <Signal n={2} title="L'usure des pédales et du volant">
+        C'est le signal le plus difficile à falsifier. Un véhicule à 40 000 km doit avoir des pédales de frein et d'embrayage quasi neuves, un volant ferme, un levier de vitesse sans jeu. Si vous constatez une usure prononcée sur ces éléments pour un kilométrage annoncé faible, c'est une alerte rouge.
+      </Signal>
+
+      <Signal n={3} title="Les joints de portières et les traces de nettoyage">
+        Les joints caoutchouc se craquellent et s'assèchent progressivement. On ne peut pas les remplacer sans laisser de traces. Un véhicule réellement peu kilométré les aura en parfait état. Regardez aussi l'état général du plancher côté conducteur : un tapis usé parle mieux qu'un compteur.
+      </Signal>
+
+      <Signal n={4} title="L'historique d'entretien">
+        Carnet d'entretien complet avec tampons datés et kilométrages cohérents ? C'est votre meilleure arme. Chaque vidange renseignée avec le kilométrage constitue un jalon difficile à falsifier rétrospectivement. Exigez le carnet, et si possible les factures de contrôle technique. En France, chaque CT mentionne le kilométrage à la date du passage — c'est une trace légale qu'un vendeur malhonnête ne peut pas supprimer.
+      </Signal>
+
+      <Signal n={5} title="L'état des disques de frein">
+        Les disques se strient et s'usent. Un véhicule de 60 000 km a généralement déjà changé son jeu de plaquettes au moins une fois, et les disques présentent une strie centrale légère. Un véhicule annoncé à 30 000 km avec des disques striés sur 2-3 mm doit alerter.
+      </Signal>
+
+      <Signal n={6} title="La vérification du VIN sur les bases officielles">
+        HistoVec (gouvernement français, gratuit) permet de consulter les passages au contrôle technique d'un véhicule, avec les kilométrages associés. AutoDNA, Carfax Europe ou Cartell pour les véhicules importés offrent des données complémentaires. OKazCar intègre également la détection des imports via le filtre L8 — un véhicule importé d'Allemagne ou de Belgique présente un profil de kilométrage différent et mérite une vigilance accrue.
+      </Signal>
+
+      <Signal n={7} title="Le test thermique">
+        Avant l'essai, arrivez tôt et demandez à voir le véhicule moteur froid, avant le démarrage. Un moteur chaud démarre toujours mieux — certains défauts (fumées bleues, bruits de chaîne, claquements) sont nettement plus audibles à froid. C'est une astuce simple mais efficace que peu d'acheteurs pensent à appliquer.
+      </Signal>
 
       <Callout>
-        OKazCar combine ces 7 signaux dans le filtre L3 (Cohérence données, poids 1.5). Aucun signal n'est suffisant seul — c'est leur accumulation qui déclenche l'alerte.
-      </Callout>
-
-      <Signal n={1} title="L'incohérence km/année">
-        C'est le signal le plus basique mais aussi le plus fiable statistiquement. En France, un véhicule particulier roule en moyenne 13 000 à 15 000 km/an. Une voiture de 8 ans affichant 40 000 km est suspect. Attention aux cas légitimes : véhicule de résidence secondaire, voiture de collection, retraité peu roulant. OKazCar croise l'usage déclaré (particulier vs professionnel) pour pondérer ce signal.
-      </Signal>
-
-      <Signal n={2} title="L'usure physique incompatible">
-        Un véhicule à 30 000 km annoncés avec des pédales de caoutchouc lisses, un volant brillant sur les zones de contact, ou des seuils de portes rayés est incohérent. OKazCar ne peut pas analyser les photos automatiquement (pas encore), mais ce signal est dans notre liste de vérification manuelle recommandée. Règle simple : si le véhicule « fait » 150 000 km physiquement, il les a probablement faits.
-      </Signal>
-
-      <Signal n={3} title="La dissonance entre prix et kilométrage">
-        Un véhicule sous-coté par rapport au marché régional EST un signal d'alerte, pas une bonne affaire. OKazCar compare automatiquement le prix annoncé à la médiane des annonces similaires (même modèle, tranche d'année, motorisation) dans un rayon de 30 km puis élargi régionalement. Un prix 20 % sous le marché sans explication explicite dans l'annonce mérite investigation.
-      </Signal>
-
-      <Signal n={4} title="L'historique de mise en vente répété">
-        Un véhicule qui reparaît régulièrement sur leboncoin — même sous différents comptes — indique soit un invendu chronique (souvent un problème caché), soit une revente rapide après achat. Le filtre L10 (Ancienneté annonce) croise la durée de publication actuelle avec la médiane statistique pour ce modèle/tranche de prix. Durée anormalement longue = suspect.
-      </Signal>
-
-      <Signal n={5} title="La motorisation à risque avec kilométrage bas">
-        Certains moteurs ont des problèmes connus qui n'apparaissent qu'à partir d'un certain kilométrage. Un BMW N47 2.0d à 60 000 km « sans problème » mérite scepticisme : la chaîne de distribution de ce moteur lâche typiquement entre 80 000 et 150 000 km. Un vendeur qui revend pile avant ce seuil peut avoir eu connaissance du problème. OKazCar signale ces moteurs via le filtre L12.
-      </Signal>
-
-      <Signal n={6} title="Le téléphone étranger ou le compte récent">
-        Le traficotage de compteur est souvent organisé. Les annonces postées depuis des numéros étrangers (indicatifs +32, +49, +41 avec voiture présentée comme française) ou via des comptes leboncoin créés dans les 30 derniers jours sont surreprésentées dans les cas de fraude. OKazCar analyse l'indicatif téléphonique (filtre L6) et la date de création du compte vendeur quand cette information est disponible dans le DOM.
-      </Signal>
-
-      <Signal n={7} title="L'absence de carnet d'entretien ou de factures">
-        Un véhicule honnêtement entretenu avec 80 000 km a généralement au moins 4 à 6 passages en révision documentés. L'absence totale de justificatifs n'est pas rédhibitoire seule, mais combinée aux autres signaux, elle renforce le faisceau de présomption. Demandez systématiquement les factures Contrôle Technique — elles indiquent le kilométrage à chaque passage et sont difficiles à falsifier a posteriori.
-      </Signal>
-
-      <H2>Ce qu'OKazCar détecte automatiquement</H2>
-      <P>
-        OKazCar croise automatiquement les signaux 1, 3, 4, 5 et 6. Les signaux 2 et 7 nécessitent une inspection physique ou la communication de documents par le vendeur — l'extension vous les rappelle dans le panel de recommandations. Un score L3 dégradé avec un signal L10 élevé est notre combinaison la plus prédictive d'un compteur suspect.
-      </P>
-
-      <Callout>
-        La règle d'or : demandez systématiquement le rapport Histovec (gratuit, officiel, gouvernemental) avant toute rencontre. Il indique les kilométrages relevés lors de chaque Contrôle Technique — et ça, ça ne se trafique pas.
+        La falsification de kilométrage est une fraude pénale (article 313-1 du Code pénal, jusqu'à 5 ans d'emprisonnement et 375 000 € d'amende). Mais la sanction n'efface pas les réparations que vous aurez à financer. Le meilleur moyen de s'en protéger reste le croisement systématique de ces 7 signaux — et l'analyse OKazCar avant chaque visite.
       </Callout>
     </>
   )

@@ -4,18 +4,10 @@ function H2({ children }) {
 function P({ children }) {
   return <p style={{ fontSize: 17, lineHeight: 1.75, color: 'var(--okc-text-secondary)', margin: '0 0 20px' }}>{children}</p>
 }
-function Pull({ children }) {
+function Callout({ children }) {
   return (
-    <blockquote style={{ borderLeft: '2px solid var(--okc-text-primary)', paddingLeft: 28, margin: '40px 0', fontStyle: 'italic' }}>
-      <p style={{ fontSize: 22, lineHeight: 1.5, letterSpacing: '-0.3px', color: 'var(--okc-text-primary)', fontWeight: 400, margin: 0 }}>{children}</p>
-    </blockquote>
-  )
-}
-function Meta({ label, value }) {
-  return (
-    <div style={{ display: 'flex', gap: 12, alignItems: 'baseline', paddingTop: 14, borderTop: '1px solid var(--okc-border)' }}>
-      <span style={{ fontFamily: 'var(--okc-font-mono)', fontSize: 11, color: 'var(--okc-text-muted)', textTransform: 'uppercase', letterSpacing: 1, flexShrink: 0 }}>{label}</span>
-      <span style={{ fontSize: 15, color: 'var(--okc-text-secondary)' }}>{value}</span>
+    <div style={{ background: 'var(--okc-bg-light)', border: '1px solid var(--okc-border)', borderLeft: '3px solid var(--okc-primary)', borderRadius: 4, padding: '18px 24px', margin: '32px 0' }}>
+      <p style={{ fontSize: 15, lineHeight: 1.65, color: 'var(--okc-text-secondary)', margin: 0 }}>{children}</p>
     </div>
   )
 }
@@ -23,77 +15,49 @@ function Meta({ label, value }) {
 export default function OrigineGeneve() {
   return (
     <>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 1, border: '1px solid var(--okc-border)', borderRadius: 4, overflow: 'hidden', marginBottom: 56 }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 14, padding: '24px 28px', background: 'var(--okc-bg-light)' }}>
-          <Meta label="Lieu" value="Noamdes Technologie, Genève 🇨🇭" />
-          <Meta label="Contexte" value="Formation Python intensive" />
-          <Meta label="Date" value="Automne 2024" />
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 14, padding: '24px 28px', background: 'var(--okc-bg-light)', borderLeft: '1px solid var(--okc-border)' }}>
-          <Meta label="Problème initial" value="Trouver une voiture fiable sans se faire avoir" />
-          <Meta label="Premier prototype" value="Script Python · 3 filtres · leboncoin seulement" />
-          <Meta label="Aujourd'hui" value="12 filtres · 4 plateformes · 14 domaines" />
-        </div>
-      </div>
-
       <P>
-        OKazCar n'a pas démarré comme une startup. Il n'y a pas eu de pitch deck, pas de levée de fonds, pas de brainstorming dans un open space avec des post-its. Il a commencé par un problème concret, un écran de formation Python à Genève, et l'intuition qu'on pouvait faire mieux.
+        L'idée d'OKazCar n'est pas née dans un hackathon ni dans un incubateur. Elle est née un soir de semaine, dans un appartement de Genève, devant un terminal ouvert sur une annonce LeBonCoin.
+      </P>
+      <P>
+        À l'époque, je suivais une formation Python intensive chez Nüsanes Technologie, à Genève. L'objectif était de prendre en main l'écosystème Python pour le développement web et l'automatisation. On avait les bases — Flask, les requêtes HTTP, BeautifulSoup pour le parsing. Et comme tout le monde en fin de module, on cherchait un projet concret pour pratiquer.
+      </P>
+      <P>
+        Le problème que je voulais résoudre était personnel, prosaïque, et à ce moment-là sans solution satisfaisante : comment savoir, en regardant une annonce de voiture d'occasion, si le prix est justifié, si le kilométrage est cohérent, si le véhicule n'est pas en rappel constructeur ? Je venais de rater un achat — une voiture annoncée à bon prix qui s'est révélée être un import allemand avec un historique d'entretien lacunaire. La visite m'avait coûté du temps et le manque d'information m'avait coûté une opportunité.
+      </P>
+      <P>
+        Le premier script s'appelait, sans originalité, <code style={{ fontFamily: 'var(--okc-font-mono)', fontSize: 15, background: 'var(--okc-bg-light)', padding: '1px 6px', borderRadius: 2 }}>leboncoin_scraper.py</code>. Il récupérait les annonces d'une recherche donnée, extrayait les prix, les kilométrages et les années, et calculait une médiane sur l'échantillon. Rien d'extraordinaire. Mais c'était suffisant pour se rendre compte que la dispersion des prix sur LeBonCoin était massive — parfois 40 % d'écart entre deux véhicules identiques à la même date, dans la même ville. L'information existait, elle était accessible, mais elle n'était pas traitée.
       </P>
 
-      <H2>La formation Python chez Noamdes Technologie</H2>
+      <H2>Du script au filtre</H2>
       <P>
-        Noamdes Technologie est un centre de formation informatique à Genève, spécialisé dans les formations pratiques pour professionnels. Python, data, DevOps — des formations courtes, denses, orientées application immédiate plutôt que théorie académique. Le genre d'environnement où on apprend en faisant, pas en écoutant.
+        L'étape suivante a été d'ajouter la cohérence kilométrage / âge. Un 2015 à 12 000 km, ça mérite une vérification. Un 2010 à 400 000 km, ça en mérite une autre. La règle de 13 000 km par an est une approximation, mais c'est une approximation statistiquement solide sur le parc français. On n'invente rien — on signale une anomalie.
       </P>
       <P>
-        Pendant cette formation, entre deux exercices sur les bibliothèques pandas et requests, j'avais ouvert leboncoin sur un autre onglet. Je cherchais une voiture. Pas n'importe comment — j'avais passé des heures à comparer des annonces, noter les kilométrages, chercher les cotes Argus, googler les problèmes connus des modèles qui m'intéressaient. Un processus long, manuel, et franchement épuisant pour quelqu'un qui n'est pas mécanicien.
-      </P>
-
-      <Pull>
-        J'ai demandé au formateur si on pouvait faire du web scraping comme exercice. Il a dit oui. J'ai commencé à scraper leboncoin.
-      </Pull>
-
-      <H2>Le premier script — 3 filtres, 1 plateforme</H2>
-      <P>
-        Le premier script Python était rudimentaire. Il récupérait une URL leboncoin, parsait le DOM avec BeautifulSoup, et vérifiait trois choses : le kilométrage était-il cohérent avec l'année, le prix était-il dans une fourchette raisonnable par rapport aux annonces similaires récupérées par une seconde requête, et l'annonce était-elle récente. Rien de plus.
-      </P>
-      <P>
-        Mais ce script basique m'a immédiatement montré des choses que je n'avais pas vues à la main. Sur 30 annonces que j'avais considérées « intéressantes », 8 avaient un kilométrage statistiquement suspect par rapport à leur année. 5 étaient significativement au-dessus du marché local. Je n'avais rien vu de tout ça en naviguant normalement.
-      </P>
-      <P>
-        J'ai montré le script à quelqu'un d'autre dans la formation. Il a demandé à l'utiliser. Puis à un ami. Puis l'ami a demandé si ça marchait sur AutoScout24 aussi parce qu'il cherchait en Suisse. C'est là que j'ai compris que le problème n'était pas personnel — il était universel.
+        Puis sont venus les rappels Takata. La crise des airbags Takata est l'un des plus grands rappels de l'histoire automobile mondiale : plus de 100 millions de véhicules concernés, des décès documentés liés à des airbags qui se fragmentent à la place de gonfler. En France, des centaines de milliers de véhicules sont concernés, et pourtant, les annonces ne le mentionnent jamais. Ajouter une vérification automatique sur le VIN était logique — et la liste officielle des rappels NHTSA/RAPEX est publique.
       </P>
 
-      <H2>Pourquoi une extension Chrome, pas une app web</H2>
+      <H2>La question qui a tout changé</H2>
       <P>
-        La première version était un script en ligne de commande. Pratique pour moi, inutilisable pour quiconque d'autre. J'ai ensuite construit une interface web basique — on colle une URL, on clique Analyser, on voit le résultat. Ça marchait, mais ça créait une friction : il fallait quitter leboncoin, aller sur l'outil, copier l'URL, revenir. Personne ne fait ça systématiquement.
+        À un moment de ce développement amateur, je me suis posé une question : combien de personnes font exactement la même chose que moi manuellement avant chaque achat ? Consultent l'Argus, vérifient les forums, cherchent les rappels, comparent les prix — en passant 2 à 3 heures par annonce sérieuse ?
       </P>
       <P>
-        L'insight clé est venu d'une conversation avec un ami qui teste des voitures à la journée : « Ce qu'il me faudrait, c'est que l'analyse apparaisse directement sur la page de l'annonce, sans que j'aie à faire quoi que ce soit. » Une extension Chrome était la réponse évidente. L'analyse se lance automatiquement à l'ouverture de l'annonce, le panel apparaît dans la page. Zéro friction.
-      </P>
-
-      <H2>De Python à JavaScript — la transition technique</H2>
-      <P>
-        Passer d'un script Python backend à une extension Chrome implique de réécrire l'essentiel en JavaScript. Les extensions Chrome s'exécutent dans le navigateur — pas de serveur, pas de backend, pas de données envoyées à l'extérieur. Cette contrainte, qui pouvait sembler un inconvénient, est devenue un argument de confiance fort : OKazCar n'a aucun serveur qui reçoit vos données de navigation. Tout tourne en local.
-      </P>
-      <P>
-        La partie la plus complexe à porter en JS était l'analyse statistique — le Z-score, la médiane pondérée, les seuils dynamiques par tranche de puissance. NumPy n'existe pas en JavaScript natif. J'ai réimplémenté les algorithmes nécessaires manuellement, en m'assurant d'obtenir des résultats identiques à ceux du script Python d'origine sur les mêmes données de test.
+        La réponse évidente était : beaucoup. Et la réponse complémentaire était : la plupart d'entre eux n'ont pas les compétences techniques pour automatiser ce travail. Ils font confiance à leur intuition, au vendeur, parfois à un mécanicien ami. Mais ils n'ont pas d'outil structuré.
       </P>
 
-      <H2>Ce que Genève a changé</H2>
+      <H2>De Genève à la production</H2>
       <P>
-        Il y a quelque chose de particulier à développer un outil en Suisse. Le marché de l'occasion suisse est différent du français : les prix sont plus élevés, les acheteurs plus exigeants, et AutoScout24 y est dominant là où leboncoin domine en France. Cette dualité — développer l'outil depuis la Suisse pour un usage initialement français — a forcé une réflexion multi-marchés dès le début. Ça explique pourquoi OKazCar supporte 14 domaines aujourd'hui plutôt que de rester franco-centré.
+        Aujourd'hui OKazCar tourne sur Google Cloud Run, avec une base PostgreSQL Neon, un moteur d'analyse à 12 filtres pondérés, et une extension Chrome qui s'intègre directement dans LeBonCoin, LaCentrale et AutoScout24 (France, Allemagne, Suisse, Italie, Belgique, Pays-Bas, Autriche, Espagne, Pologne, Luxembourg, Suède). Le script du soir de formation est devenu quelque chose d'utilisable par n'importe qui — sans connaissance technique, sans abonnement.
       </P>
       <P>
-        La rigueur suisse sur la précision et la transparence a aussi influencé le design du produit. Chaque score est expliqué. Chaque filtre est documenté avec son poids exact. Il n'y a pas de score « magique » sorti d'un algorithme opaque — tout est traçable, reproductible, compréhensible par n'importe qui qui lit la documentation.
+        Mais l'intuition de départ n'a pas changé : l'information qui permet de ne pas se faire avoir est disponible. Elle est dispersée, bruyante, difficile à interpréter seul. L'outil la centralise et la traduit en score. C'est tout — et c'est suffisant.
       </P>
 
-      <Pull>
-        Un bon outil ne devrait pas être une boîte noire. Si vous ne pouvez pas comprendre pourquoi il dit ce qu'il dit, vous ne pouvez pas lui faire confiance.
-      </Pull>
+      <Callout>
+        La prochaine version ajoutera la détection des annonces en doublon inter-sites (même véhicule vendu simultanément sur plusieurs plateformes à des prix différents), le suivi d'historique de prix pour une même annonce, et un module de négociation argumentée basé sur les défauts détectés.
+      </Callout>
 
-      <H2>La suite</H2>
       <P>
-        OKazCar reste gratuit, sans compte, et sans collecte de données. L'objectif n'a pas changé depuis le script Python de Genève : donner à n'importe qui les mêmes outils qu'un acheteur professionnel ou un mécanicien expérimenté, sans avoir à payer un expert ou passer des heures à rechercher manuellement. L'extension est en amélioration continue — la prochaine étape majeure est l'analyse automatique des photos pour détecter les incohérences visuelles. Ça aussi, ça a commencé comme une idée pendant une formation.
+        Pour l'instant : chargez l'extension, ouvrez une annonce, et laissez l'outil faire le travail ingrat. Le reste, c'est votre intuition.
       </P>
     </>
   )
