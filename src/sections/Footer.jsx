@@ -1,8 +1,20 @@
 import { useTranslation } from 'react-i18next'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import OKCLogo from '../components/OKCLogo'
+import { useLang } from '../context/lang'
 
 export default function Footer() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const { lang, lp } = useLang()
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const switchLang = () => {
+    const newLang = lang === 'fr' ? 'en' : 'fr'
+    const newPath = location.pathname.replace(/^\/(fr|en)/, `/${newLang}`)
+    i18n.changeLanguage(newLang)
+    navigate(newPath)
+  }
 
   return (
     <footer className="okc-footer">
@@ -26,7 +38,7 @@ export default function Footer() {
           <div>
             <h4>{t('footer.resources')}</h4>
             <ul>
-              <li><a href="#blog">{t('footer.link_blog')}</a></li>
+              <li><Link to={lp('/blog')}>{t('footer.link_blog')}</Link></li>
               <li><a href="#how">{t('footer.link_method')}</a></li>
               <li><a href="#faq">{t('footer.link_faq')}</a></li>
               <li><a href="#">{t('footer.link_changelog')}</a></li>
@@ -43,6 +55,14 @@ export default function Footer() {
         </div>
         <div className="okc-footer-bottom">
           <span>{t('footer.copyright')}</span>
+          <button onClick={switchLang} style={{
+            fontFamily: 'var(--okc-font-mono)', fontSize: 11,
+            textTransform: 'uppercase', letterSpacing: 1,
+            background: 'none', border: 'none', cursor: 'pointer',
+            color: 'var(--okc-text-muted)', padding: 0,
+          }}>
+            {lang === 'fr' ? '🌐 English' : '🌐 Français'}
+          </button>
           <span className="okc-mono">{t('footer.version')}</span>
         </div>
       </div>

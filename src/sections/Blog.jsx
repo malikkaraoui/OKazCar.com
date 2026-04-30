@@ -1,14 +1,15 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { useLang } from '../context/lang'
 import { BLOG_POSTS } from '../data/blog'
 
 const ease = [0.22, 1, 0.36, 1]
 
-function BlogCard({ p, i }) {
+function BlogCard({ p, i, lp }) {
   const Illu = p.illustration
   return (
-    <Link to={`/blog/${p.slug}`} style={{
+    <Link to={lp(`/blog/${p.slug}`)} style={{
       display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
       borderTop: '1px solid var(--okc-text-primary)',
       paddingTop: 20,
@@ -44,6 +45,7 @@ function BlogCard({ p, i }) {
 
 export default function Blog() {
   const { t } = useTranslation()
+  const { lp } = useLang()
 
   return (
     <section id="blog" className="okc-section">
@@ -77,7 +79,7 @@ export default function Blog() {
               viewport={{ once: true, margin: '-30px' }}
               transition={{ duration: 0.6, delay: i * 0.08, ease }}
               style={{ gridColumn: i === 0 ? 'span 6' : 'span 3' }}>
-              <BlogCard p={p} i={i} />
+              <BlogCard p={p} i={i} lp={lp} />
             </motion.div>
           ))}
         </div>

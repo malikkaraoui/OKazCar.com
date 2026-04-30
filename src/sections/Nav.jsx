@@ -1,10 +1,15 @@
 import { useState, useEffect } from 'react'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import OKCLogo from '../components/OKCLogo'
+import { useLang } from '../context/lang'
 import { CHROME_WEB_STORE_URL } from '../data/index'
 
 export default function Nav() {
   const { t, i18n } = useTranslation()
+  const { lang, lp } = useLang()
+  const navigate = useNavigate()
+  const location = useLocation()
   const [hidden, setHidden] = useState(false)
 
   useEffect(() => {
@@ -18,42 +23,36 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const currentLang = i18n.resolvedLanguage || i18n.language || 'fr'
+  const switchLang = () => {
+    const newLang = lang === 'fr' ? 'en' : 'fr'
+    const newPath = location.pathname.replace(/^\/(fr|en)/, `/${newLang}`)
+    i18n.changeLanguage(newLang)
+    navigate(newPath)
+  }
 
   return (
     <nav className={`okc-nav${hidden ? ' hidden' : ''}`}>
       <div className="okc-nav-inner">
-        <OKCLogo size={22} />
+        <Link to={lp('/')}><OKCLogo size={22} /></Link>
         <div className="okc-nav-links">
           <a href="#showcase">{t('nav.extension')}</a>
           <a href="#filters">{t('nav.filters')}</a>
           <a href="#how">{t('nav.method')}</a>
           <a href="#audience">{t('nav.audience')}</a>
-          <a href="#blog">{t('nav.blog')}</a>
+          <Link to={lp('/blog')}>{t('nav.blog')}</Link>
           <a href="#faq">{t('nav.faq')}</a>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <a href={CHROME_WEB_STORE_URL} target="_blank" rel="noreferrer" className="okc-btn okc-btn--primary">
-            {t('nav.install')}
-          </a>
-          <button
-            onClick={() => i18n.changeLanguage(currentLang === 'fr' ? 'en' : 'fr')}
-            style={{
-              fontFamily: 'var(--okc-font-mono)',
-              fontSize: 13,
-              textTransform: 'uppercase',
-              letterSpacing: 1,
-              padding: '9px 14px',
-              borderRadius: 2,
-              border: '1px solid var(--okc-text-primary)',
-              background: 'transparent',
-              color: 'var(--okc-text-primary)',
-              cursor: 'pointer',
-              lineHeight: 1,
-            }}>
-            {currentLang === 'fr' ? 'EN' : 'FR'}
+          <button onClick={switchLang} style={{
+            fontFamily: 'var(--okc-font-mono)', fontSize: 11,
+            textTransform: 'uppercase', letterSpacing: 1,
+            background: 'none', border: 'none', cursor: 'pointer',
+            color: 'var(--okc-text-muted)', padding: 0,
+          }}>
+            {lang === 'fr' ? 'EN' : 'FR'}
           </button>
         </div>
+        <a href={CHROME_WEB_STORE_URL} target="_blank" rel="noreferrer" className="okc-btn okc-btn--primary">
+          {t('nav.install')}
+        </a>
       </div>
     </nav>
   )
