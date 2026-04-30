@@ -30,7 +30,7 @@
     "h02_title": "Cascade prix marché",
     "h02_desc": "Recherche multi-stratégies : géolocalisation (rayon 30km), élargissement régional, marché national. Médiane sur tranche de puissance.",
     "h03_title": "Verdict pondéré",
-    "h03_desc": "Score sur 100 = somme pondérée des 12 filtres. L2 et L4 (référentiel + prix marché) pèsent 2.0 chacun, total des poids = 16.0."
+    "h03_desc": "Score sur 100 = somme pondérée des 12 filtres. Chaque filtre contribue selon sa criticité. Les filtres liés aux données de marché et à la cohérence du véhicule ont le plus grand poids."
   },
   "filters": {
     "eyebrow": "03 — Méthode d'analyse",
@@ -124,7 +124,7 @@
       { "feat": "Vérification SIRET vendeur",    "without": "Manuelle",                 "with": "API recherche-entreprises.gouv.fr" },
       { "feat": "Rappels constructeur",          "without": "À chercher manuellement",  "with": "Vérifié auto. (Takata, etc.)" },
       { "feat": "Fiabilité moteur connue",       "without": "—",                       "with": "Base BMW N47, VW EA189, K9K…" },
-      { "feat": "Z-score statistique",           "without": "—",                       "with": "NumPy sur tranche hp_range" },
+      { "feat": "Analyse statistique du prix",    "without": "—",                       "with": "Détection d'outliers vs annonces similaires" },
       { "feat": "Temps d'analyse",              "without": "Heures de recherche",      "with": "Quelques secondes" }
     ]
   },
@@ -147,7 +147,7 @@
       },
       {
         "q": "Comment fonctionne le score ?",
-        "a": "12 filtres analysent l'annonce sur 16 points de poids cumulés. Chaque filtre a un poids selon sa criticité (L2 et L4 sont critiques avec 2.0 chacun). Le score final est une moyenne pondérée arrondie sur 100."
+        "a": "12 filtres analysent l'annonce en parallèle. Chaque filtre a un poids selon sa criticité — les filtres les plus déterminants (cohérence des données, positionnement prix) comptent davantage. Le score final est une moyenne pondérée arrondie sur 100."
       },
       {
         "q": "Mes données sont-elles collectées ?",
@@ -159,7 +159,7 @@
       },
       {
         "q": "Comment le prix marché est-il calculé ?",
-        "a": "L4 compare le prix à un argus géolocalisé (région + puissance DIN), avec un seuil dynamique selon la puissance. L5 applique un Z-score NumPy sur les prix de référence filtrés par tranche hp_range pour détecter les outliers statistiques."
+        "a": "OKazCar compare le prix annoncé aux annonces similaires récentes dans la même zone géographique. Le modèle, la motorisation et la puissance sont pris en compte pour que la comparaison soit pertinente. Si le marché local est trop peu fourni, l'analyse élargit automatiquement son périmètre."
       }
     ]
   },

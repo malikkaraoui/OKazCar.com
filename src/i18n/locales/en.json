@@ -30,7 +30,7 @@
     "h02_title": "Market price cascade",
     "h02_desc": "Multi-strategy search: geolocation (30km radius), regional expansion, national market. Median by power range.",
     "h03_title": "Weighted verdict",
-    "h03_desc": "Score out of 100 = weighted sum of 12 filters. L2 and L4 (reference + market price) each weigh 2.0, total weight = 16.0."
+    "h03_desc": "Score out of 100 = weighted sum of 12 filters. Each filter contributes according to its criticality. Filters tied to market data and vehicle coherence carry the most weight."
   },
   "filters": {
     "eyebrow": "03 — Analysis method",
@@ -124,7 +124,7 @@
       { "feat": "Seller SIRET verification",     "without": "Manual",                  "with": "API recherche-entreprises.gouv.fr" },
       { "feat": "Manufacturer recalls",          "without": "Search manually",          "with": "Auto-checked (Takata, etc.)" },
       { "feat": "Known engine reliability",      "without": "—",                       "with": "BMW N47, VW EA189, K9K database…" },
-      { "feat": "Statistical Z-score",           "without": "—",                       "with": "NumPy on hp_range bracket" },
+      { "feat": "Statistical price analysis",     "without": "—",                       "with": "Outlier detection vs similar listings" },
       { "feat": "Analysis time",                "without": "Hours of research",        "with": "A few seconds" }
     ]
   },
@@ -147,7 +147,7 @@
       },
       {
         "q": "How does the score work?",
-        "a": "12 filters analyse the listing across 16 cumulative weight points. Each filter has a weight based on its criticality (L2 and L4 are critical with 2.0 each). The final score is a weighted average rounded to 100."
+        "a": "12 filters analyse the listing in parallel. Each filter carries a weight based on how critical it is — the most decisive ones (data coherence, price positioning) count more. The final score is a weighted average rounded to 100."
       },
       {
         "q": "Is my data collected?",
@@ -159,7 +159,7 @@
       },
       {
         "q": "How is the market price calculated?",
-        "a": "L4 compares the price to a geolocated valuation guide (region + DIN power), with a dynamic threshold based on power. L5 applies a NumPy Z-score on reference prices filtered by hp_range bracket to detect statistical outliers."
+        "a": "OKazCar compares the listed price against recent similar listings in the same geographic area. Make, engine type and power output are taken into account to ensure the comparison is relevant. If the local sample is too small, the analysis automatically widens its scope."
       }
     ]
   },
