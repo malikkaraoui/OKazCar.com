@@ -32,41 +32,27 @@ export default function Nav() {
           <a href="#blog">{t('nav.blog')}</a>
           <a href="#faq">{t('nav.faq')}</a>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <div style={{
-            display: 'flex', alignItems: 'center', gap: 0,
-            fontFamily: 'var(--okc-font-mono)', fontSize: 11,
-            letterSpacing: 1, textTransform: 'uppercase',
-            border: '1px solid var(--okc-border)', borderRadius: 3,
-            overflow: 'hidden',
-          }}>
-            <button
-              onClick={() => i18n.changeLanguage('fr')}
-              style={{
-                padding: '5px 9px',
-                background: currentLang === 'fr' ? 'var(--okc-text-primary)' : 'transparent',
-                color: currentLang === 'fr' ? 'var(--okc-bg-white)' : 'var(--okc-text-muted)',
-                cursor: 'pointer',
-                transition: 'background 0.15s ease, color 0.15s ease',
-                borderRight: '1px solid var(--okc-border)',
-              }}>
-              FR
-            </button>
-            <button
-              onClick={() => i18n.changeLanguage('en')}
-              style={{
-                padding: '5px 9px',
-                background: currentLang === 'en' ? 'var(--okc-text-primary)' : 'transparent',
-                color: currentLang === 'en' ? 'var(--okc-bg-white)' : 'var(--okc-text-muted)',
-                cursor: 'pointer',
-                transition: 'background 0.15s ease, color 0.15s ease',
-              }}>
-              EN
-            </button>
-          </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <a href={CHROME_WEB_STORE_URL} target="_blank" rel="noreferrer" className="okc-btn okc-btn--primary">
             {t('nav.install')}
           </a>
+          <button
+            onClick={() => i18n.changeLanguage(currentLang === 'fr' ? 'en' : 'fr')}
+            style={{
+              fontFamily: 'var(--okc-font-mono)',
+              fontSize: 13,
+              textTransform: 'uppercase',
+              letterSpacing: 1,
+              padding: '9px 14px',
+              borderRadius: 2,
+              border: '1px solid var(--okc-text-primary)',
+              background: 'transparent',
+              color: 'var(--okc-text-primary)',
+              cursor: 'pointer',
+              lineHeight: 1,
+            }}>
+            {currentLang === 'fr' ? 'EN' : 'FR'}
+          </button>
         </div>
       </div>
     </nav>
