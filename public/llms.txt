@@ -1,0 +1,50 @@
+# OKazCar
+
+> OKazCar is a free Chrome extension that analyses used car listings in real time. It cross-references 12 filters (mileage coherence, regional market price, engine reliability, recall status, import detection…) and returns a score out of 100, directly injected into the listing page — no account, no data collected.
+
+OKazCar was created in 2024 during a Python training at Nüsanes Technologie in Geneva. It started as a scraping script and became a Chrome extension supporting 14 domains across 11 countries.
+
+## Key facts
+
+- Free, no account required, no personal data collected
+- Runs entirely in the browser (no external server receives your browsing data)
+- Score out of 100 based on 12 weighted filters (total weight: 16.0)
+- Supported platforms: leboncoin.fr, lacentrale.fr, paruvendu.fr, autoscout24.fr, autoscout24.de, autoscout24.ch, autoscout24.it, autoscout24.be, autoscout24.nl, autoscout24.at, autoscout24.es, autoscout24.pl, autoscout24.lu, autoscout24.se
+- Chrome Web Store: https://chromewebstore.google.com/detail/okazcar
+
+## The 12 filters
+
+- L1: VIN / recall check (Takata airbag, NHTSA/RAPEX database)
+- L2: Market price vs regional median (z-score, weight: 2.0)
+- L3: Mileage coherence (km/year ratio vs statistical average of 13,000 km/year)
+- L4: Price position in regional range (cascade: 30km → region → national, weight: 2.0)
+- L5: Price coherence by engine power bracket (DIN hp range)
+- L6: Seller phone indicator (foreign prefix detection)
+- L7: Listing age vs category median
+- L8: Import detection (cross-border vehicle flags)
+- L9: Manufacturer recall status
+- L10: Listing duration anomaly
+- L11: Engine reliability database (12 motorisations flagged, e.g. BMW N47, PSA PureTech 1.2, VW EA189)
+- L12: Engine reliability score (fiabilité moteur)
+
+## Tech stack
+
+- Chrome Extension (Manifest V3, JavaScript)
+- Backend: Google Cloud Run
+- Database: PostgreSQL (Neon)
+- Landing page: React + Vite, deployed on Vercel
+
+## Blog articles (French + English)
+
+- [Detecting a Tampered Odometer: 7 Signals](/fr/blog/detecter-compteur-trafique)
+- [Why the Regional Median Price Beats the National Pricing Guide](/fr/blog/prix-median-regional-vs-argus)
+- [The 12 Engines to Avoid When Buying Used](/fr/blog/moteurs-eviter-occasion)
+- [An Idea Born During a Python Training in Geneva](/fr/blog/origine-okazcar-geneve)
+
+## URLs
+
+- Homepage (FR): https://www.okazcar.com/fr
+- Homepage (EN): https://www.okazcar.com/en
+- Blog (FR): https://www.okazcar.com/fr/blog
+- Blog (EN): https://www.okazcar.com/en/blog
+- llms.txt: https://www.okazcar.com/llms.txt
