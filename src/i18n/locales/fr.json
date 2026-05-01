@@ -24,7 +24,7 @@
   "showcase": {
     "eyebrow": "02 — L'extension",
     "title": "Le panel OKazCar,<br/>injecté dans l'annonce.",
-    "lead": "Lorsque vous ouvrez une annonce sur l'une des 14 plateformes supportées, l'extension détecte le véhicule, lance la chaîne d'analyse, et affiche un panel latéral avec le verdict en quelques secondes.",
+    "lead": "Lorsque vous ouvrez une annonce sur l'une des 15 plateformes supportées, l'extension détecte le véhicule, lance la chaîne d'analyse, et affiche un panel latéral avec le verdict en quelques secondes.",
     "h01_title": "Extraction silencieuse",
     "h01_desc": "DOM parsé, champs critiques (prix, km, année, marque, motorisation) capturés. Si extraction incomplète, la chaîne se bloque — pas de score douteux.",
     "h02_title": "Cascade prix marché",

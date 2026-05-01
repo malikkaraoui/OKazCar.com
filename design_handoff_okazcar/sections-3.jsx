@@ -198,7 +198,7 @@ function Footer() {
           <div>
             <OKCLogo size={22}/>
             <p style={{ marginTop: 16, maxWidth: '32ch', color: 'var(--okc-text-secondary)', fontSize: 14 }}>
-              Analyse en temps réel des annonces auto. 4 plateformes, 14 domaines, 12 filtres.
+              Analyse en temps réel des annonces auto. 4 plateformes, 15 domaines, 12 filtres.
             </p>
           </div>
           <div>

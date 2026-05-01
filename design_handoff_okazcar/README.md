@@ -2,9 +2,9 @@
 
 ## Overview
 
-Landing page complète pour **OKazCar**, une extension Chrome gratuite qui analyse les annonces auto en temps réel sur leboncoin, La Centrale, ParuVendu et AutoScout24 (14 domaines au total). L'extension exécute 12 filtres (cohérence kilométrage, prix vs marché géolocalisé, fiabilité moteur, vérification téléphone/SIRET, base véhicules importés, rappels constructeurs, scan certificats, etc.) et affiche un score de fiabilité 0–100 dans un panel latéral en quelques secondes.
+Landing page complète pour **OKazCar**, une extension Chrome gratuite qui analyse les annonces auto en temps réel sur leboncoin, La Centrale, ParuVendu et AutoScout24 (15 domaines au total). L'extension exécute 12 filtres (cohérence kilométrage, prix vs marché géolocalisé, fiabilité moteur, vérification téléphone/SIRET, base véhicules importés, rappels constructeurs, scan certificats, etc.) et affiche un score de fiabilité 0–100 dans un panel latéral en quelques secondes.
 
-La page raconte l'histoire en 11 sections : Nav → Hero (slider avant/après) → Marquee plateformes → Showcase d'annonce avec extension → Grille des 12 filtres → Démo live de la chaîne d'analyse → How it works → Audiences (4 personas) → Couverture (14 domaines × 4 plateformes) → Chiffres clés → Comparaison vs alternatives → Blog → FAQ → CTA install → Footer.
+La page raconte l'histoire en 11 sections : Nav → Hero (slider avant/après) → Marquee plateformes → Showcase d'annonce avec extension → Grille des 12 filtres → Démo live de la chaîne d'analyse → How it works → Audiences (4 personas) → Couverture (15 domaines × 4 plateformes) → Chiffres clés → Comparaison vs alternatives → Blog → FAQ → CTA install → Footer.
 
 ## ⚠️ À propos des fichiers fournis
 
@@ -198,7 +198,7 @@ L'easing `cubic-bezier(0.22, 1, 0.36, 1)` est utilisé partout (équivalent à `
 
 ### 2. Hero (`<window.Hero/>`)
 - Padding vertical : 80px top, 120px bottom
-- Eyebrow mono : `[ EXTENSION CHROME · GRATUITE · 14 DOMAINES ]`
+- Eyebrow mono : `[ EXTENSION CHROME · GRATUITE · 15 DOMAINES ]`
 - H1 sur 3 lignes : "**Acheter une voiture d'occasion** sans se faire avoir. **En quelques secondes.**" (les 2e et 4e fragments en italic ou poids différent au choix)
 - Sub-paragraph 18px, max-width 640px
 - 2 boutons : primaire "Installer sur Chrome" + secondaire "Voir la démo ↓"
@@ -215,7 +215,7 @@ L'easing `cubic-bezier(0.22, 1, 0.36, 1)` est utilisé partout (équivalent à `
 ### 3. Marquee (`<window.Marquee/>`)
 - Bandeau plein largeur, fond noir `--okc-bg-dark`, hauteur 56px
 - Defile horizontalement (CSS animation `marquee 40s linear infinite`)
-- 14 domaines listés : `leboncoin.fr / lacentrale.fr / paruvendu.fr / autoscout24.fr / .de / .ch / .be / .it / .nl / .at / .es / .pl / .lu / .se`
+- 15 domaines listés : `leboncoin.fr / lacentrale.fr / paruvendu.fr / autoscout24.fr / .de / .ch / .be / .it / .nl / .at / .es / .pl / .lu / .se`
 - Séparateurs : petite pastille ronde 8px blanche entre chaque + slash mono
 
 ### 4. Showcase (`<window.Showcase/>`)
@@ -247,7 +247,7 @@ L'easing `cubic-bezier(0.22, 1, 0.36, 1)` est utilisé partout (équivalent à `
 - 3 étapes alignées horizontalement, séparées par une flèche `→`
 - Chaque étape : numéro géant 72px outline, titre, description courte
   1. **Vous installez** l'extension Chrome (gratuit, 30s)
-  2. **Vous ouvrez** une annonce sur une des 14 plateformes
+  2. **Vous ouvrez** une annonce sur une des 15 plateformes
   3. **OKazCar analyse** et affiche le verdict en quelques secondes
 
 ### 8. Audience (`<window.Audience/>`)
@@ -259,7 +259,7 @@ L'easing `cubic-bezier(0.22, 1, 0.36, 1)` est utilisé partout (équivalent à `
 - Card : icône/illustration (placeholder), titre 22px, description 14px, badge mono volume usage
 
 ### 9. Coverage (`<window.Coverage/>`)
-- Section sombre, eyebrow `[ COUVERTURE ]`, H2 "4 plateformes. 14 domaines. 7 pays."
+- Section sombre, eyebrow `[ COUVERTURE ]`, H2 "4 plateformes. 15 domaines. 7 pays."
 - Carte d'Europe stylisée + liste des domaines avec leur logo coloré (utilise `--okc-lbc`, `--okc-as24`)
 
 ### 10. Numbers (`<window.Numbers/>`)

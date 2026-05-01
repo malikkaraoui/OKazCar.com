@@ -265,7 +265,7 @@ function BeforeAfterAfter() {
 
 /* ---------- Marquee ---------- */
 function Marquee() {
-  const items = ['leboncoin.fr', 'lacentrale.fr', 'paruvendu.fr', 'autoscout24.fr', 'autoscout24.de', 'autoscout24.ch', 'autoscout24.be', 'autoscout24.it', 'autoscout24.nl', 'autoscout24.at', 'autoscout24.es', 'autoscout24.pl', 'autoscout24.lu', 'autoscout24.se'];
+  const items = ['leboncoin.fr', 'lacentrale.fr', 'paruvendu.fr', 'autoscout24.fr', 'autoscout24.de', 'autoscout24.ch', 'autoscout24.be', 'autoscout24.it', 'autoscout24.nl', 'autoscout24.at', 'autoscout24.es', 'autoscout24.pl', 'autoscout24.lu', 'autoscout24.se', 'autoscout24.com'];
   const doubled = [...items, ...items];
   return (
     <div className="okc-marquee">
@@ -295,7 +295,7 @@ function Showcase() {
             </h2>
           </div>
           <p className="okc-lead" data-animate="fade-up">
-            Lorsque vous ouvrez une annonce sur l'une des 14 plateformes supportées, l'extension détecte le véhicule, lance la chaîne d'analyse, et affiche un panel latéral avec le verdict en quelques secondes.
+            Lorsque vous ouvrez une annonce sur l'une des 15 plateformes supportées, l'extension détecte le véhicule, lance la chaîne d'analyse, et affiche un panel latéral avec le verdict en quelques secondes.
           </p>
         </div>
 

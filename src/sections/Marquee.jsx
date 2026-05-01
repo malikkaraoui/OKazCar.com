@@ -1,9 +1,9 @@
 const DOMAINS = [
   'leboncoin.fr', 'lacentrale.fr', 'paruvendu.fr',
-  'autoscout24.fr', 'autoscout24.de', 'autoscout24.ch',
+  'autoscout24.fr', 'autoscout24.com', 'autoscout24.ch',
   'autoscout24.be', 'autoscout24.it', 'autoscout24.nl',
   'autoscout24.at', 'autoscout24.es', 'autoscout24.pl',
-  'autoscout24.lu', 'autoscout24.se',
+  'autoscout24.lu', 'autoscout24.de', 'autoscout24.se',
 ]
 
 export default function Marquee() {

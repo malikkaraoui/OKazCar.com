@@ -9,7 +9,7 @@ OKazCar was created in 2024 during a Python training at Nüsanes Technologie in 
 - Free, no account required, no personal data collected
 - Runs entirely in the browser (no external server receives your browsing data)
 - Score out of 100 based on 12 weighted filters (total weight: 16.0)
-- Supported platforms: leboncoin.fr, lacentrale.fr, paruvendu.fr, autoscout24.fr, autoscout24.de, autoscout24.ch, autoscout24.it, autoscout24.be, autoscout24.nl, autoscout24.at, autoscout24.es, autoscout24.pl, autoscout24.lu, autoscout24.se
+- Supported platforms: leboncoin.fr, lacentrale.fr, paruvendu.fr, autoscout24.fr, autoscout24.com,  autoscout24.de, autoscout24.ch, autoscout24.it, autoscout24.be, autoscout24.nl, autoscout24.at, autoscout24.es, autoscout24.pl, autoscout24.lu, autoscout24.se
 - Chrome Web Store: https://chromewebstore.google.com/detail/okazcar
 
 ## The 12 filters

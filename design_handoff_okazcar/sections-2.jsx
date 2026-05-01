@@ -273,11 +273,11 @@ function Coverage() {
           <div>
             <div className="okc-eyebrow" data-animate="fade-up">07 — Couverture</div>
             <h2 className="okc-h2" data-animate="fade-up" style={{ marginTop: 20 }}>
-              4 plateformes.<br />14 domaines.<br />11 pays + .com.
+              4 plateformes.<br />15 domaines.<br />11 pays + .com.
             </h2>
           </div>
           <p className="okc-lead" data-animate="fade-up">
-            La cascade prix marché interroge les 14 domaines selon la géolocalisation du véhicule. AutoScout24 = 12 domaines (11 pays nommés + .com international).
+            La cascade prix marché interroge les 15 domaines selon la géolocalisation du véhicule. AutoScout24 = 12 domaines (11 pays nommés + .com international).
           </p>
         </div>
         <div data-animate="fade-up" style={{ border: '1px solid var(--okc-border)', borderRadius: 4, overflow: 'hidden' }}>

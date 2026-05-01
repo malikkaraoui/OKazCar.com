@@ -30,6 +30,7 @@ window.OKC_PLATFORMS = [
   { name: 'AutoScout24', domain: '.pl', country: 'Pologne', flag: '🇵🇱' },
   { name: 'AutoScout24', domain: '.lu', country: 'Luxembourg', flag: '🇱🇺' },
   { name: 'AutoScout24', domain: '.se', country: 'Suède', flag: '🇸🇪' },
+  { name: 'AutoScout24', domain: '.com', country: 'Europe', flag: '🇪🇺' },
 ];
 
 window.OKC_STATS = [
@@ -41,7 +42,7 @@ window.OKC_STATS = [
 
 window.OKC_FAQ = [
   { q: "C'est vraiment gratuit ?", a: "Oui, 100% gratuit. Pas de compte, pas d'abonnement, pas de données personnelles collectées. L'extension fonctionne entièrement en local sur votre navigateur." },
-  { q: "Quels sites sont supportés ?", a: "4 plateformes et 14 domaines : leboncoin.fr, lacentrale.fr, paruvendu.fr, et AutoScout24 sur 11 pays (France, Allemagne, Suisse, Belgique, Italie, Pays-Bas, Autriche, Espagne, Pologne, Luxembourg, Suède) + le .com international." },
+  { q: "Quels sites sont supportés ?", a: "4 plateformes et 15 domaines : leboncoin.fr, lacentrale.fr, paruvendu.fr, et AutoScout24 sur 11 pays (France, Allemagne, Suisse, Belgique, Italie, Pays-Bas, Autriche, Espagne, Pologne, Luxembourg, Suède) + le .com international." },
   { q: "Comment fonctionne le score ?", a: "12 filtres analysent l'annonce sur 16 points de poids cumulés. Chaque filtre a un poids selon sa criticité (L2 et L4 sont critiques avec 2.0 chacun). Le score final est une moyenne pondérée arrondie sur 100." },
   { q: "Mes données sont-elles collectées ?", a: "Non. L'extension analyse uniquement l'annonce que vous consultez. Aucune donnée personnelle n'est stockée ni transmise à un serveur tiers." },
   { q: "Sur quels navigateurs ça fonctionne ?", a: "Pour l'instant, OKazCar est disponible sur Google Chrome et les navigateurs compatibles Chromium (Brave, Edge, Opera, Arc)." },

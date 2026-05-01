@@ -1,118 +1,24 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
-import RadarMini from '../components/RadarMini'
 import { CHROME_WEB_STORE_URL } from '../data/index'
+
+const BEFORE_URL = "/screen-before.png"
+const AFTER_URL  = "/screen-after.png"
 
 const ease = [0.22, 1, 0.36, 1]
 
 function BeforeAfterBefore() {
   return (
-    <div style={{
-      position: 'absolute', inset: 0,
-      background: '#f4f4f0',
-      padding: '40px 48px',
-      display: 'grid',
-      gridTemplateColumns: '1.4fr 1fr',
-      gap: 24,
-      fontFamily: 'var(--okc-font)',
-    }}>
-      <div style={{
-        borderRadius: 4,
-        overflow: 'hidden',
-        backgroundImage: 'url(/leboncoin-c4.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center top',
-        position: 'relative',
-      }}>
-        <div style={{ position: 'absolute', bottom: 10, left: 10, padding: '4px 8px', background: 'rgba(255,255,255,0.92)', fontFamily: 'var(--okc-font-mono)', fontSize: 10, color: '#525252', textTransform: 'uppercase', letterSpacing: 1, borderRadius: 2 }}>
-          leboncoin.fr
-        </div>
-      </div>
-      <div>
-        <div style={{ fontSize: 10, color: '#737373', fontFamily: 'var(--okc-font-mono)', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 8 }}>leboncoin · 3 jours</div>
-        <h3 style={{ fontSize: 18, fontWeight: 600, margin: 0, lineHeight: 1.2, letterSpacing: '-0.4px' }}>Citroën C4 1.2 Essence 130 CH SHINE — 2022</h3>
-        <div style={{ fontSize: 24, fontWeight: 500, margin: '14px 0 6px', letterSpacing: '-0.5px' }}>12 490 €</div>
-        <div style={{ fontSize: 12, color: '#737373' }}>34 000 km · Essence · BVM6 · Particulier</div>
-        <div style={{ marginTop: 20, padding: 14, background: '#fff', borderRadius: 4, border: '1px solid #e0e0d8' }}>
-          <div style={{ fontSize: 11, color: '#a3a3a3', fontFamily: 'var(--okc-font-mono)', textTransform: 'uppercase', letterSpacing: 1 }}>Description</div>
-          <div style={{ fontSize: 12, color: '#525252', marginTop: 8, lineHeight: 1.6 }}>
-            Citroën C4 en très bon état, faible kilométrage, entretien à jour. Première main, non fumeur.
-          </div>
-        </div>
-        <div style={{ marginTop: 20 }}>
-          <div style={{ fontSize: 18, fontWeight: 700, color: '#a3a3a3', lineHeight: 1.4, letterSpacing: '-0.3px' }}>
-            ?? Bonne affaire ?<br />Prix correct ?<br />Vendeur fiable ?
-          </div>
-        </div>
-      </div>
-    </div>
+    <img src={BEFORE_URL} alt="Sans OKazCar"
+      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top left' }} />
   )
 }
 
 function BeforeAfterAfter() {
   return (
-    <div style={{
-      position: 'absolute', inset: 0,
-      background: '#fafaf8',
-      padding: '40px 48px',
-      display: 'grid',
-      gridTemplateColumns: '1.2fr 1fr 260px',
-      gap: 24,
-      fontFamily: 'var(--okc-font)',
-    }}>
-      <div style={{
-        borderRadius: 4,
-        overflow: 'hidden',
-        backgroundImage: 'url(/leboncoin-c4.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center top',
-        position: 'relative',
-      }}>
-        <div style={{ position: 'absolute', bottom: 10, left: 10, padding: '4px 8px', background: 'rgba(255,255,255,0.92)', fontFamily: 'var(--okc-font-mono)', fontSize: 10, color: '#525252', textTransform: 'uppercase', letterSpacing: 1, borderRadius: 2 }}>
-          leboncoin.fr
-        </div>
-      </div>
-      <div>
-        <div style={{ fontSize: 10, color: '#737373', fontFamily: 'var(--okc-font-mono)', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 8 }}>leboncoin · 3 jours</div>
-        <h3 style={{ fontSize: 17, fontWeight: 600, margin: 0, lineHeight: 1.2, letterSpacing: '-0.4px', color: '#0a0a0a' }}>Citroën C4 1.2 Essence 130 CH SHINE — 2022</h3>
-        <div style={{ fontSize: 22, fontWeight: 500, margin: '12px 0 4px', letterSpacing: '-0.5px', color: '#0a0a0a' }}>12 490 €</div>
-        <div style={{ fontSize: 12, color: '#737373' }}>34 000 km · Essence · BVM6 · Particulier</div>
-        <div style={{ marginTop: 16, display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-          <span className="okc-pill okc-pill--pass">✓ km cohérents</span>
-          <span className="okc-pill okc-pill--pass">✓ tél FR vérifié</span>
-          <span className="okc-pill okc-pill--pass">↓ -5% marché</span>
-        </div>
-      </div>
-      {/* OKazCar mini panel */}
-      <div style={{
-        background: '#fff', borderRadius: 6, border: '1px solid #e5e5e2',
-        boxShadow: '0 12px 30px -10px rgba(15,23,42,0.18)',
-        overflow: 'hidden',
-      }}>
-        <div style={{ padding: '10px 14px', background: 'linear-gradient(135deg, #1e3a5f, #2563eb)', color: '#fff' }}>
-          <div style={{ fontSize: 13, fontWeight: 700, lineHeight: 1.1 }}>OKaz<span style={{ color: '#fbbf24' }}>Car</span></div>
-          <div style={{ fontSize: 10, opacity: 0.75, marginTop: 2 }}>Citroën C4 2022</div>
-        </div>
-        <div style={{ padding: '12px 10px 8px', textAlign: 'center' }}>
-          <RadarMini score={97} size={140} />
-          <div style={{ fontSize: 11, color: '#15803d', fontWeight: 500, marginTop: 4 }}>✓ Annonce fiable</div>
-        </div>
-        <div style={{ padding: '10px 12px', borderTop: '1px solid #f0f0ec', background: '#fafaf8' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
-            <span style={{ fontSize: 10, fontFamily: 'var(--okc-font-mono)', textTransform: 'uppercase', letterSpacing: 1, color: '#525252' }}>Prix vs marché</span>
-            <span style={{ fontSize: 11, fontWeight: 600, color: '#15803d' }}>-5%</span>
-          </div>
-          <div style={{ position: 'relative', height: 4, background: '#e5e5e2', borderRadius: 99 }}>
-            <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '62%', background: '#15803d', borderRadius: 99 }} />
-            <div style={{ position: 'absolute', left: '78%', top: -3, bottom: -3, width: 1, background: '#737373' }} />
-          </div>
-          <div style={{ marginTop: 6, fontSize: 10, color: '#525252' }}>
-            12 490 € · <span style={{ color: '#15803d', fontWeight: 600 }}>-5% marché</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <img src={AFTER_URL} alt="Avec OKazCar"
+      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top left' }} />
   )
 }
 
@@ -149,9 +55,10 @@ export default function Hero() {
   useEffect(() => {
     const DELAY = 1200
     const steps = [
-      { target: 25, duration: 900 },
-      { target: 68, duration: 1100 },
-      { target: 50, duration: 700 },
+      { target: 22, duration: 850 },
+      { target: 97, duration: 1400 },
+      { target: 97, duration: 900 },
+      { target: 50, duration: 900 },
     ]
 
     const timer = setTimeout(() => {
