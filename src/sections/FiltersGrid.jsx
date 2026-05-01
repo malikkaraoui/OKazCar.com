@@ -35,7 +35,7 @@ export default function FiltersGrid() {
           </motion.p>
         </div>
 
-        <div className="okc-grid-12" style={{ gap: 24, alignItems: 'start' }}>
+        <div className="okc-grid-12" onMouseDown={e => e.preventDefault()} style={{ gap: 24, alignItems: 'start', userSelect: 'none', WebkitUserSelect: 'none' }}>
           {/* Left: filter list */}
           <div style={{ gridColumn: 'span 6' }}>
             <div style={{ borderTop: '1px solid var(--okc-border)' }}>

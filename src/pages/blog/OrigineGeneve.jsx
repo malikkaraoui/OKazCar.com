@@ -11,54 +11,98 @@ function Callout({ children }) {
     </div>
   )
 }
+function Ul({ items }) {
+  return (
+    <ul style={{ margin: '0 0 20px', paddingLeft: 24, display: 'flex', flexDirection: 'column', gap: 8 }}>
+      {items.map((item, i) => (
+        <li key={i} style={{ fontSize: 17, lineHeight: 1.75, color: 'var(--okc-text-secondary)' }}>{item}</li>
+      ))}
+    </ul>
+  )
+}
 
 export default function OrigineGeneve() {
   return (
     <>
       <P>
-        L'idée d'OKazCar n'est pas née dans un hackathon ni dans un incubateur. Elle est née un soir de semaine, dans un appartement de Genève, devant un terminal ouvert sur une annonce LeBonCoin.
+        OKazCar n'est pas né dans un incubateur ni lors d'un hackathon. Le projet a commencé de manière beaucoup plus simple, pendant une formation Python suivie à Genève, chez Nomades Technologie.
       </P>
       <P>
-        À l'époque, je suivais une formation Python intensive chez Nüsanes Technologie, à Genève. L'objectif était de prendre en main l'écosystème Python pour le développement web et l'automatisation. On avait les bases — Flask, les requêtes HTTP, BeautifulSoup pour le parsing. Et comme tout le monde en fin de module, on cherchait un projet concret pour pratiquer.
-      </P>
-      <P>
-        Le problème que je voulais résoudre était personnel, prosaïque, et à ce moment-là sans solution satisfaisante : comment savoir, en regardant une annonce de voiture d'occasion, si le prix est justifié, si le kilométrage est cohérent, si le véhicule n'est pas en rappel constructeur ? Je venais de rater un achat — une voiture annoncée à bon prix qui s'est révélée être un import allemand avec un historique d'entretien lacunaire. La visite m'avait coûté du temps et le manque d'information m'avait coûté une opportunité.
-      </P>
-      <P>
-        Le premier script s'appelait, sans originalité, <code style={{ fontFamily: 'var(--okc-font-mono)', fontSize: 15, background: 'var(--okc-bg-light)', padding: '1px 6px', borderRadius: 2 }}>leboncoin_scraper.py</code>. Il récupérait les annonces d'une recherche donnée, extrayait les prix, les kilométrages et les années, et calculait une médiane sur l'échantillon. Rien d'extraordinaire. Mais c'était suffisant pour se rendre compte que la dispersion des prix sur LeBonCoin était massive — parfois 40 % d'écart entre deux véhicules identiques à la même date, dans la même ville. L'information existait, elle était accessible, mais elle n'était pas traitée.
+        À ce moment-là, l'objectif était clair : acquérir des bases solides en développement et en automatisation avec Python. Le programme couvrait notamment les requêtes HTTP, le parsing de données avec BeautifulSoup, et des frameworks web comme Flask. Comme souvent en fin de formation, il fallait un projet concret pour appliquer ces notions.
       </P>
 
-      <H2>Du script au filtre</H2>
+      <H2>Un problème très concret</H2>
       <P>
-        L'étape suivante a été d'ajouter la cohérence kilométrage / âge. Un 2015 à 12 000 km, ça mérite une vérification. Un 2010 à 400 000 km, ça en mérite une autre. La règle de 13 000 km par an est une approximation, mais c'est une approximation statistiquement solide sur le parc français. On n'invente rien — on signale une anomalie.
+        L'idée est partie d'un besoin personnel : analyser rapidement la pertinence d'une annonce de voiture d'occasion. Prix cohérent ou non, kilométrage crédible, historique flou… difficile de trancher sans passer du temps à comparer.
       </P>
       <P>
-        Puis sont venus les rappels Takata. La crise des airbags Takata est l'un des plus grands rappels de l'histoire automobile mondiale : plus de 100 millions de véhicules concernés, des décès documentés liés à des airbags qui se fragmentent à la place de gonfler. En France, des centaines de milliers de véhicules sont concernés, et pourtant, les annonces ne le mentionnent jamais. Ajouter une vérification automatique sur le VIN était logique — et la liste officielle des rappels NHTSA/RAPEX est publique.
-      </P>
-
-      <H2>La question qui a tout changé</H2>
-      <P>
-        À un moment de ce développement amateur, je me suis posé une question : combien de personnes font exactement la même chose que moi manuellement avant chaque achat ? Consultent l'Argus, vérifient les forums, cherchent les rappels, comparent les prix — en passant 2 à 3 heures par annonce sérieuse ?
+        Une mauvaise expérience lors d'un achat a servi de déclencheur : déplacement inutile, informations incomplètes, et au final aucune décision possible. Le premier prototype était un simple script Python. Il récupérait des annonces depuis Leboncoin, extrayait quelques données (prix, année, kilométrage) et calculait des tendances basiques sur un échantillon.
       </P>
       <P>
-        La réponse évidente était : beaucoup. Et la réponse complémentaire était : la plupart d'entre eux n'ont pas les compétences techniques pour automatiser ce travail. Ils font confiance à leur intuition, au vendeur, parfois à un mécanicien ami. Mais ils n'ont pas d'outil structuré.
+        Rien de sophistiqué, mais un constat rapide : pour un même modèle, à caractéristiques proches, les écarts de prix peuvent être significatifs. L'information est publique, mais peu exploitée.
       </P>
 
-      <H2>De Genève à la production</H2>
+      <H2>Structurer l'analyse</H2>
+      <P>Le script a ensuite évolué avec des règles simples :</P>
+      <Ul items={[
+        'Vérification de cohérence entre âge et kilométrage',
+        'Détection de valeurs atypiques',
+        'Mise en perspective des prix observés',
+      ]} />
       <P>
-        Aujourd'hui OKazCar tourne sur Google Cloud Run, avec une base PostgreSQL Neon, un moteur d'analyse à 12 filtres pondérés, et une extension Chrome qui s'intègre directement dans LeBonCoin, LaCentrale et AutoScout24 (France, Allemagne, Suisse, Italie, Belgique, Pays-Bas, Autriche, Espagne, Pologne, Luxembourg, Suède). Le script du soir de formation est devenu quelque chose d'utilisable par n'importe qui — sans connaissance technique, sans abonnement.
+        La règle des ~13 000 km par an est utilisée comme repère. Ce n'est pas une vérité absolue, mais une moyenne couramment admise pour le parc automobile particulier en France. L'objectif n'est pas de juger une annonce, mais de signaler des écarts qui méritent une attention.
+      </P>
+
+      <H2>Le sujet des rappels constructeurs</H2>
+      <P>
+        Un autre point s'est imposé : les rappels automobiles. Le cas des airbags Takata est documenté à grande échelle — des dizaines de millions de véhicules concernés à l'international. Ces informations sont publiques, mais rarement visibles dans les annonces.
       </P>
       <P>
-        Mais l'intuition de départ n'a pas changé : l'information qui permet de ne pas se faire avoir est disponible. Elle est dispersée, bruyante, difficile à interpréter seul. L'outil la centralise et la traduit en score. C'est tout — et c'est suffisant.
+        L'intégration de vérifications liées aux rappels est donc apparue comme une extension logique du projet. Sur ce point, il est important de préciser que l'accès systématique et fiable aux données VIN n'est pas toujours garanti selon les pays.
       </P>
 
       <Callout>
-        La prochaine version ajoutera la détection des annonces en doublon inter-sites (même véhicule vendu simultanément sur plusieurs plateformes à des prix différents), le suivi d'historique de prix pour une même annonce, et un module de négociation argumentée basé sur les défauts détectés.
+        À un moment, une question s'est posée : combien de personnes refont exactement ce travail manuellement avant d'acheter une voiture ? Comparer, vérifier, chercher des avis… cela peut facilement prendre plusieurs heures pour une seule annonce sérieuse. Et surtout : la majorité des acheteurs ne dispose pas d'outils automatisés pour le faire.
       </Callout>
 
+      <H2>Du script à un outil utilisable</H2>
       <P>
-        Pour l'instant : chargez l'extension, ouvrez une annonce, et laissez l'outil faire le travail ingrat. Le reste, c'est votre intuition.
+        Le projet a progressivement évolué vers quelque chose de plus structuré. Aujourd'hui, OKazCar prend la forme d'un outil qui s'intègre directement aux sites d'annonces comme Leboncoin, La Centrale ou AutoScout24. L'idée reste la même : centraliser des données accessibles, les structurer, et proposer une lecture simplifiée.
       </P>
+      <P>
+        Les choix techniques peuvent évoluer, mais ils ne sont pas le cœur du sujet. Ce qui compte, c'est l'usage : réduire le temps d'analyse et apporter un minimum d'objectivité dans la lecture d'une annonce.
+      </P>
+
+      <H2>Ce que fait réellement OKazCar</H2>
+      <P>Concrètement, l'outil :</P>
+      <Ul items={[
+        "agrège des informations visibles dans l'annonce",
+        "applique des règles simples de cohérence",
+        "met en évidence des écarts ou points d'attention",
+        "synthétise le tout sous forme d'indicateurs",
+      ]} />
+      <P>Il ne remplace ni une inspection mécanique, ni une expertise professionnelle.</P>
+
+      <H2>Et la suite</H2>
+      <Ul items={[
+        "Une application mobile pour analyser rapidement une annonce par simple scan ou partage",
+        "La détection d'annonces dupliquées entre plusieurs plateformes",
+        "Le suivi de l'évolution des prix dans le temps pour identifier des opportunités",
+        "Une aide à la négociation basée sur des éléments factuels et vérifiables",
+        "La conservation d'un historique des échanges et des annonces en cas de litige",
+        "Une comparaison des prix à l'échelle européenne pour identifier des écarts de marché",
+        "La possibilité d'intégrer un mandataire automobile dans le processus",
+      ]} />
+      <P>Ces fonctionnalités restent dépendantes des données réellement accessibles et exploitables.</P>
+
+      {/* Photo portrait — bas d'article */}
+      <div style={{ margin: '48px 0 0', borderRadius: 4, overflow: 'hidden', border: '1px solid var(--okc-border)' }}>
+        <img
+          src="/Nomades-16-03-26_64.jpg"
+          alt="Malik Karaoui, Nüsanes Technologie, Genève"
+          style={{ width: '100%', display: 'block', objectFit: 'cover', objectPosition: 'center 40%', maxHeight: 640 }}
+        />
+      </div>
     </>
   )
 }

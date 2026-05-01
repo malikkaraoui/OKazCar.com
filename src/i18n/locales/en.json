@@ -15,7 +15,7 @@
     "lead": "OKazCar analyses car listings from leboncoin, La Centrale, ParuVendu and AutoScout24 across 11 countries in real time. Score out of 100, geolocated market price, anomaly detection — directly in your browser.",
     "cta_primary": "Add to Chrome →",
     "cta_ghost": "See the demo",
-    "badge_version": "v1.0 · 2026",
+    "badge_version": "v1.3 · 2026",
     "badge_no_account": "No account required",
     "badge_speed": "in seconds",
     "label_before": "Without OKazCar",
@@ -168,7 +168,7 @@
     "lead": "Installation in 10 seconds. No account. No data collected. Your next car purchase deserves better than gut feeling.",
     "btn_primary": "Add to Chrome — Free →",
     "btn_ghost": "See the method",
-    "badge": "Chrome Extension · v1.0 · No sign-up"
+    "badge": "Chrome Extension · v1.3 · No sign-up"
   },
   "footer": {
     "tagline": "Real-time car listing analysis. 4 platforms, 14 domains, 12 filters.",
@@ -187,6 +187,6 @@
     "link_legal": "Legal notice",
     "link_contact": "Contact",
     "copyright": "© 2026 OKazCar",
-    "version": "v1.0 · build 2026.04"
+    "version": "v1.3 · build 2026.04"
   }
 }

@@ -15,7 +15,7 @@
     "lead": "OKazCar analyse en temps réel les annonces de leboncoin, La Centrale, ParuVendu et AutoScout24 sur 11 pays. Score sur 100, prix de marché géolocalisé, détection d'anomalies — directement dans votre navigateur.",
     "cta_primary": "Ajouter à Chrome →",
     "cta_ghost": "Voir la démo",
-    "badge_version": "v1.0 · 2026",
+    "badge_version": "v1.3 · 2026",
     "badge_no_account": "Aucun compte requis",
     "badge_speed": "en quelques secondes",
     "label_before": "Sans OKazCar",
@@ -168,7 +168,7 @@
     "lead": "Installation en 10 secondes. Aucun compte. Aucune donnée collectée. Votre prochain achat auto mérite mieux qu'un coup de cœur.",
     "btn_primary": "Ajouter à Chrome — Gratuit →",
     "btn_ghost": "Voir la méthode",
-    "badge": "Extension Chrome · v1.0 · Sans inscription"
+    "badge": "Extension Chrome · v1.3 · Sans inscription"
   },
   "footer": {
     "tagline": "Analyse en temps réel des annonces auto. 4 plateformes, 14 domaines, 12 filtres.",
@@ -187,6 +187,6 @@
     "link_legal": "Mentions légales",
     "link_contact": "Contact",
     "copyright": "© 2026 OKazCar",
-    "version": "v1.0 · build 2026.04"
+    "version": "v1.3 · build 2026.04"
   }
 }

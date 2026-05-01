@@ -26,7 +26,7 @@ export default function HowItWorks() {
             </motion.h2>
           </div>
         </div>
-        <div className="okc-grid-12">
+        <div className="okc-grid-12" onMouseDown={e => e.preventDefault()} style={{ userSelect: 'none', WebkitUserSelect: 'none' }}>
           {steps.map((s, i) => (
             <motion.div key={i}
               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}

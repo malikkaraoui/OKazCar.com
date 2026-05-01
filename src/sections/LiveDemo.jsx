@@ -82,7 +82,7 @@ export default function LiveDemo() {
             </div>
 
             {/* Pipeline steps */}
-            <div style={{ marginTop: 32 }}>
+            <div onMouseDown={e => e.preventDefault()} style={{ marginTop: 32, userSelect: 'none', WebkitUserSelect: 'none' }}>
               {STEPS.map((s, i) => {
                 const status = i < step ? 'done' : i === step ? 'running' : 'pending'
                 return (
@@ -110,7 +110,8 @@ export default function LiveDemo() {
           </motion.div>
 
           <motion.div
-            style={{ gridColumn: 'span 5', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24 }}
+            onMouseDown={e => e.preventDefault()}
+            style={{ gridColumn: 'span 5', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24, userSelect: 'none', WebkitUserSelect: 'none' }}
             initial={{ opacity: 0, scale: 0.96 }} whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.7, delay: 0.1, ease }}>
             <ScoreGauge score={currentScore} size={240} animateInView={false} label={label} />

@@ -9,7 +9,7 @@ const DOMAINS = [
 export default function Marquee() {
   const items = [...DOMAINS, ...DOMAINS]
   return (
-    <div className="okc-marquee" style={{ borderTop: '1px solid var(--okc-border)', borderBottom: '1px solid var(--okc-border)', padding: '16px 0' }}>
+    <div className="okc-marquee" onMouseDown={e => e.preventDefault()} style={{ borderTop: '1px solid var(--okc-border)', borderBottom: '1px solid var(--okc-border)', padding: '16px 0', userSelect: 'none', WebkitUserSelect: 'none' }}>
       <div className="okc-marquee-track">
         {items.map((domain, i) => (
           <span key={i}>

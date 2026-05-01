@@ -40,8 +40,10 @@ function BeforeAfterBefore() {
             Citroën C4 en très bon état, faible kilométrage, entretien à jour. Première main, non fumeur.
           </div>
         </div>
-        <div style={{ marginTop: 14, fontSize: 11, fontFamily: 'var(--okc-font-mono)', color: '#a3a3a3', textTransform: 'uppercase', letterSpacing: 1 }}>
-          ?? Bonne affaire ? Prix correct ? Vendeur fiable ?
+        <div style={{ marginTop: 20 }}>
+          <div style={{ fontSize: 18, fontWeight: 700, color: '#a3a3a3', lineHeight: 1.4, letterSpacing: '-0.3px' }}>
+            ?? Bonne affaire ?<br />Prix correct ?<br />Vendeur fiable ?
+          </div>
         </div>
       </div>
     </div>
@@ -114,11 +116,18 @@ function BeforeAfterAfter() {
   )
 }
 
+function easeInOut(t) {
+  return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t
+}
+
 export default function Hero() {
   const { t } = useTranslation()
   const [pos, setPos] = useState(50)
+  const [interacted, setInteracted] = useState(false)
   const sliderRef = useRef()
   const dragging = useRef(false)
+  const interactedRef = useRef(false)
+  const animRef = useRef(null)
 
   const onMove = (clientX) => {
     if (!sliderRef.current) return
@@ -126,6 +135,56 @@ export default function Hero() {
     const p = ((clientX - r.left) / r.width) * 100
     setPos(Math.max(2, Math.min(98, p)))
   }
+
+  const startDragging = () => {
+    dragging.current = true
+    if (!interactedRef.current) {
+      interactedRef.current = true
+      setInteracted(true)
+      if (animRef.current) cancelAnimationFrame(animRef.current)
+    }
+  }
+
+  // Auto-hint animation on mount
+  useEffect(() => {
+    const DELAY = 1200
+    const steps = [
+      { target: 25, duration: 900 },
+      { target: 68, duration: 1100 },
+      { target: 50, duration: 700 },
+    ]
+
+    const timer = setTimeout(() => {
+      if (interactedRef.current) return
+      let stepIndex = 0
+      let startPos = 50
+      let startTime = null
+
+      function tick(timestamp) {
+        if (interactedRef.current) return
+        if (!startTime) startTime = timestamp
+        const step = steps[stepIndex]
+        const elapsed = timestamp - startTime
+        const progress = Math.min(elapsed / step.duration, 1)
+        const newPos = startPos + (step.target - startPos) * easeInOut(progress)
+        setPos(newPos)
+        if (progress < 1) {
+          animRef.current = requestAnimationFrame(tick)
+        } else if (stepIndex < steps.length - 1) {
+          stepIndex++
+          startPos = step.target
+          startTime = timestamp
+          animRef.current = requestAnimationFrame(tick)
+        }
+      }
+      animRef.current = requestAnimationFrame(tick)
+    }, DELAY)
+
+    return () => {
+      clearTimeout(timer)
+      if (animRef.current) cancelAnimationFrame(animRef.current)
+    }
+  }, [])
 
   useEffect(() => {
     const mu = () => { dragging.current = false }
@@ -177,7 +236,7 @@ export default function Hero() {
               </a>
               <a href="#showcase" className="okc-btn okc-btn--ghost okc-btn--lg">{t('hero.cta_ghost')}</a>
             </motion.div>
-            <motion.div style={{ marginTop: 20, display: 'flex', gap: 16, fontSize: 12, color: 'var(--okc-text-muted)', fontFamily: 'var(--okc-font-mono)' }}
+            <motion.div onMouseDown={e => e.preventDefault()} style={{ marginTop: 20, display: 'flex', gap: 16, fontSize: 12, color: 'var(--okc-text-muted)', fontFamily: 'var(--okc-font-mono)', userSelect: 'none', WebkitUserSelect: 'none' }}
               initial={{ opacity: 0 }} animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.45, ease }}>
               <span>{t('hero.badge_version')}</span>
@@ -194,6 +253,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.4, ease }}
           ref={sliderRef}
+          onMouseDown={e => e.preventDefault()}
           style={{
             position: 'relative',
             width: '100%',
@@ -203,6 +263,7 @@ export default function Hero() {
             border: '1px solid var(--okc-border)',
             background: 'var(--okc-bg-light)',
             userSelect: 'none',
+            WebkitUserSelect: 'none',
           }}>
           {/* AFTER — full layer (base) */}
           <BeforeAfterAfter />
@@ -212,28 +273,47 @@ export default function Hero() {
           </div>
           {/* Slider handle */}
           <div
-            onMouseDown={() => { dragging.current = true }}
-            onTouchStart={() => { dragging.current = true }}
+            onMouseDown={startDragging}
+            onTouchStart={startDragging}
             style={{
               position: 'absolute', top: 0, bottom: 0,
               left: `${pos}%`,
-              width: 2, background: '#fff',
+              width: 3,
+              background: 'rgba(255,255,255,0.95)',
               cursor: 'ew-resize', zIndex: 5,
-              boxShadow: '0 0 0 1px rgba(0,0,0,0.1)',
+              boxShadow: '0 0 12px rgba(255,255,255,0.6), 0 0 0 1px rgba(0,0,0,0.08)',
             }}>
-            <div style={{
-              position: 'absolute', top: '50%', left: '50%',
-              transform: 'translate(-50%, -50%)',
-              width: 40, height: 40, borderRadius: '50%',
-              background: '#fff',
-              boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
-              display: 'grid', placeItems: 'center',
-              fontFamily: 'var(--okc-font-mono)', fontSize: 12, fontWeight: 600,
-              border: '1px solid rgba(0,0,0,0.08)',
-              cursor: 'ew-resize',
-            }}>
-              ‹ ›
-            </div>
+            {/* Pulse ring — visible until user interacts */}
+            {!interacted && (
+              <motion.div
+                animate={{ scale: [1, 2.2], opacity: [0.5, 0] }}
+                transition={{ duration: 1.4, repeat: Infinity, ease: 'easeOut', repeatDelay: 0.2 }}
+                style={{
+                  position: 'absolute', top: '50%', left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  width: 52, height: 52, borderRadius: '50%',
+                  background: 'rgba(37, 99, 235, 0.35)',
+                  pointerEvents: 'none',
+                }}
+              />
+            )}
+            {/* Handle circle */}
+            <motion.div
+              animate={!interacted ? { scale: [1, 1.1, 1] } : { scale: 1 }}
+              transition={!interacted ? { duration: 1.8, repeat: Infinity, ease: 'easeInOut', repeatDelay: 0.3 } : {}}
+              style={{
+                position: 'absolute', top: '50%', left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: 52, height: 52, borderRadius: '50%',
+                background: '#fff',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.22), 0 1px 4px rgba(0,0,0,0.1)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 3,
+                border: '1.5px solid rgba(37, 99, 235, 0.18)',
+                cursor: 'ew-resize',
+              }}>
+              <span style={{ fontSize: 14, color: '#2563eb', lineHeight: 1 }}>←</span>
+              <span style={{ fontSize: 14, color: '#2563eb', lineHeight: 1 }}>→</span>
+            </motion.div>
           </div>
           {/* Labels */}
           <div style={{ position: 'absolute', top: 14, left: 14, padding: '5px 9px', background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(8px)', borderRadius: 3, fontFamily: 'var(--okc-font-mono)', fontSize: 10, textTransform: 'uppercase', letterSpacing: 1, color: '#0a0a0a', zIndex: 4 }}>

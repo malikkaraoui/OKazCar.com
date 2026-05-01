@@ -50,12 +50,13 @@ function ExtensionPanelMini() {
 
 function BrowserMock() {
   return (
-    <div style={{
+    <div onMouseDown={e => e.preventDefault()} style={{
       borderRadius: 6,
       border: '1px solid var(--okc-border)',
       overflow: 'hidden',
       boxShadow: '0 30px 80px -30px rgba(15,23,42,0.22), 0 12px 24px -12px rgba(15,23,42,0.1)',
       background: 'var(--okc-bg-white)',
+      userSelect: 'none', WebkitUserSelect: 'none',
     }}>
       {/* Chrome bar */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 14px', background: 'var(--okc-bg-light)', borderBottom: '1px solid var(--okc-border)' }}>
