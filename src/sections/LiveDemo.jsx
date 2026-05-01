@@ -38,7 +38,7 @@ export default function LiveDemo() {
   return (
     <section id="demo" className="okc-section">
       <div className="okc-page">
-        <div className="okc-sec-head">
+        <div className="okc-sec-head" onMouseDown={e => e.preventDefault()} style={{ userSelect: 'none', WebkitUserSelect: 'none' }}>
           <div>
             <motion.div className="okc-eyebrow"
               initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
@@ -76,7 +76,7 @@ export default function LiveDemo() {
                   fontFamily: 'var(--okc-font-mono)', fontSize: 13,
                   background: 'transparent', color: 'var(--okc-text-primary)',
                 }} />
-              <button onClick={run} disabled={analyzing} className="okc-btn okc-btn--primary">
+              <button onClick={run} disabled={analyzing} className="okc-btn okc-btn--primary" style={{ background: '#16a34a', borderColor: '#16a34a' }}>
                 {analyzing ? 'Analyse en cours…' : done ? 'Relancer' : 'Analyser →'}
               </button>
             </div>

@@ -141,7 +141,7 @@ export default function Hero() {
               <a href={CHROME_WEB_STORE_URL} target="_blank" rel="noreferrer" className="okc-btn okc-btn--primary okc-btn--lg">
                 {t('hero.cta_primary')}
               </a>
-              <a href="#showcase" className="okc-btn okc-btn--ghost okc-btn--lg">{t('hero.cta_ghost')}</a>
+              <a href="#demo" className="okc-btn okc-btn--ghost okc-btn--lg">{t('hero.cta_ghost')}</a>
             </motion.div>
             <motion.div onMouseDown={e => e.preventDefault()} style={{ marginTop: 20, display: 'flex', gap: 16, fontSize: 12, color: 'var(--okc-text-muted)', fontFamily: 'var(--okc-font-mono)', userSelect: 'none', WebkitUserSelect: 'none' }}
               initial={{ opacity: 0 }} animate={{ opacity: 1 }}
