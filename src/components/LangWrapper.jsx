@@ -3,7 +3,7 @@ import { useParams, Outlet, Navigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { LangContext } from '../context/lang'
 
-const SUPPORTED = ['fr', 'en', 'es', 'it']
+const SUPPORTED = ['fr', 'en', 'es', 'it', 'de']
 
 export default function LangWrapper() {
   const { lang } = useParams()

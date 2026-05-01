@@ -23,7 +23,7 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const LANGS = ['fr', 'en', 'es', 'it']
+  const LANGS = ['fr', 'en', 'es', 'it', 'de']
 
   const switchLang = (newLang) => {
     const newPath = location.pathname.replace(/^\/(fr|en|es|it)/, `/${newLang}`)
@@ -42,7 +42,7 @@ export default function Nav() {
           <a href="#audience">{t('nav.audience')}</a>
           <Link to={lp('/blog')}>{t('nav.blog')}</Link>
           <a href="#faq">{t('nav.faq')}</a>
-          <span style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+          <span style={{ display: 'flex', gap: 6, alignItems: 'center', marginLeft: 20, paddingLeft: 20, borderLeft: '1px solid var(--okc-border)' }}>
             {LANGS.map((l, i) => (
               <span key={l} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                 {i > 0 && <span style={{ color: 'var(--okc-border)', fontSize: 10 }}>|</span>}
