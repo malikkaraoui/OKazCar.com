@@ -26,7 +26,7 @@ export default function Nav() {
   const LANGS = ['fr', 'en', 'es', 'it', 'de']
 
   const switchLang = (newLang) => {
-    const newPath = location.pathname.replace(/^\/(fr|en|es|it)/, `/${newLang}`)
+    const newPath = location.pathname.replace(/^\/(fr|en|es|it|de)/, `/${newLang}`)
     i18n.changeLanguage(newLang)
     navigate(newPath)
   }

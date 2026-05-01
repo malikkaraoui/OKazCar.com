@@ -93,8 +93,8 @@
   },
   "coverage": {
     "eyebrow": "07 — Couverture",
-    "title": "4 plateformes.<br/>14 domaines.<br/>11 pays + .com.",
-    "lead": "La cascade prix marché interroge les 14 domaines selon la géolocalisation du véhicule. AutoScout24 = 12 domaines (11 pays nommés + .com international).",
+    "title": "4 plateformes.<br/>15 domaines.<br/>11 pays + .com.",
+    "lead": "La cascade prix marché interroge les 15 domaines selon la géolocalisation du véhicule. AutoScout24 = 12 domaines (11 pays nommés + .com international).",
     "col_platform": "Plateforme",
     "col_domain": "Domaine",
     "col_country": "Pays",
@@ -143,7 +143,7 @@
       },
       {
         "q": "Quels sites sont supportés ?",
-        "a": "4 plateformes et 14 domaines : leboncoin.fr, lacentrale.fr, paruvendu.fr, et AutoScout24 sur 11 pays (France, Allemagne, Suisse, Belgique, Italie, Pays-Bas, Autriche, Espagne, Pologne, Luxembourg, Suède) + le .com international."
+        "a": "4 plateformes et 15 domaines : leboncoin.fr, lacentrale.fr, paruvendu.fr, et AutoScout24 sur 11 pays (France, Allemagne, Suisse, Belgique, Italie, Pays-Bas, Autriche, Espagne, Pologne, Luxembourg, Suède) + le .com international."
       },
       {
         "q": "Comment fonctionne le score ?",
@@ -171,7 +171,7 @@
     "badge": "Extension Chrome · v1.3 · Sans inscription"
   },
   "footer": {
-    "tagline": "Analyse en temps réel des annonces auto. 4 plateformes, 14 domaines, 12 filtres.",
+    "tagline": "Analyse en temps réel des annonces auto. 4 plateformes, 15 domaines, 12 filtres.",
     "product": "Produit",
     "resources": "Ressources",
     "legal": "Légal",
