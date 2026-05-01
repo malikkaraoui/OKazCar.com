@@ -57,10 +57,10 @@ export default function BlogIndex() {
   useEffect(() => { window.scrollTo(0, 0) }, [])
   const { i18n } = useTranslation()
   const { lang, lp } = useLang()
-  const posts = lang === 'en' ? BLOG_POSTS_EN : BLOG_POSTS
+  const posts = lang !== 'fr' ? BLOG_POSTS_EN : BLOG_POSTS
   const [featured, ...rest] = posts
 
-  const labels = lang === 'en'
+  const labels = lang !== 'fr'
     ? { eyebrow: 'Buying tips', h1: 'The method\nbehind the score.', lead: 'Technical articles on anomaly detection, the used car market, and engine reliability. No bullshit, no keyword stuffing.', updated: 'Updated April 2026', home: '← Home', install: 'Install — Free' }
     : { eyebrow: 'Conseils achat', h1: 'La méthode\nderrière le score.', lead: 'Articles techniques sur la détection d\'anomalies, le marché de l\'occasion, la fiabilité moteur. Sans bullshit, sans SEO bourré.', updated: 'Mise à jour avril 2026', home: '← Accueil', install: 'Installer — Gratuit' }
 

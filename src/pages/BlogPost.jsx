@@ -18,12 +18,12 @@ export default function BlogPost() {
   const { slug } = useParams()
   const { lang, lp } = useLang()
   const { i18n } = useTranslation()
-  const posts = lang === 'en' ? BLOG_POSTS_EN : BLOG_POSTS
+  const posts = lang !== 'fr' ? BLOG_POSTS_EN : BLOG_POSTS
   const post = posts.find((p) => p.slug === slug)
 
   useEffect(() => { window.scrollTo(0, 0) }, [slug])
 
-  const labels = lang === 'en'
+  const labels = lang !== 'fr'
     ? { back: '← Buying tips', install: 'Install →' }
     : { back: '← Conseils achat', install: 'Installer l\'extension →' }
 
@@ -32,7 +32,7 @@ export default function BlogPost() {
       <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 24, fontFamily: 'var(--okc-font)' }}>
         <span style={{ ...mono }}>404</span>
         <h1 style={{ fontSize: 32, fontWeight: 500, margin: 0, letterSpacing: '-1px' }}>
-          {lang === 'en' ? 'Article not found' : 'Article introuvable'}
+          {lang !== 'fr' ? 'Article not found' : 'Article introuvable'}
         </h1>
         <Link to={lp('/blog')} style={{ ...mono, borderBottom: '1px solid var(--okc-text-muted)', paddingBottom: 2 }}>
           {labels.back}
@@ -99,7 +99,7 @@ export default function BlogPost() {
 }
 
 function RelatedPosts({ current, posts, lang, lp }) {
-  const label = lang === 'en' ? 'Read next' : 'À lire aussi'
+  const label = lang !== 'fr' ? 'Read next' : 'À lire aussi'
   const others = posts.filter((p) => p.slug !== current).slice(0, 2)
   if (others.length === 0) return null
   return (

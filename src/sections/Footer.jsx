@@ -9,9 +9,15 @@ export default function Footer() {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const switchLang = () => {
-    const newLang = lang === 'fr' ? 'en' : 'fr'
-    const newPath = location.pathname.replace(/^\/(fr|en)/, `/${newLang}`)
+  const LANGS = [
+    { code: 'fr', label: '🇫🇷 Français' },
+    { code: 'en', label: '🇬🇧 English' },
+    { code: 'es', label: '🇪🇸 Español' },
+    { code: 'it', label: '🇮🇹 Italiano' },
+  ]
+
+  const switchLang = (newLang) => {
+    const newPath = location.pathname.replace(/^\/(fr|en|es|it)/, `/${newLang}`)
     i18n.changeLanguage(newLang)
     navigate(newPath)
   }
@@ -55,14 +61,21 @@ export default function Footer() {
         </div>
         <div className="okc-footer-bottom">
           <span>{t('footer.copyright')}</span>
-          <button onClick={switchLang} style={{
-            fontFamily: 'var(--okc-font-mono)', fontSize: 11,
-            textTransform: 'uppercase', letterSpacing: 1,
-            background: 'none', border: 'none', cursor: 'pointer',
-            color: 'var(--okc-text-muted)', padding: 0,
-          }}>
-            {lang === 'fr' ? '🌐 English' : '🌐 Français'}
-          </button>
+          <span style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+            {LANGS.map(l => (
+              <button key={l.code} onClick={() => switchLang(l.code)} style={{
+                fontFamily: 'var(--okc-font-mono)', fontSize: 11,
+                textTransform: 'uppercase', letterSpacing: 1,
+                background: 'none', border: 'none',
+                cursor: l.code === lang ? 'default' : 'pointer',
+                color: l.code === lang ? 'var(--okc-text-primary)' : 'var(--okc-text-muted)',
+                fontWeight: l.code === lang ? 600 : 400,
+                padding: 0,
+              }}>
+                {l.label}
+              </button>
+            ))}
+          </span>
           <span className="okc-mono">{t('footer.version')}</span>
         </div>
       </div>

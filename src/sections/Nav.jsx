@@ -23,9 +23,10 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const switchLang = () => {
-    const newLang = lang === 'fr' ? 'en' : 'fr'
-    const newPath = location.pathname.replace(/^\/(fr|en)/, `/${newLang}`)
+  const LANGS = ['fr', 'en', 'es', 'it']
+
+  const switchLang = (newLang) => {
+    const newPath = location.pathname.replace(/^\/(fr|en|es|it)/, `/${newLang}`)
     i18n.changeLanguage(newLang)
     navigate(newPath)
   }
@@ -41,14 +42,23 @@ export default function Nav() {
           <a href="#audience">{t('nav.audience')}</a>
           <Link to={lp('/blog')}>{t('nav.blog')}</Link>
           <a href="#faq">{t('nav.faq')}</a>
-          <button onClick={switchLang} style={{
-            fontFamily: 'var(--okc-font-mono)', fontSize: 11,
-            textTransform: 'uppercase', letterSpacing: 1,
-            background: 'none', border: 'none', cursor: 'pointer',
-            color: 'var(--okc-text-muted)', padding: 0,
-          }}>
-            {lang === 'fr' ? 'EN' : 'FR'}
-          </button>
+          <span style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+            {LANGS.map((l, i) => (
+              <span key={l} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                {i > 0 && <span style={{ color: 'var(--okc-border)', fontSize: 10 }}>|</span>}
+                <button onClick={() => switchLang(l)} style={{
+                  fontFamily: 'var(--okc-font-mono)', fontSize: 11,
+                  textTransform: 'uppercase', letterSpacing: 1,
+                  background: 'none', border: 'none', cursor: l === lang ? 'default' : 'pointer',
+                  color: l === lang ? 'var(--okc-text-primary)' : 'var(--okc-text-muted)',
+                  fontWeight: l === lang ? 600 : 400,
+                  padding: 0,
+                }}>
+                  {l}
+                </button>
+              </span>
+            ))}
+          </span>
         </div>
         <a href={CHROME_WEB_STORE_URL} target="_blank" rel="noreferrer" className="okc-btn okc-btn--primary">
           {t('nav.install')}
