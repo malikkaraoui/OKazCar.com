@@ -2,7 +2,7 @@
 
 > OKazCar is a free Chrome extension that analyses used car listings in real time. It cross-references 12 filters (mileage coherence, regional market price, engine reliability, recall status, import detection…) and returns a score out of 100, directly injected into the listing page — no account, no data collected.
 
-OKazCar was created in 2024 during a Python training at Nüsanes Technologie in Geneva. It started as a scraping script and became a Chrome extension supporting 14 domains across 11 countries.
+OKazCar was created in 2024 during a Python training at Nüsanes Technologie in Geneva. It started as a scraping script and became a Chrome extension supporting 15 domains across 11 countries.
 
 ## Key facts
 

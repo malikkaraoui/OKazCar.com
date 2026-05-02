@@ -1,6 +1,6 @@
 export const FILTERS = [
   { id: 'L1',  name: "Qualité d'extraction",  weight: 1.0, critical: false, role: "Vérifie que l'extension a bien extrait les champs critiques (prix, km, année, marque). Si données manquantes → chaîne bloquée." },
-  { id: 'L2',  name: 'Référentiel véhicule',  weight: 2.0, critical: true,  role: "Vérifie que la marque/modèle existe dans la base OKazCar (4 607 véhicules, 145 325 versions). Véhicule inconnu = signal fort." },
+  { id: 'L2',  name: 'Référentiel véhicule',  weight: 2.0, critical: true,  role: "Vérifie que la marque/modèle existe dans la base OKazCar (4 373 modèles, 151 358 finitions). Véhicule inconnu = signal fort." },
   { id: 'L3',  name: 'Cohérence données',      weight: 1.5, critical: false, role: "Croise année × km × prix × type vendeur. Détecte kilométrage aberrant, prix incohérent avec l'année, puissance fiscale ou DIN." },
   { id: 'L4',  name: 'Prix vs marché',         weight: 2.0, critical: true,  role: "Compare le prix annoncé aux annonces similaires récentes dans la même zone géographique. Si aucun marché local disponible, le filtre pénalise par défaut." },
   { id: 'L5',  name: 'Analyse statistique',    weight: 1.5, critical: false, role: "Calcul scientifique pour identifier les prix exagérés ou anormalement bas par rapport à des véhicules comparables. Filtre les cas atypiques." },
@@ -33,9 +33,9 @@ export const PLATFORMS = [
 ];
 
 export const STATS = [
-  { value: 4607,   label: 'Véhicules référencés', suffix: '' },
-  { value: 145325, label: 'Versions en base',      suffix: '' },
-  { value: 14,     label: 'Domaines couverts',     suffix: '' },
+  { value: 4373,   label: 'Véhicules référencés', suffix: '' },
+  { value: 151358, label: 'Versions en base',      suffix: '' },
+  { value: 15,     label: 'Domaines couverts',     suffix: '' },
   { value: 12,     label: "Filtres d'analyse",     suffix: '' },
 ];
 

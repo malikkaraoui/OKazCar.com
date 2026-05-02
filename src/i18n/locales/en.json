@@ -93,8 +93,8 @@
   },
   "coverage": {
     "eyebrow": "07 — Coverage",
-    "title": "4 platforms.<br/>14 domains.<br/>11 countries + .com.",
-    "lead": "The market price cascade queries all 14 domains based on vehicle geolocation. AutoScout24 = 12 domains (11 named countries + .com international).",
+    "title": "4 platforms.<br/>15 domains.<br/>11 countries + .com.",
+    "lead": "The market price cascade queries all 15 domains based on vehicle geolocation. AutoScout24 = 12 domains (11 named countries + .com international).",
     "col_platform": "Platform",
     "col_domain": "Domain",
     "col_country": "Country",
@@ -143,7 +143,7 @@
       },
       {
         "q": "Which sites are supported?",
-        "a": "4 platforms and 14 domains: leboncoin.fr, lacentrale.fr, paruvendu.fr, and AutoScout24 across 11 countries (France, Germany, Switzerland, Belgium, Italy, Netherlands, Austria, Spain, Poland, Luxembourg, Sweden) + the international .com."
+        "a": "4 platforms and 15 domains: leboncoin.fr, lacentrale.fr, paruvendu.fr, and AutoScout24 across 11 countries (France, Germany, Switzerland, Belgium, Italy, Netherlands, Austria, Spain, Poland, Luxembourg, Sweden) + the international .com."
       },
       {
         "q": "How does the score work?",
@@ -171,7 +171,7 @@
     "badge": "Chrome Extension · v1.3 · No sign-up"
   },
   "footer": {
-    "tagline": "Real-time car listing analysis. 4 platforms, 14 domains, 12 filters.",
+    "tagline": "Real-time car listing analysis. 4 platforms, 15 domains, 12 filters.",
     "product": "Product",
     "resources": "Resources",
     "legal": "Legal",

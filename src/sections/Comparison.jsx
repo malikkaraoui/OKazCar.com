@@ -30,30 +30,47 @@ export default function Comparison() {
         <motion.div
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.6, ease }}
-          style={{ border: '1px solid var(--okc-border)', borderRadius: 4, overflow: 'hidden', background: 'var(--okc-bg-white)' }}>
+          onMouseDown={e => e.preventDefault()}
+          style={{ border: '1px solid var(--okc-border)', borderRadius: 6, overflow: 'hidden', userSelect: 'none', WebkitUserSelect: 'none' }}>
           {/* Header */}
-          <div style={{
-            display: 'grid', gridTemplateColumns: '2fr 1.5fr 1.5fr',
-            padding: '18px 24px', borderBottom: '1px solid var(--okc-border)',
-            alignItems: 'baseline',
-          }}>
-            <span className="okc-mono" style={{ color: 'var(--okc-text-muted)', fontSize: 11, textTransform: 'uppercase', letterSpacing: 1 }}>{t('comparison.col_feature')}</span>
-            <span style={{ fontSize: 14, fontWeight: 500, color: 'var(--okc-text-muted)' }}>{t('comparison.col_without')}</span>
-            <span style={{ fontSize: 14, fontWeight: 500 }}>{t('comparison.col_with')}</span>
+          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1.6fr' }}>
+            <div style={{ padding: '16px 24px', background: 'var(--okc-bg-light)', borderBottom: '1px solid var(--okc-border)' }}>
+              <span className="okc-mono" style={{ color: 'var(--okc-text-muted)', fontSize: 11, textTransform: 'uppercase', letterSpacing: 1 }}>{t('comparison.col_feature')}</span>
+            </div>
+            <div style={{ padding: '16px 20px', background: '#f0f0ec', borderBottom: '1px solid var(--okc-border)', borderLeft: '1px solid var(--okc-border)' }}>
+              <span style={{ fontSize: 13, fontWeight: 500, color: '#888', fontFamily: 'var(--okc-font-mono)', textTransform: 'uppercase', letterSpacing: 1 }}>{t('comparison.col_without')}</span>
+            </div>
+            <div style={{ padding: '16px 20px', background: '#0a0a0a', borderBottom: '1px solid #0a0a0a', borderLeft: '1px solid #0a0a0a', display: 'flex', alignItems: 'center', gap: 8 }}>
+              <span style={{ fontSize: 13, fontWeight: 600, color: '#fff', fontFamily: 'var(--okc-font-mono)', textTransform: 'uppercase', letterSpacing: 1 }}>{t('comparison.col_with')}</span>
+              <span style={{ fontSize: 10, fontWeight: 600, color: '#fbbf24', fontFamily: 'var(--okc-font-mono)', letterSpacing: 1 }}>★</span>
+            </div>
           </div>
           {rows.map((r, i) => (
-            <div key={i} style={{
-              display: 'grid', gridTemplateColumns: '2fr 1.5fr 1.5fr',
-              padding: '16px 24px',
-              borderBottom: i < rows.length - 1 ? '1px solid var(--okc-border)' : 'none',
-              alignItems: 'center', fontSize: 14,
-            }}>
-              <span style={{ fontWeight: 500 }}>{r.feat}</span>
-              <span style={{ color: 'var(--okc-text-muted)' }}>{r.without}</span>
-              <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <span style={{ width: 4, height: 4, borderRadius: '50%', background: 'var(--okc-pass)', flexShrink: 0 }} />
+            <div key={i} style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1.6fr' }}>
+              <div style={{
+                padding: '15px 24px', fontSize: 14, fontWeight: 500,
+                borderBottom: i < rows.length - 1 ? '1px solid var(--okc-border)' : 'none',
+                background: i % 2 === 0 ? '#fff' : 'var(--okc-bg-subtle)',
+              }}>{r.feat}</div>
+              <div style={{
+                padding: '15px 20px', fontSize: 13,
+                color: r.without === '—' ? '#c0c0c0' : 'var(--okc-text-muted)',
+                borderBottom: i < rows.length - 1 ? '1px solid var(--okc-border)' : 'none',
+                borderLeft: '1px solid var(--okc-border)',
+                background: i % 2 === 0 ? '#f9f9f7' : '#f3f3f0',
+                fontStyle: r.without === '—' ? 'normal' : 'normal',
+              }}>{r.without}</div>
+              <div style={{
+                padding: '15px 20px', fontSize: 13, fontWeight: 500,
+                color: '#15803d',
+                background: i % 2 === 0 ? 'rgba(21,128,61,0.06)' : 'rgba(21,128,61,0.10)',
+                borderBottom: i < rows.length - 1 ? '1px solid rgba(21,128,61,0.12)' : 'none',
+                borderLeft: '2px solid rgba(21,128,61,0.2)',
+                display: 'flex', alignItems: 'center', gap: 8,
+              }}>
+                <span style={{ color: '#15803d', fontWeight: 700, fontSize: 14, flexShrink: 0 }}>✓</span>
                 {r.with}
-              </span>
+              </div>
             </div>
           ))}
         </motion.div>

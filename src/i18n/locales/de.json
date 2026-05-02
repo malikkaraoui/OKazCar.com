@@ -24,7 +24,7 @@
   "showcase": {
     "eyebrow": "02 — Die Erweiterung",
     "title": "Das OKazCar-Panel,<br/>direkt in die Anzeige eingebettet.",
-    "lead": "Wenn Sie eine Anzeige auf einer der 14 unterstützten Plattformen öffnen, erkennt die Erweiterung das Fahrzeug, startet die Analyse-Pipeline und zeigt innerhalb von Sekunden ein Seitenpanel mit dem Ergebnis an.",
+    "lead": "Wenn Sie eine Anzeige auf einer der 15 unterstützten Plattformen öffnen, erkennt die Erweiterung das Fahrzeug, startet die Analyse-Pipeline und zeigt innerhalb von Sekunden ein Seitenpanel mit dem Ergebnis an.",
     "h01_title": "Stille Extraktion",
     "h01_desc": "DOM geparst, kritische Felder (Preis, km, Baujahr, Marke, Motor) erfasst. Ist die Extraktion unvollständig, stoppt die Pipeline — kein zweifelhafter Score.",
     "h02_title": "Marktpreis-Kaskade",
@@ -93,8 +93,8 @@
   },
   "coverage": {
     "eyebrow": "07 — Abdeckung",
-    "title": "4 Plattformen.<br/>14 Domains.<br/>11 Länder + .com.",
-    "lead": "Die Marktpreis-Kaskade fragt alle 14 Domains basierend auf der Fahrzeuggeolokalisierung ab. AutoScout24 = 12 Domains (11 benannte Länder + .com international).",
+    "title": "4 Plattformen.<br/>15 Domains.<br/>11 Länder + .com.",
+    "lead": "Die Marktpreis-Kaskade fragt alle 15 Domains basierend auf der Fahrzeuggeolokalisierung ab. AutoScout24 = 12 Domains (11 benannte Länder + .com international).",
     "col_platform": "Plattform",
     "col_domain": "Domain",
     "col_country": "Land",
@@ -175,7 +175,7 @@
       },
       {
         "q": "Welche Seiten werden unterstützt?",
-        "a": "4 Plattformen und 14 Domains: leboncoin.fr, lacentrale.fr, paruvendu.fr und AutoScout24 in 11 Ländern (Frankreich, Deutschland, Schweiz, Belgien, Italien, Niederlande, Österreich, Spanien, Polen, Luxemburg, Schweden) + das internationale .com."
+        "a": "4 Plattformen und 15 Domains: leboncoin.fr, lacentrale.fr, paruvendu.fr und AutoScout24 in 11 Ländern (Frankreich, Deutschland, Schweiz, Belgien, Italien, Niederlande, Österreich, Spanien, Polen, Luxemburg, Schweden) + das internationale .com."
       },
       {
         "q": "Wie funktioniert der Score?",
@@ -203,7 +203,7 @@
     "badge": "Chrome-Erweiterung · v1.3 · Keine Anmeldung"
   },
   "footer": {
-    "tagline": "Echtzeit-Analyse von Fahrzeuginseraten. 4 Plattformen, 14 Domains, 12 Filter.",
+    "tagline": "Echtzeit-Analyse von Fahrzeuginseraten. 4 Plattformen, 15 Domains, 12 Filter.",
     "product": "Produkt",
     "resources": "Ressourcen",
     "legal": "Rechtliches",
