@@ -78,7 +78,7 @@ export default function Blog() {
               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-30px' }}
               transition={{ duration: 0.6, delay: i * 0.08, ease }}
-              style={{ gridColumn: i === 0 ? 'span 6' : 'span 3' }}>
+              className={i === 0 ? 'col-6' : 'col-3'}>
               <BlogCard p={p} i={i} lp={lp} />
             </motion.div>
           ))}

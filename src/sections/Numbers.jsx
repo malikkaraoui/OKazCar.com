@@ -34,7 +34,7 @@ export default function Numbers() {
               initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-30px' }}
               transition={{ duration: 0.6, delay: i * 0.1, ease }}
-              style={{ gridColumn: 'span 3', borderTop: '1px solid rgba(255,255,255,0.15)', paddingTop: 24 }}>
+              className="col-3" style={{ borderTop: '1px solid rgba(255,255,255,0.15)', paddingTop: 24 }}>
               <div style={{ fontSize: 'clamp(48px, 5vw, 88px)', fontWeight: 500, letterSpacing: '-2px', lineHeight: 1, color: 'var(--okc-bg-white)' }}>
                 <Counter to={s.value} suffix={s.suffix} />
               </div>

@@ -61,12 +61,12 @@ export default function Showcase() {
         </div>
 
         <div className="okc-grid-12" style={{ alignItems: 'start', gap: 32 }}>
-          <motion.div style={{ gridColumn: 'span 7' }}
+          <motion.div className="col-7"
             initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.7, ease }}>
             <BrowserMock />
           </motion.div>
-          <div style={{ gridColumn: 'span 5', display: 'flex', flexDirection: 'column', gap: 28 }}>
+          <div className="col-5" style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
             <Highlight n="01" title={t('showcase.h01_title')} desc={t('showcase.h01_desc')} />
             <Highlight n="02" title={t('showcase.h02_title')} desc={t('showcase.h02_desc')} />
             <Highlight n="03" title={t('showcase.h03_title')} desc={t('showcase.h03_desc')} />

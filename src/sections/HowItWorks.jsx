@@ -32,7 +32,7 @@ export default function HowItWorks() {
               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-30px' }}
               transition={{ duration: 0.6, delay: i * 0.08, ease }}
-              style={{ gridColumn: 'span 3', borderTop: '2px solid var(--okc-text-primary)', paddingTop: 24 }}>
+              className="col-3" style={{ borderTop: '2px solid var(--okc-text-primary)', paddingTop: 24 }}>
               <span className="okc-mono" style={{ color: 'var(--okc-text-muted)' }}>0{i + 1}</span>
               <h3 className="okc-h3" style={{ marginTop: 14 }}>{s.t}</h3>
               <p style={{ fontSize: 14, color: 'var(--okc-text-secondary)', lineHeight: 1.6, marginTop: 12 }}>{s.d}</p>

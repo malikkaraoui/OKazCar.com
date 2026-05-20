@@ -110,11 +110,11 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="okc-section" style={{ paddingTop: 140, borderTop: 0 }}>
+    <section className="okc-section okc-hero" style={{ borderTop: 0 }}>
       <div className="okc-page">
         {/* Header 2-col */}
         <div className="okc-grid-12" style={{ alignItems: 'end', marginBottom: 40 }}>
-          <div style={{ gridColumn: 'span 7' }}>
+          <div className="col-7">
             <motion.div className="okc-eyebrow"
               initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease }}>
@@ -129,7 +129,7 @@ export default function Hero() {
               <span style={{ color: 'var(--okc-text-muted)' }}>{t('hero.titleMuted')}</span>
             </motion.h1>
           </div>
-          <div style={{ gridColumn: 'span 5', paddingBottom: 8 }}>
+          <div className="col-5" style={{ paddingBottom: 8 }}>
             <motion.p className="okc-lead"
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2, ease }}>

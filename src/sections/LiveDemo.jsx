@@ -59,7 +59,7 @@ export default function LiveDemo() {
         </div>
 
         <div className="okc-grid-12" style={{ alignItems: 'start' }}>
-          <motion.div style={{ gridColumn: 'span 7' }}
+          <motion.div className="col-7"
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.6, ease }}>
             {/* URL input */}
@@ -111,7 +111,7 @@ export default function LiveDemo() {
 
           <motion.div
             onMouseDown={e => e.preventDefault()}
-            style={{ gridColumn: 'span 5', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24, userSelect: 'none', WebkitUserSelect: 'none' }}
+            className="col-5" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24, userSelect: 'none', WebkitUserSelect: 'none' }}
             initial={{ opacity: 0, scale: 0.96 }} whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.7, delay: 0.1, ease }}>
             <ScoreGauge score={currentScore} size={240} animateInView={false} label={label} />

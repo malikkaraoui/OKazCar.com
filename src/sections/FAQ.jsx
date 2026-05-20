@@ -29,7 +29,7 @@ export default function FAQ() {
           </div>
         </div>
         <div className="okc-grid-12">
-          <div style={{ gridColumn: '3 / span 8' }}>
+          <div className="col-3-8">
             {items.map((f, i) => {
               const isOpen = i === open
               return (
