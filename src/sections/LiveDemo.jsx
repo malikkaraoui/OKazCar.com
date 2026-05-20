@@ -14,6 +14,35 @@ const STEPS = [
   'Pondération finale',
 ]
 
+const FINAL_SCORE = 34
+
+const ALERTS = [
+  {
+    code: 'L3',
+    title: 'Kilométrage défavorable',
+    detail: '147 000 km pour un positionnement prix déjà haut.',
+    tone: 'fail',
+  },
+  {
+    code: 'L10',
+    title: 'Annonce trop ancienne',
+    detail: 'Annonce en ligne depuis 73 jours sans baisse notable.',
+    tone: 'warn',
+  },
+  {
+    code: 'L12',
+    title: 'Moteur à surveiller',
+    detail: 'Motorisation signalée dans la base de fiabilité.',
+    tone: 'fail',
+  },
+  {
+    code: 'L11',
+    title: 'Rappel constructeur',
+    detail: 'Campagne à vérifier avant achat.',
+    tone: 'warn',
+  },
+]
+
 export default function LiveDemo() {
   const [url, setUrl] = useState('https://www.leboncoin.fr/ad/voitures/3151844708')
   const [analyzing, setAnalyzing] = useState(false)
@@ -32,9 +61,10 @@ export default function LiveDemo() {
   }
 
   const done = !analyzing && step === STEPS.length - 1
-  const currentScore = done ? 97 : analyzing ? Math.round(97 * ((step + 1) / STEPS.length)) : 0
-  const label = done ? 'Annonce fiable' : analyzing ? 'En cours…' : 'En attente'
+  const currentScore = done ? FINAL_SCORE : analyzing ? Math.round(FINAL_SCORE * ((step + 1) / STEPS.length)) : 0
+  const label = done ? 'Annonce à risque' : analyzing ? 'Scan en cours…' : 'En attente'
   const buttonLabel = analyzing ? 'Analyse en cours…' : done ? 'Relancer' : 'Analyser →'
+  const visibleAlerts = done ? ALERTS : analyzing ? ALERTS.slice(0, Math.max(0, step)) : []
 
   return (
     <section id="demo" className="okc-section">
@@ -114,7 +144,27 @@ export default function LiveDemo() {
                 />
               </div>
               <div style={{ width: '100%', marginTop: 20 }}>
-                <PriceBar marketMin={11500} marketMax={14800} ref_={13200} current={12490} animateInView={done} />
+                <PriceBar marketMin={10900} marketMax={14200} ref_={12800} current={14990} animateInView={done} />
+              </div>
+              <div className="okc-live-demo-alerts">
+                <div className="okc-live-demo-alerts-head">
+                  <span className="okc-mono">Filtres déclenchés</span>
+                  <span className="okc-mono" style={{ color: 'var(--okc-fail)' }}>{visibleAlerts.length || 0} alerte{visibleAlerts.length > 1 ? 's' : ''}</span>
+                </div>
+                <div className="okc-live-demo-alert-list">
+                  {ALERTS.map((alert, index) => {
+                    const isVisible = index < visibleAlerts.length
+                    return (
+                      <div key={alert.code} className={`okc-live-demo-alert okc-live-demo-alert--${alert.tone}${isVisible ? ' is-visible' : ''}`}>
+                        <div className="okc-live-demo-alert-code">{alert.code}</div>
+                        <div className="okc-live-demo-alert-copy">
+                          <strong>{alert.title}</strong>
+                          <span>{alert.detail}</span>
+                        </div>
+                      </div>
+                    )
+                  })}
+                </div>
               </div>
               <div className="okc-mobile-only" style={{ marginTop: 20 }}>
                 <button onClick={run} disabled={analyzing} className="okc-btn okc-btn--primary" style={{ width: '100%', background: '#16a34a', borderColor: '#16a34a' }}>

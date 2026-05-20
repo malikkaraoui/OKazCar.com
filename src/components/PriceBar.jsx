@@ -30,8 +30,17 @@ export default function PriceBar({
 
   const range = marketMax - marketMin
   const refPct = ((ref_ - marketMin) / range) * 100
-  const curPct = ((current - marketMin) / range) * 100
-  const discount = Math.round(((ref_ - current) / ref_) * 100)
+  const curPctRaw = ((current - marketMin) / range) * 100
+  const curPct = Math.max(0, Math.min(100, curPctRaw))
+  const variance = Math.round(((current - ref_) / ref_) * 100)
+  const tone = current > marketMax ? 'fail' : current > ref_ ? 'warn' : 'pass'
+  const toneColor = tone === 'fail' ? 'var(--okc-fail)' : tone === 'warn' ? 'var(--okc-warning)' : 'var(--okc-pass)'
+  const toneClass = tone === 'fail' ? 'okc-pill--fail' : tone === 'warn' ? 'okc-pill--warn' : 'okc-pill--pass'
+  const toneLabel = variance > 0
+    ? `↑ ${variance}% au-dessus du marché`
+    : variance < 0
+      ? `↓ ${Math.abs(variance)}% sous le marché`
+      : '≈ aligné sur le marché'
 
   return (
     <div ref={root} style={{ width: '100%' }}>
@@ -45,7 +54,7 @@ export default function PriceBar({
         <div style={{
           position: 'absolute', left: 0, top: 0, bottom: 0,
           width: `${curPct * progress}%`,
-          background: 'var(--okc-pass)',
+          background: toneColor,
           borderRadius: 99,
           transition: 'background 0.3s',
         }} />
@@ -63,7 +72,7 @@ export default function PriceBar({
           <div className="okc-price-bar-summary-label">Annonce</div>
           <div className="okc-price-bar-summary-value">{fmt(current)}</div>
         </div>
-        <span className="okc-pill okc-pill--pass">↓ {discount}% sous le marché</span>
+        <span className={`okc-pill ${toneClass}`}>{toneLabel}</span>
       </div>
     </div>
   )
