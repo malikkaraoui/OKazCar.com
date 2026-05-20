@@ -35,10 +35,11 @@ export default function ScoreGauge({
     return () => { io.disconnect(); cancelAnimationFrame(raf) }
   }, [score, animateInView])
 
+  const displayedScore = animateInView ? drawn : score
   const r = (size - strokeW) / 2
   const c = 2 * Math.PI * r
-  const color = drawn >= 80 ? 'var(--okc-pass)' : drawn >= 60 ? 'var(--okc-warning)' : 'var(--okc-fail)'
-  const dash = c * (drawn / 100)
+  const color = displayedScore >= 80 ? 'var(--okc-pass)' : displayedScore >= 60 ? 'var(--okc-warning)' : 'var(--okc-fail)'
+  const dash = c * (displayedScore / 100)
 
   return (
     <div ref={ref} style={{ position: 'relative', width: size, height: size }}>
@@ -54,7 +55,7 @@ export default function ScoreGauge({
         alignItems: 'center', justifyContent: 'center', textAlign: 'center',
       }}>
         <div style={{ fontSize: size * valueScale, fontWeight: 500, lineHeight: 1, letterSpacing }}>
-          {Math.round(drawn)}
+          {Math.round(displayedScore)}
         </div>
         <div style={{ fontSize: unitFontSize, fontFamily: 'var(--okc-font-mono)', color: 'var(--okc-text-muted)', marginTop: 4, textTransform: 'uppercase', letterSpacing: '1px' }}>
           /100
