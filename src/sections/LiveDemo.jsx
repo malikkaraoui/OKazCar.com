@@ -100,7 +100,19 @@ export default function LiveDemo() {
             initial={{ opacity: 0, scale: 0.96 }} whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.7, delay: 0.1, ease }}>
             <div className="okc-live-demo-visual-card">
-              <ScoreGauge score={currentScore} size={240} animateInView={false} label={label} />
+              <div className="okc-live-demo-gauge-wrap">
+                <ScoreGauge
+                  score={currentScore}
+                  size={210}
+                  strokeW={10}
+                  animateInView={false}
+                  label={label}
+                  valueScale={0.29}
+                  unitFontSize={10}
+                  labelFontSize={12}
+                  letterSpacing="-1.5px"
+                />
+              </div>
               <div style={{ width: '100%', marginTop: 20 }}>
                 <PriceBar marketMin={11500} marketMax={14800} ref_={13200} current={12490} animateInView={done} />
               </div>

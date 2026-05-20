@@ -1,11 +1,21 @@
 import { useState, useEffect, useRef } from 'react'
 
-export default function ScoreGauge({ score = 97, size = 220, strokeW = 12, label = 'Annonce fiable', animateInView = true }) {
+export default function ScoreGauge({
+  score = 97,
+  size = 220,
+  strokeW = 12,
+  label = 'Annonce fiable',
+  animateInView = true,
+  valueScale = 0.34,
+  unitFontSize = 11,
+  labelFontSize = 13,
+  letterSpacing = '-2px',
+}) {
   const [drawn, setDrawn] = useState(animateInView ? 0 : score)
   const ref = useRef()
 
   useEffect(() => {
-    if (!animateInView) { setDrawn(score); return }
+    if (!animateInView) return undefined
     let raf
     const start = () => {
       const t0 = performance.now()
@@ -43,14 +53,14 @@ export default function ScoreGauge({ score = 97, size = 220, strokeW = 12, label
         display: 'flex', flexDirection: 'column',
         alignItems: 'center', justifyContent: 'center', textAlign: 'center',
       }}>
-        <div style={{ fontSize: size * 0.34, fontWeight: 500, lineHeight: 1, letterSpacing: '-2px' }}>
+        <div style={{ fontSize: size * valueScale, fontWeight: 500, lineHeight: 1, letterSpacing }}>
           {Math.round(drawn)}
         </div>
-        <div style={{ fontSize: 11, fontFamily: 'var(--okc-font-mono)', color: 'var(--okc-text-muted)', marginTop: 4, textTransform: 'uppercase', letterSpacing: '1px' }}>
+        <div style={{ fontSize: unitFontSize, fontFamily: 'var(--okc-font-mono)', color: 'var(--okc-text-muted)', marginTop: 4, textTransform: 'uppercase', letterSpacing: '1px' }}>
           /100
         </div>
         {label && (
-          <div style={{ fontSize: 13, color, marginTop: 8, fontWeight: 500 }}>{label}</div>
+          <div style={{ fontSize: labelFontSize, color, marginTop: 8, fontWeight: 500 }}>{label}</div>
         )}
       </div>
     </div>

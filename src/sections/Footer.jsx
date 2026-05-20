@@ -3,6 +3,8 @@ import { Link, useNavigate, useLocation } from 'react-router-dom'
 import OKCLogo from '../components/OKCLogo'
 import { useLang } from '../context/lang'
 
+const CONTACT_EMAIL = 'karaoui.malik@gmail.com'
+
 export default function Footer() {
   const { t, i18n } = useTranslation()
   const { lang, lp } = useLang()
@@ -27,13 +29,13 @@ export default function Footer() {
     <footer className="okc-footer">
       <div className="okc-page">
         <div className="okc-footer-grid">
-          <div>
+          <div className="okc-footer-brand">
             <OKCLogo size={22} />
             <p style={{ marginTop: 16, maxWidth: '32ch', color: 'var(--okc-text-secondary)', fontSize: 14, lineHeight: 1.6 }}>
               {t('footer.tagline')}
             </p>
           </div>
-          <div>
+          <div className="okc-footer-col">
             <h4>{t('footer.product')}</h4>
             <ul>
               <li><a href="#showcase">{t('footer.link_extension')}</a></li>
@@ -42,27 +44,31 @@ export default function Footer() {
               <li><a href="#install">{t('footer.link_install')}</a></li>
             </ul>
           </div>
-          <div>
+          <div className="okc-footer-col">
             <h4>{t('footer.resources')}</h4>
             <ul>
               <li><Link to={lp('/blog')}>{t('footer.link_blog')}</Link></li>
               <li><a href="#how">{t('footer.link_method')}</a></li>
               <li><a href="#faq">{t('footer.link_faq')}</a></li>
-              <li><a href="#">{t('footer.link_changelog')}</a></li>
+              <li><Link to={lp('/changelog')}>{t('footer.link_changelog')}</Link></li>
             </ul>
           </div>
-          <div>
+          <div className="okc-footer-col">
             <h4>{t('footer.legal')}</h4>
             <ul>
-              <li><a href="#">{t('footer.link_privacy')}</a></li>
-              <li><a href="#">{t('footer.link_legal')}</a></li>
-              <li><a href="#">{t('footer.link_contact')}</a></li>
+              <li><Link to={lp('/privacy')}>{t('footer.link_privacy')}</Link></li>
+              <li><Link to={lp('/legal')}>{t('footer.link_legal')}</Link></li>
+              <li>
+                <a href={`mailto:${CONTACT_EMAIL}`}>
+                  {t('footer.link_contact')} — {CONTACT_EMAIL}
+                </a>
+              </li>
             </ul>
           </div>
         </div>
         <div className="okc-footer-bottom">
           <span>{t('footer.copyright')}</span>
-          <span style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+          <span className="okc-footer-langs">
             {LANGS.map(l => (
               <button key={l.code} onClick={() => switchLang(l.code)} style={{
                 fontFamily: 'var(--okc-font-mono)', fontSize: 11,
