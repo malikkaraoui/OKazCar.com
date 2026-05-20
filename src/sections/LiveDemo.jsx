@@ -76,7 +76,7 @@ export default function LiveDemo() {
             </div>
 
             {/* Pipeline steps */}
-            <div onMouseDown={e => e.preventDefault()} style={{ marginTop: 32, userSelect: 'none', WebkitUserSelect: 'none' }}>
+            <div className="okc-desktop-only" onMouseDown={e => e.preventDefault()} style={{ marginTop: 32, userSelect: 'none', WebkitUserSelect: 'none' }}>
               {STEPS.map((s, i) => {
                 const status = i < step ? 'done' : i === step ? 'running' : 'pending'
                 return (

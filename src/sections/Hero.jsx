@@ -29,7 +29,6 @@ function easeInOut(t) {
 export default function Hero() {
   const { t } = useTranslation()
   const [pos, setPos] = useState(50)
-  const [mobileView, setMobileView] = useState('after')
   const [interacted, setInteracted] = useState(false)
   const sliderRef = useRef()
   const dragging = useRef(false)
@@ -114,7 +113,7 @@ export default function Hero() {
     <section className="okc-section okc-hero" style={{ borderTop: 0 }}>
       <div className="okc-page">
         {/* Header 2-col */}
-        <div className="okc-grid-12" style={{ alignItems: 'end', marginBottom: 40 }}>
+        <div className="okc-grid-12 okc-hero-head" style={{ alignItems: 'end', marginBottom: 40 }}>
           <div className="col-7">
             <Motion.div className="okc-eyebrow"
               initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
@@ -224,41 +223,6 @@ export default function Hero() {
             </div>
             <div style={{ position: 'absolute', top: 14, right: 14, padding: '5px 9px', background: '#0a0a0a', color: '#fff', borderRadius: 3, fontFamily: 'var(--okc-font-mono)', fontSize: 10, textTransform: 'uppercase', letterSpacing: 1, zIndex: 4 }}>
               {t('hero.label_after')}
-            </div>
-          </Motion.div>
-        </div>
-
-        <div className="okc-mobile-only">
-          <Motion.div
-            className="okc-hero-mobile-compare"
-            initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.35, ease }}>
-            <div className="okc-hero-mobile-switch">
-              <button
-                type="button"
-                onClick={() => setMobileView('before')}
-                className={`okc-hero-mobile-tab ${mobileView === 'before' ? 'is-active' : ''}`}>
-                {t('hero.label_before')}
-              </button>
-              <button
-                type="button"
-                onClick={() => setMobileView('after')}
-                className={`okc-hero-mobile-tab ${mobileView === 'after' ? 'is-active' : ''}`}>
-                {t('hero.label_after')}
-              </button>
-            </div>
-
-            <div className="okc-hero-mobile-frame">
-              <img
-                src={mobileView === 'before' ? BEFORE_URL : AFTER_URL}
-                alt={mobileView === 'before' ? t('hero.label_before') : t('hero.label_after')}
-              />
-            </div>
-
-            <div className="okc-hero-mobile-facts">
-              <div className="okc-hero-mobile-fact"><span className="okc-mono">{t('hero.badge_version')}</span></div>
-              <div className="okc-hero-mobile-fact"><span className="okc-mono">{t('hero.badge_no_account')}</span></div>
-              <div className="okc-hero-mobile-fact"><span className="okc-mono">{t('hero.badge_speed')}</span></div>
             </div>
           </Motion.div>
         </div>

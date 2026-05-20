@@ -16,6 +16,7 @@ function BrowserMock() {
     }}>
       <div className="okc-showcase-browser-media">
         <img
+          className="okc-showcase-browser-image"
           src="/Une_decision_rationnelle.png"
           alt="OKazCar extension injectée dans l'annonce"
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}

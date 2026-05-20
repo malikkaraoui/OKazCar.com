@@ -5,7 +5,7 @@ import { FILTERS } from '../data/index'
 
 const ease = [0.22, 1, 0.36, 1]
 
-function FilterDetail({ filter, t, className = '' }) {
+function FilterDetail({ filter, t, className = '', showTitle = true }) {
   return (
     <div className={`okc-filters-detail ${className}`.trim()}>
       <div className="okc-filters-detail-head">
@@ -16,7 +16,7 @@ function FilterDetail({ filter, t, className = '' }) {
           <span className="okc-pill okc-pill--fail">{t('filters.critical_badge')}</span>
         )}
       </div>
-      <h3 className="okc-filters-detail-title">{filter.name}</h3>
+      {showTitle && <h3 className="okc-filters-detail-title">{filter.name}</h3>}
       <p className="okc-filters-detail-copy">{filter.role}</p>
       <div className="okc-filters-detail-stats">
         <div>
@@ -98,7 +98,7 @@ export default function FiltersGrid() {
                         initial={{ opacity: 0, y: -6 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.25, ease }}>
-                        <FilterDetail filter={flt} t={t} className="okc-filters-mobile-detail" />
+                        <FilterDetail filter={flt} t={t} className="okc-filters-mobile-detail" showTitle={false} />
                       </Motion.div>
                     )}
                   </Motion.div>

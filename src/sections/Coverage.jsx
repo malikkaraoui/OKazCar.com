@@ -6,6 +6,9 @@ const ease = [0.22, 1, 0.36, 1]
 
 export default function Coverage() {
   const { t } = useTranslation()
+  const stats = t('numbers.stats', { returnObjects: true })
+  const platformNames = [...new Set(PLATFORMS.map((platform) => platform.name))]
+  const autoScoutCountries = PLATFORMS.filter((platform) => platform.name === 'AutoScout24' && platform.domain !== '.com').length
 
   return (
     <section id="coverage" className="okc-section">
@@ -25,7 +28,7 @@ export default function Coverage() {
               ))}
             </Motion.h2>
           </div>
-          <Motion.p className="okc-lead"
+          <Motion.p className="okc-lead okc-desktop-only"
             initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.6, delay: 0.15, ease }}>
             {t('coverage.lead')}
@@ -74,31 +77,31 @@ export default function Coverage() {
         </div>
 
         <Motion.div
-          className="okc-mobile-only okc-coverage-cards"
+          className="okc-mobile-only okc-coverage-summary"
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.6, ease }}>
-          {PLATFORMS.map((p, i) => (
-            <div key={i} className="okc-coverage-card">
-              <div className="okc-coverage-card-top">
-                <div>
-                  <div className="okc-coverage-card-platform">{p.name}</div>
-                  <div className="okc-coverage-card-domain">{p.domain}</div>
-                </div>
+          <div className="okc-coverage-summary-card">
+            <div className="okc-coverage-summary-platforms">
+              {platformNames.map((name) => (
+                <span key={name} className="okc-coverage-summary-chip">{name}</span>
+              ))}
+            </div>
+
+            <div className="okc-coverage-summary-stats">
+              <div className="okc-coverage-summary-stat">
+                <span className="okc-coverage-card-label">{stats[2]?.label || t('coverage.col_domain')}</span>
+                <strong>15</strong>
+              </div>
+              <div className="okc-coverage-summary-stat">
+                <span className="okc-coverage-card-label">{t('coverage.col_country')}</span>
+                <strong>{autoScoutCountries} + .com</strong>
+              </div>
+              <div className="okc-coverage-summary-stat">
+                <span className="okc-coverage-card-label">{t('coverage.col_status')}</span>
                 <span className="okc-pill okc-pill--pass">{t('coverage.status_active')}</span>
               </div>
-
-              <div className="okc-coverage-card-row">
-                <div>
-                  <span className="okc-coverage-card-label">{t('coverage.col_country')}</span>
-                  <div className="okc-coverage-card-value">{p.flag} {p.country}</div>
-                </div>
-                <div>
-                  <span className="okc-coverage-card-label">{t('coverage.col_domain')}</span>
-                  <div className="okc-coverage-card-value">{p.domain}</div>
-                </div>
-              </div>
             </div>
-          ))}
+          </div>
         </Motion.div>
       </div>
     </section>
