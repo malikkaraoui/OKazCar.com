@@ -14,9 +14,8 @@ void initFirebase()
 
 function RootRedirect() {
   const saved = localStorage.getItem('i18nextLng')
-  const nav = navigator.language.slice(0, 2)
   const supported = ['fr', 'en', 'es', 'it', 'de']
-  const lang = supported.includes(saved) ? saved : supported.includes(nav) ? nav : 'fr'
+  const lang = supported.includes(saved) ? saved : 'fr'
   return <Navigate to={`/${lang}`} replace />
 }
 
