@@ -9,7 +9,7 @@ export default function PriceBar({
   const root = useRef()
 
   useEffect(() => {
-    if (!animateInView) { setProgress(1); return }
+    if (!animateInView) return undefined
     let raf
     const run = () => {
       const t0 = performance.now()
@@ -35,12 +35,7 @@ export default function PriceBar({
 
   return (
     <div ref={root} style={{ width: '100%' }}>
-      <div style={{
-        display: 'flex', justifyContent: 'space-between',
-        fontFamily: 'var(--okc-font-mono)', fontSize: 11,
-        color: 'var(--okc-text-muted)', marginBottom: 12,
-        textTransform: 'uppercase', letterSpacing: '1px',
-      }}>
+      <div className="okc-price-bar-scale">
         <span>{fmt(marketMin)}</span>
         <span>Marché — {fmt(ref_)}</span>
         <span>{fmt(marketMax)}</span>
@@ -63,10 +58,10 @@ export default function PriceBar({
           boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
         }} />
       </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginTop: 16 }}>
+      <div className="okc-price-bar-summary">
         <div>
-          <div style={{ fontSize: 11, fontFamily: 'var(--okc-font-mono)', color: 'var(--okc-text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>Annonce</div>
-          <div style={{ fontSize: 24, fontWeight: 500, letterSpacing: '-0.5px', marginTop: 2 }}>{fmt(current)}</div>
+          <div className="okc-price-bar-summary-label">Annonce</div>
+          <div className="okc-price-bar-summary-value">{fmt(current)}</div>
         </div>
         <span className="okc-pill okc-pill--pass">↓ {discount}% sous le marché</span>
       </div>

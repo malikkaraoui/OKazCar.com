@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion as Motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { CHROME_WEB_STORE_URL } from '../data/index'
 
@@ -29,6 +29,7 @@ function easeInOut(t) {
 export default function Hero() {
   const { t } = useTranslation()
   const [pos, setPos] = useState(50)
+  const [mobileView, setMobileView] = useState('after')
   const [interacted, setInteracted] = useState(false)
   const sliderRef = useRef()
   const dragging = useRef(false)
@@ -115,35 +116,35 @@ export default function Hero() {
         {/* Header 2-col */}
         <div className="okc-grid-12" style={{ alignItems: 'end', marginBottom: 40 }}>
           <div className="col-7">
-            <motion.div className="okc-eyebrow"
+            <Motion.div className="okc-eyebrow"
               initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease }}>
               {t('hero.eyebrow')}
-            </motion.div>
-            <motion.h1 className="okc-h1" style={{ marginTop: 24 }}
+            </Motion.div>
+            <Motion.h1 className="okc-h1" style={{ marginTop: 24 }}
               initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1, ease }}>
               {t('hero.title').split('<br/>').map((line, i, arr) => (
                 <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
               ))}
               <span style={{ color: 'var(--okc-text-muted)' }}>{t('hero.titleMuted')}</span>
-            </motion.h1>
+            </Motion.h1>
           </div>
           <div className="col-5" style={{ paddingBottom: 8 }}>
-            <motion.p className="okc-lead"
+            <Motion.p className="okc-lead"
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2, ease }}>
               {t('hero.lead')}
-            </motion.p>
-            <motion.div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap' }}
+            </Motion.p>
+            <Motion.div className="okc-hero-actions"
               initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3, ease }}>
               <a href={CHROME_WEB_STORE_URL} target="_blank" rel="noreferrer" className="okc-btn okc-btn--primary okc-btn--lg">
                 {t('hero.cta_primary')}
               </a>
               <a href="#demo" className="okc-btn okc-btn--ghost okc-btn--lg">{t('hero.cta_ghost')}</a>
-            </motion.div>
-            <motion.div onMouseDown={e => e.preventDefault()} style={{ marginTop: 20, display: 'flex', gap: 16, fontSize: 12, color: 'var(--okc-text-muted)', fontFamily: 'var(--okc-font-mono)', userSelect: 'none', WebkitUserSelect: 'none' }}
+            </Motion.div>
+            <Motion.div onMouseDown={e => e.preventDefault()} className="okc-hero-meta" style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
               initial={{ opacity: 0 }} animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.45, ease }}>
               <span>{t('hero.badge_version')}</span>
@@ -151,85 +152,116 @@ export default function Hero() {
               <span>{t('hero.badge_no_account')}</span>
               <span style={{ opacity: 0.4 }}>—</span>
               <span>{t('hero.badge_speed')}</span>
-            </motion.div>
+            </Motion.div>
           </div>
         </div>
 
         {/* Before / After slider */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.4, ease }}
-          ref={sliderRef}
-          onMouseDown={e => e.preventDefault()}
-          style={{
-            position: 'relative',
-            width: '100%',
-            aspectRatio: '16 / 8',
-            borderRadius: 6,
-            overflow: 'hidden',
-            border: '1px solid var(--okc-border)',
-            background: 'var(--okc-bg-light)',
-            userSelect: 'none',
-            WebkitUserSelect: 'none',
-          }}>
-          {/* AFTER — full layer (base) */}
-          <BeforeAfterAfter />
-          {/* BEFORE — clipped from left */}
-          <div style={{ position: 'absolute', inset: 0, clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
-            <BeforeAfterBefore />
-          </div>
-          {/* Slider handle */}
-          <div
-            onMouseDown={startDragging}
-            onTouchStart={startDragging}
+        <div className="okc-desktop-only">
+          <Motion.div
+            initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.4, ease }}
+            ref={sliderRef}
+            onMouseDown={e => e.preventDefault()}
             style={{
-              position: 'absolute', top: 0, bottom: 0,
-              left: `${pos}%`,
-              width: 3,
-              background: 'rgba(255,255,255,0.95)',
-              cursor: 'ew-resize', zIndex: 5,
-              boxShadow: '0 0 12px rgba(255,255,255,0.6), 0 0 0 1px rgba(0,0,0,0.08)',
+              position: 'relative',
+              width: '100%',
+              aspectRatio: '16 / 8',
+              borderRadius: 6,
+              overflow: 'hidden',
+              border: '1px solid var(--okc-border)',
+              background: 'var(--okc-bg-light)',
+              userSelect: 'none',
+              WebkitUserSelect: 'none',
             }}>
-            {/* Pulse ring — visible until user interacts */}
-            {!interacted && (
-              <motion.div
-                animate={{ scale: [1, 2.2], opacity: [0.5, 0] }}
-                transition={{ duration: 1.4, repeat: Infinity, ease: 'easeOut', repeatDelay: 0.2 }}
+            <BeforeAfterAfter />
+            <div style={{ position: 'absolute', inset: 0, clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
+              <BeforeAfterBefore />
+            </div>
+            <div
+              onMouseDown={startDragging}
+              onTouchStart={startDragging}
+              style={{
+                position: 'absolute', top: 0, bottom: 0,
+                left: `${pos}%`,
+                width: 3,
+                background: 'rgba(255,255,255,0.95)',
+                cursor: 'ew-resize', zIndex: 5,
+                boxShadow: '0 0 12px rgba(255,255,255,0.6), 0 0 0 1px rgba(0,0,0,0.08)',
+              }}>
+              {!interacted && (
+                <Motion.div
+                  animate={{ scale: [1, 2.2], opacity: [0.5, 0] }}
+                  transition={{ duration: 1.4, repeat: Infinity, ease: 'easeOut', repeatDelay: 0.2 }}
+                  style={{
+                    position: 'absolute', top: '50%', left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    width: 52, height: 52, borderRadius: '50%',
+                    background: 'rgba(37, 99, 235, 0.35)',
+                    pointerEvents: 'none',
+                  }}
+                />
+              )}
+              <Motion.div
+                animate={!interacted ? { scale: [1, 1.1, 1] } : { scale: 1 }}
+                transition={!interacted ? { duration: 1.8, repeat: Infinity, ease: 'easeInOut', repeatDelay: 0.3 } : {}}
                 style={{
                   position: 'absolute', top: '50%', left: '50%',
                   transform: 'translate(-50%, -50%)',
                   width: 52, height: 52, borderRadius: '50%',
-                  background: 'rgba(37, 99, 235, 0.35)',
-                  pointerEvents: 'none',
-                }}
+                  background: '#fff',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.22), 0 1px 4px rgba(0,0,0,0.1)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 3,
+                  border: '1.5px solid rgba(37, 99, 235, 0.18)',
+                  cursor: 'ew-resize',
+                }}>
+                <span style={{ fontSize: 14, color: '#2563eb', lineHeight: 1 }}>←</span>
+                <span style={{ fontSize: 14, color: '#2563eb', lineHeight: 1 }}>→</span>
+              </Motion.div>
+            </div>
+            <div style={{ position: 'absolute', top: 14, left: 14, padding: '5px 9px', background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(8px)', borderRadius: 3, fontFamily: 'var(--okc-font-mono)', fontSize: 10, textTransform: 'uppercase', letterSpacing: 1, color: '#0a0a0a', zIndex: 4 }}>
+              {t('hero.label_before')}
+            </div>
+            <div style={{ position: 'absolute', top: 14, right: 14, padding: '5px 9px', background: '#0a0a0a', color: '#fff', borderRadius: 3, fontFamily: 'var(--okc-font-mono)', fontSize: 10, textTransform: 'uppercase', letterSpacing: 1, zIndex: 4 }}>
+              {t('hero.label_after')}
+            </div>
+          </Motion.div>
+        </div>
+
+        <div className="okc-mobile-only">
+          <Motion.div
+            className="okc-hero-mobile-compare"
+            initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.35, ease }}>
+            <div className="okc-hero-mobile-switch">
+              <button
+                type="button"
+                onClick={() => setMobileView('before')}
+                className={`okc-hero-mobile-tab ${mobileView === 'before' ? 'is-active' : ''}`}>
+                {t('hero.label_before')}
+              </button>
+              <button
+                type="button"
+                onClick={() => setMobileView('after')}
+                className={`okc-hero-mobile-tab ${mobileView === 'after' ? 'is-active' : ''}`}>
+                {t('hero.label_after')}
+              </button>
+            </div>
+
+            <div className="okc-hero-mobile-frame">
+              <img
+                src={mobileView === 'before' ? BEFORE_URL : AFTER_URL}
+                alt={mobileView === 'before' ? t('hero.label_before') : t('hero.label_after')}
               />
-            )}
-            {/* Handle circle */}
-            <motion.div
-              animate={!interacted ? { scale: [1, 1.1, 1] } : { scale: 1 }}
-              transition={!interacted ? { duration: 1.8, repeat: Infinity, ease: 'easeInOut', repeatDelay: 0.3 } : {}}
-              style={{
-                position: 'absolute', top: '50%', left: '50%',
-                transform: 'translate(-50%, -50%)',
-                width: 52, height: 52, borderRadius: '50%',
-                background: '#fff',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.22), 0 1px 4px rgba(0,0,0,0.1)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 3,
-                border: '1.5px solid rgba(37, 99, 235, 0.18)',
-                cursor: 'ew-resize',
-              }}>
-              <span style={{ fontSize: 14, color: '#2563eb', lineHeight: 1 }}>←</span>
-              <span style={{ fontSize: 14, color: '#2563eb', lineHeight: 1 }}>→</span>
-            </motion.div>
-          </div>
-          {/* Labels */}
-          <div style={{ position: 'absolute', top: 14, left: 14, padding: '5px 9px', background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(8px)', borderRadius: 3, fontFamily: 'var(--okc-font-mono)', fontSize: 10, textTransform: 'uppercase', letterSpacing: 1, color: '#0a0a0a', zIndex: 4 }}>
-            {t('hero.label_before')}
-          </div>
-          <div style={{ position: 'absolute', top: 14, right: 14, padding: '5px 9px', background: '#0a0a0a', color: '#fff', borderRadius: 3, fontFamily: 'var(--okc-font-mono)', fontSize: 10, textTransform: 'uppercase', letterSpacing: 1, zIndex: 4 }}>
-            {t('hero.label_after')}
-          </div>
-        </motion.div>
+            </div>
+
+            <div className="okc-hero-mobile-facts">
+              <div className="okc-hero-mobile-fact"><span className="okc-mono">{t('hero.badge_version')}</span></div>
+              <div className="okc-hero-mobile-fact"><span className="okc-mono">{t('hero.badge_no_account')}</span></div>
+              <div className="okc-hero-mobile-fact"><span className="okc-mono">{t('hero.badge_speed')}</span></div>
+            </div>
+          </Motion.div>
+        </div>
       </div>
     </section>
   )

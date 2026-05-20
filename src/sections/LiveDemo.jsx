@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion as Motion } from 'framer-motion'
 import ScoreGauge from '../components/ScoreGauge'
 import PriceBar from '../components/PriceBar'
 
@@ -34,50 +34,44 @@ export default function LiveDemo() {
   const done = !analyzing && step === STEPS.length - 1
   const currentScore = done ? 97 : analyzing ? Math.round(97 * ((step + 1) / STEPS.length)) : 0
   const label = done ? 'Annonce fiable' : analyzing ? 'En cours…' : 'En attente'
+  const buttonLabel = analyzing ? 'Analyse en cours…' : done ? 'Relancer' : 'Analyser →'
 
   return (
     <section id="demo" className="okc-section">
       <div className="okc-page">
         <div className="okc-sec-head" onMouseDown={e => e.preventDefault()} style={{ userSelect: 'none', WebkitUserSelect: 'none' }}>
           <div>
-            <motion.div className="okc-eyebrow"
+            <Motion.div className="okc-eyebrow"
               initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.6, ease }}>
               04 — Démo
-            </motion.div>
-            <motion.h2 className="okc-h2" style={{ marginTop: 20 }}
+            </Motion.div>
+            <Motion.h2 className="okc-h2" style={{ marginTop: 20 }}
               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.7, delay: 0.1, ease }}>
               Collez une URL.<br />Voyez la chaîne tourner.
-            </motion.h2>
+            </Motion.h2>
           </div>
-          <motion.p className="okc-lead"
+          <Motion.p className="okc-lead"
             initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.6, delay: 0.15, ease }}>
             Simulation de la chaîne d'analyse en temps réel. Dans l'extension, tout cela tourne en moins de 3 secondes au moment où vous ouvrez l'annonce.
-          </motion.p>
+          </Motion.p>
         </div>
 
         <div className="okc-grid-12" style={{ alignItems: 'start' }}>
-          <motion.div className="col-7"
+          <Motion.div className="col-7"
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.6, ease }}>
             {/* URL input */}
-            <div style={{
-              border: '1px solid var(--okc-border)',
-              padding: 4, display: 'flex', gap: 4,
-              background: 'var(--okc-bg-white)', borderRadius: 4,
-            }}>
+            <div className="okc-live-demo-input-shell">
               <input
+                className="okc-live-demo-input"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
-                style={{
-                  flex: 1, padding: '13px 16px', border: 'none', outline: 'none',
-                  fontFamily: 'var(--okc-font-mono)', fontSize: 13,
-                  background: 'transparent', color: 'var(--okc-text-primary)',
-                }} />
-              <button onClick={run} disabled={analyzing} className="okc-btn okc-btn--primary" style={{ background: '#16a34a', borderColor: '#16a34a' }}>
-                {analyzing ? 'Analyse en cours…' : done ? 'Relancer' : 'Analyser →'}
+              />
+              <button onClick={run} disabled={analyzing} className="okc-btn okc-btn--primary okc-desktop-only" style={{ background: '#16a34a', borderColor: '#16a34a' }}>
+                {buttonLabel}
               </button>
             </div>
 
@@ -86,20 +80,11 @@ export default function LiveDemo() {
               {STEPS.map((s, i) => {
                 const status = i < step ? 'done' : i === step ? 'running' : 'pending'
                 return (
-                  <div key={i} style={{
-                    display: 'grid', gridTemplateColumns: '32px 1fr auto',
-                    gap: 16, padding: '16px 0',
-                    borderBottom: '1px solid var(--okc-border)',
-                    alignItems: 'center',
-                    opacity: status === 'pending' ? 0.38 : 1,
-                    transition: 'opacity 0.3s ease',
-                  }}>
+                  <div key={i} className="okc-live-demo-step" style={{ opacity: status === 'pending' ? 0.38 : 1 }}>
                     <span className="okc-mono" style={{ color: 'var(--okc-text-muted)' }}>0{i + 1}</span>
                     <span style={{ fontSize: 15, fontWeight: 500 }}>{s}</span>
-                    <span className="okc-mono" style={{
-                      fontSize: 11,
+                    <span className="okc-mono okc-live-demo-step-status" style={{
                       color: status === 'done' ? 'var(--okc-pass)' : status === 'running' ? 'var(--okc-warning)' : 'var(--okc-text-muted)',
-                      textTransform: 'uppercase', letterSpacing: 1,
                     }}>
                       {status === 'done' ? '✓ ok' : status === 'running' ? '○ run' : '— wait'}
                     </span>
@@ -107,18 +92,25 @@ export default function LiveDemo() {
                 )
               })}
             </div>
-          </motion.div>
+          </Motion.div>
 
-          <motion.div
+          <Motion.div
             onMouseDown={e => e.preventDefault()}
-            className="col-5" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24, userSelect: 'none', WebkitUserSelect: 'none' }}
+            className="col-5 okc-live-demo-visual" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24, userSelect: 'none', WebkitUserSelect: 'none' }}
             initial={{ opacity: 0, scale: 0.96 }} whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.7, delay: 0.1, ease }}>
-            <ScoreGauge score={currentScore} size={240} animateInView={false} label={label} />
-            <div style={{ width: '100%' }}>
-              <PriceBar marketMin={11500} marketMax={14800} ref_={13200} current={12490} animateInView={done} />
+            <div className="okc-live-demo-visual-card">
+              <ScoreGauge score={currentScore} size={240} animateInView={false} label={label} />
+              <div style={{ width: '100%', marginTop: 20 }}>
+                <PriceBar marketMin={11500} marketMax={14800} ref_={13200} current={12490} animateInView={done} />
+              </div>
+              <div className="okc-mobile-only" style={{ marginTop: 20 }}>
+                <button onClick={run} disabled={analyzing} className="okc-btn okc-btn--primary" style={{ width: '100%', background: '#16a34a', borderColor: '#16a34a' }}>
+                  {buttonLabel}
+                </button>
+              </div>
             </div>
-          </motion.div>
+          </Motion.div>
         </div>
       </div>
     </section>

@@ -443,6 +443,382 @@ a { color: inherit; text-decoration: none; -webkit-user-select: none; user-selec
 }
 .okc-table-scroll > * { min-width: 560px; }
 
+.okc-mobile-only { display: none !important; }
+.okc-desktop-only { display: block; }
+
+.okc-hero-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.okc-hero-meta {
+  margin-top: 20px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--okc-text-muted);
+  font-family: var(--okc-font-mono);
+}
+
+.okc-hero-mobile-compare {
+  display: grid;
+  gap: 14px;
+}
+
+.okc-hero-mobile-switch {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  padding: 6px;
+  border-radius: 16px;
+  border: 1px solid var(--okc-border);
+  background: var(--okc-bg-subtle);
+}
+
+.okc-hero-mobile-tab {
+  min-height: 46px;
+  padding: 0 14px;
+  border-radius: 12px;
+  font-family: var(--okc-font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  color: var(--okc-text-secondary);
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.okc-hero-mobile-tab.is-active {
+  background: var(--okc-text-primary);
+  color: var(--okc-bg-white);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
+}
+
+.okc-hero-mobile-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid var(--okc-border);
+  background: var(--okc-bg-light);
+  aspect-ratio: 10 / 12.5;
+}
+
+.okc-hero-mobile-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+}
+
+.okc-hero-mobile-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.okc-hero-mobile-fact {
+  min-height: 100%;
+  padding: 14px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--okc-border);
+  background: var(--okc-bg-subtle);
+}
+
+.okc-hero-mobile-fact .okc-mono {
+  display: block;
+  font-size: 10px;
+  line-height: 1.55;
+  color: var(--okc-text-secondary);
+}
+
+.okc-showcase-browser-media {
+  height: 460px;
+  overflow: hidden;
+}
+
+.okc-showcase-highlights-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.okc-showcase-highlight-card {
+  border-top: 1px solid var(--okc-border);
+  padding-top: 20px;
+}
+
+.okc-showcase-highlight-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.okc-showcase-highlight-desc {
+  margin: 12px 0 0;
+  color: var(--okc-text-secondary);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.okc-live-demo-input-shell {
+  border: 1px solid var(--okc-border);
+  padding: 4px;
+  display: flex;
+  gap: 4px;
+  background: var(--okc-bg-white);
+  border-radius: 10px;
+}
+
+.okc-live-demo-input {
+  flex: 1;
+  min-width: 0;
+  padding: 13px 16px;
+  border: none;
+  outline: none;
+  font-family: var(--okc-font-mono);
+  font-size: 13px;
+  background: transparent;
+  color: var(--okc-text-primary);
+}
+
+.okc-live-demo-step {
+  display: grid;
+  grid-template-columns: 32px 1fr auto;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--okc-border);
+  align-items: center;
+  transition: opacity 0.3s ease;
+}
+
+.okc-live-demo-step-status {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.okc-live-demo-visual-card {
+  width: 100%;
+}
+
+.okc-price-bar-scale {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: var(--okc-font-mono);
+  font-size: 11px;
+  color: var(--okc-text-muted);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.okc-price-bar-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.okc-price-bar-summary-label {
+  font-size: 11px;
+  font-family: var(--okc-font-mono);
+  color: var(--okc-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.okc-price-bar-summary-value {
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  margin-top: 2px;
+}
+
+.okc-filters-item {
+  display: grid;
+  grid-template-columns: 50px 1fr 60px 28px;
+  gap: 16px;
+  align-items: center;
+  width: 100%;
+  padding: 18px 8px;
+  text-align: left;
+  border-bottom: 1px solid var(--okc-border);
+  transition: background 0.2s ease;
+}
+
+.okc-filters-item.is-active {
+  background: var(--okc-bg-white);
+}
+
+.okc-filters-code {
+  color: var(--okc-text-muted);
+  font-weight: 600;
+}
+
+.okc-filters-name {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--okc-text-primary);
+  letter-spacing: -0.2px;
+}
+
+.okc-filters-weight {
+  text-align: right;
+  font-size: 13px;
+}
+
+.okc-filters-toggle {
+  text-align: right;
+  color: var(--okc-text-muted);
+  font-family: var(--okc-font-mono);
+  font-size: 16px;
+}
+
+.okc-filters-detail {
+  background: var(--okc-bg-white);
+  border: 1px solid var(--okc-border);
+  padding: 36px 36px 32px;
+  border-radius: 4px;
+}
+
+.okc-filters-detail-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.okc-filters-detail-title {
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: -1px;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.okc-filters-detail-copy {
+  font-size: 15px;
+  color: var(--okc-text-secondary);
+  line-height: 1.65;
+  margin-top: 20px;
+}
+
+.okc-filters-detail-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--okc-border);
+}
+
+.okc-filters-mobile-detail {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.okc-coverage-cards,
+.okc-compare-cards {
+  display: grid;
+  gap: 14px;
+}
+
+.okc-coverage-card,
+.okc-compare-card {
+  border: 1px solid var(--okc-border);
+  border-radius: 18px;
+  padding: 16px;
+  background: var(--okc-bg-white);
+}
+
+.okc-coverage-card-top,
+.okc-coverage-card-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.okc-coverage-card-platform {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.okc-coverage-card-domain {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--okc-text-secondary);
+  font-family: var(--okc-font-mono);
+  word-break: break-all;
+}
+
+.okc-coverage-card-row {
+  align-items: end;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--okc-border);
+}
+
+.okc-coverage-card-label,
+.okc-compare-card-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 10px;
+  font-family: var(--okc-font-mono);
+  color: var(--okc-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.okc-coverage-card-value {
+  font-size: 14px;
+  color: var(--okc-text-primary);
+  line-height: 1.45;
+}
+
+.okc-compare-card-title {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.okc-compare-card-grid {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.okc-compare-card-panel {
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid var(--okc-border);
+}
+
+.okc-compare-card-panel--without {
+  background: var(--okc-bg-light);
+}
+
+.okc-compare-card-panel--with {
+  background: rgba(21, 128, 61, 0.06);
+  border-color: rgba(21, 128, 61, 0.16);
+}
+
+.okc-compare-card-panel--with .okc-compare-card-label {
+  color: var(--okc-pass);
+}
+
+.okc-compare-card-value {
+  font-size: 14px;
+  line-height: 1.55;
+}
+
 /* === Responsive === */
 @media (max-width: 1024px) {
   :root { --okc-page-pad: 40px; }
@@ -455,6 +831,8 @@ a { color: inherit; text-decoration: none; -webkit-user-select: none; user-selec
   :root { --okc-page-pad: 20px; --okc-grid-gap: 16px; }
   .okc-section { padding: 48px 0; }
   .okc-hero { padding-top: 90px; }
+  .okc-mobile-only { display: block !important; }
+  .okc-desktop-only { display: none !important; }
   .okc-nav-links { display: none; }
   .okc-nav-cta { display: none; }
   .okc-burger { display: flex; }
@@ -463,6 +841,90 @@ a { color: inherit; text-decoration: none; -webkit-user-select: none; user-selec
   .col-6, .col-3-8 { grid-column: span 12; }
   .col-3 { grid-column: span 6; }
   .okc-sticky-panel { position: static; }
+  .okc-h1 { font-size: clamp(36px, 11vw, 56px); line-height: 1.02; letter-spacing: -1.8px; }
+  .okc-h2 { font-size: clamp(30px, 9vw, 42px); line-height: 1.05; letter-spacing: -1.1px; }
+  .okc-h3 { font-size: clamp(22px, 6vw, 28px); }
+  .okc-lead { font-size: 16px; line-height: 1.65; }
+  .okc-btn { min-height: 50px; }
+  .okc-btn--lg,
+  .okc-btn--xl { width: 100%; padding: 16px 18px; }
+  .okc-hero-actions { flex-direction: column; align-items: stretch; }
+  .okc-hero-meta { gap: 8px 12px; }
+  .okc-hero-mobile-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .okc-hero-mobile-fact:last-child { grid-column: 1 / -1; }
+  .okc-showcase-browser-media { height: 320px; }
+  .okc-showcase-highlights-list { gap: 16px; }
+  .okc-showcase-highlight-card {
+    padding: 18px;
+    border: 1px solid var(--okc-border);
+    border-radius: 16px;
+    background: var(--okc-bg-subtle);
+  }
+  .okc-showcase-highlight-head { align-items: flex-start; }
+  .okc-live-demo-visual { order: -1; }
+  .okc-live-demo-visual-card {
+    padding: 20px;
+    border: 1px solid var(--okc-border);
+    border-radius: 18px;
+    background: linear-gradient(180deg, #ffffff, #fafaf8);
+  }
+  .okc-live-demo-input-shell { flex-direction: column; padding: 8px; gap: 8px; }
+  .okc-live-demo-input { width: 100%; min-height: 52px; }
+  .okc-live-demo-step {
+    grid-template-columns: 28px 1fr;
+    gap: 12px;
+    padding: 14px 0;
+  }
+  .okc-live-demo-step-status {
+    grid-column: 2;
+    justify-self: start;
+  }
+  .okc-price-bar-scale {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    text-align: center;
+  }
+  .okc-price-bar-summary {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .okc-filters-item {
+    grid-template-columns: 42px 1fr 24px;
+    grid-template-areas:
+      'code name toggle'
+      'weight weight weight';
+    gap: 10px 12px;
+    padding: 16px 4px;
+  }
+  .okc-filters-code { grid-area: code; }
+  .okc-filters-name { grid-area: name; font-size: 15px; }
+  .okc-filters-weight {
+    grid-area: weight;
+    text-align: left;
+    font-size: 12px;
+    padding-left: 54px;
+  }
+  .okc-filters-toggle { grid-area: toggle; }
+  .okc-filters-detail {
+    padding: 20px 18px 18px;
+    border-radius: 16px;
+  }
+  .okc-filters-detail-head {
+    margin-bottom: 16px;
+    align-items: flex-start;
+  }
+  .okc-filters-detail-title {
+    font-size: 24px;
+    letter-spacing: -0.7px;
+  }
+  .okc-filters-detail-stats {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 18px;
+  }
 }
 @media (max-width: 480px) {
   :root { --okc-page-pad: 16px; }
@@ -471,6 +933,10 @@ a { color: inherit; text-decoration: none; -webkit-user-select: none; user-selec
   .okc-footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
   .okc-h1 { letter-spacing: -1.5px; }
   .okc-h2 { letter-spacing: -1px; }
+  .okc-hero-mobile-frame { aspect-ratio: 10 / 13.5; }
+  .okc-showcase-browser-media { height: 280px; }
+  .okc-coverage-card-top,
+  .okc-coverage-card-row { flex-direction: column; align-items: flex-start; }
 }
 
 @media (prefers-reduced-motion: reduce) {
