@@ -46,7 +46,7 @@ export default function PriceBar({
     <div ref={root} style={{ width: '100%' }}>
       <div className="okc-price-bar-scale">
         <span>{fmt(marketMin)}</span>
-        <span>Marché — {fmt(ref_)}</span>
+        <span>Marché {fmt(ref_)}</span>
         <span>{fmt(marketMax)}</span>
       </div>
       <div style={{ position: 'relative', height: 8, background: 'var(--okc-bg-light)', borderRadius: 99, border: '1px solid var(--okc-border)' }}>

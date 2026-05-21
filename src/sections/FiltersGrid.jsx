@@ -38,7 +38,7 @@ function FilterDetail({ filter, t, className = '', showTitle = true }) {
 
 export default function FiltersGrid() {
   const { t } = useTranslation()
-  const [active, setActive] = useState(0)
+  const [active, setActive] = useState(-1)
   const f = FILTERS
 
   return (
@@ -62,7 +62,7 @@ export default function FiltersGrid() {
           <Motion.p className="okc-lead"
             initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.6, delay: 0.15, ease }}>
-            {t('filters.lead_pre')} <strong>L2</strong> {t('filters.lead_ref')} <strong>L4</strong> {t('filters.lead_market')} <strong>2.0</strong> {t('filters.lead_suffix')} <strong>16.0</strong>{t('filters.lead_end')}
+            {t('filters.lead_simple', { defaultValue: "Chaque point contrôle un aspect important de l'annonce pour vous aider à voir plus clair avant d'appeler le vendeur." })}
           </Motion.p>
         </div>
 
@@ -80,7 +80,7 @@ export default function FiltersGrid() {
                     viewport={{ once: true, margin: '-20px' }}
                     transition={{ duration: 0.5, delay: i * 0.04, ease }}>
                     <button
-                      onClick={() => setActive(i)}
+                      onClick={() => setActive(isActive ? -1 : i)}
                       className={`okc-filters-item ${isActive ? 'is-active' : ''}`}>
                       <span className="okc-mono okc-filters-code" style={{ color: isActive ? 'var(--okc-text-primary)' : 'var(--okc-text-muted)' }}>
                         {flt.id}
@@ -109,12 +109,27 @@ export default function FiltersGrid() {
 
           {/* Right: detail panel */}
           <div className="col-6 okc-sticky-panel okc-desktop-only">
-            <Motion.div
-              key={active}
-              initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35, ease }}>
-              <FilterDetail filter={f[active]} t={t} />
-            </Motion.div>
+            {active >= 0 ? (
+              <Motion.div
+                key={active}
+                initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.35, ease }}>
+                <FilterDetail filter={f[active]} t={t} />
+              </Motion.div>
+            ) : (
+              <Motion.div
+                initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.35, ease }}
+                className="okc-filters-detail">
+                <div className="okc-filters-detail-head">
+                  <span className="okc-mono" style={{ color: 'var(--okc-text-muted)', fontSize: 11, textTransform: 'uppercase', letterSpacing: 1 }}>
+                    {t('filters.filter_label')}
+                  </span>
+                </div>
+                <h3 className="okc-filters-detail-title">{t('filters.empty_title', { defaultValue: 'Choose a filter' })}</h3>
+                <p className="okc-filters-detail-copy">{t('filters.empty_copy', { defaultValue: 'Click a checkpoint to see, in plain language, what it checks in the listing.' })}</p>
+              </Motion.div>
+            )}
           </div>
         </div>
       </div>

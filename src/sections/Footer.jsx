@@ -60,7 +60,7 @@ export default function Footer() {
               <li><Link to={lp('/legal')}>{t('footer.link_legal')}</Link></li>
               <li>
                 <a href={`mailto:${CONTACT_EMAIL}`}>
-                  {t('footer.link_contact')} — {CONTACT_EMAIL}
+                  {t('footer.link_contact')} : {CONTACT_EMAIL}
                 </a>
               </li>
             </ul>

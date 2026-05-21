@@ -6,71 +6,74 @@
     "audience": "Pour qui",
     "blog": "Conseils",
     "faq": "FAQ",
-    "install": "Installer — Gratuit"
+    "install": "Installer gratuitement"
   },
   "hero": {
-    "eyebrow": "Extension Chrome — Gratuite",
+    "eyebrow": "Extension Chrome gratuite",
     "title": "Une annonce auto.<br/>Douze filtres.<br/>",
     "titleMuted": "Une décision rationnelle.",
-    "lead": "OKazCar analyse en temps réel les annonces de leboncoin, La Centrale, ParuVendu et AutoScout24 sur 11 pays. Score sur 100, prix de marché géolocalisé, détection d'anomalies — directement dans votre navigateur.",
-    "cta_primary": "Ajouter à Chrome →",
-    "cta_ghost": "Voir la démo",
-    "badge_version": "v1.3 · 2026",
+    "lead": "OKazCar vous aide à repérer rapidement les annonces qui méritent votre attention, ou au contraire celles qu'il vaut mieux éviter.",
+    "cta_primary": "Ajouter à Chrome",
+    "cta_ghost": "Voir un exemple",
+    "badge_version": "v1.3",
     "badge_no_account": "Aucun compte requis",
-    "badge_speed": "en quelques secondes",
+    "badge_speed": "réponse en quelques secondes",
     "label_before": "Sans OKazCar",
     "label_after": "Avec OKazCar"
   },
   "showcase": {
-    "eyebrow": "02 — L'extension",
-    "title": "Le panel OKazCar,<br/>injecté dans l'annonce.",
-    "lead": "Lorsque vous ouvrez une annonce sur l'une des 15 plateformes supportées, l'extension détecte le véhicule, lance la chaîne d'analyse, et affiche un panel latéral avec le verdict en quelques secondes.",
-    "h01_title": "Extraction silencieuse",
-    "h01_desc": "DOM parsé, champs critiques (prix, km, année, marque, motorisation) capturés. Si extraction incomplète, la chaîne se bloque — pas de score douteux.",
-    "h02_title": "Cascade prix marché",
-    "h02_desc": "Recherche multi-stratégies : géolocalisation (rayon 30km), élargissement régional, marché national. Médiane sur tranche de puissance.",
-    "h03_title": "Verdict pondéré",
-    "h03_desc": "Score sur 100 = somme pondérée des 12 filtres. Chaque filtre contribue selon sa criticité. Les filtres liés aux données de marché et à la cohérence du véhicule ont le plus grand poids."
+    "eyebrow": "02 - L'extension",
+    "title": "Le résumé OKazCar,<br/>directement dans l'annonce.",
+    "lead": "Quand vous ouvrez une annonce, OKazCar affiche tout de suite un résumé clair pour savoir si l'affaire semble rassurante ou non.",
+    "h01_title": "Les infos importantes sont reprises",
+    "h01_desc": "Prix, kilométrage, année et modèle sont relus pour éviter les annonces floues ou incomplètes.",
+    "h02_title": "Le prix est remis en contexte",
+    "h02_desc": "Vous voyez rapidement si le prix paraît logique par rapport à des annonces comparables.",
+    "h03_title": "Le verdict est simple à lire",
+    "h03_desc": "En un coup d'œil, vous voyez les points rassurants et les points qui demandent de la prudence."
   },
   "filters": {
-    "eyebrow": "03 — Méthode d'analyse",
-    "title": "12 filtres.<br/>16 points de poids.<br/>Zéro angle mort.",
-    "lead_pre": "Chaque filtre vérifie une dimension du véhicule ou de l'annonce, avec un poids selon sa criticité.",
-    "lead_ref": "(référentiel) et",
-    "lead_market": "(prix marché) pèsent",
-    "lead_suffix": "chacun — total des poids :",
+    "eyebrow": "03 - Méthode d'analyse",
+    "title": "12 vérifications.<br/>Un avis plus clair.<br/>Moins de doute.",
+    "lead_simple": "Chaque point contrôle un aspect important de l'annonce pour vous aider à y voir plus clair avant d'appeler le vendeur.",
+    "lead_pre": "Chaque point contrôle un aspect important de l'annonce.",
+    "lead_ref": "et",
+    "lead_market": "comptent un peu plus dans la note finale.",
+    "lead_suffix": "Total :",
     "lead_end": ".",
     "filter_label": "Filtre",
     "weight_label": "Poids",
     "status_label": "Statut typique",
     "critical_badge": "Critique",
     "status_blocking": "Bloquant",
-    "status_weighted": "Pondéré"
+    "status_weighted": "Compté dans la note",
+    "empty_title": "Choisissez un filtre",
+    "empty_copy": "Cliquez sur un point de contrôle pour voir simplement ce qu'il regarde dans l'annonce."
   },
   "howitworks": {
-    "eyebrow": "05 — Comment ça marche",
-    "title": "Quatre étapes.<br/>Trois secondes.",
+    "eyebrow": "05 - Comment ça marche",
+    "title": "Quatre étapes.<br/>Très rapide.",
     "steps": [
       {
         "t": "Installation",
-        "d": "Ajoutez OKazCar depuis le Chrome Web Store. Aucun compte, aucune permission excessive — uniquement les domaines des plateformes supportées."
+        "d": "Vous ajoutez l'extension à Chrome en quelques secondes."
       },
       {
-        "t": "Détection",
-        "d": "Au chargement de l'annonce, l'extension détecte la plateforme (LBC, LC, PV, AS24), parse le DOM et extrait les champs critiques."
+        "t": "Lecture de l'annonce",
+        "d": "Dès qu'une annonce s'ouvre, OKazCar relit les informations importantes." 
       },
       {
-        "t": "Pipeline",
-        "d": "12 filtres exécutés en parallèle (max 11 workers) : référentiel, prix marché géolocalisé, statistiques, vendeur, import, fiabilité moteur."
+        "t": "Vérifications",
+        "d": "Le prix, le kilométrage, le vendeur, le moteur ou encore les rappels sont passés en revue." 
       },
       {
         "t": "Verdict",
-        "d": "Score pondéré sur 100 affiché dans un panel injecté. Détails par filtre, sources, recommandations."
+        "d": "Vous obtenez un avis clair avec les points rassurants et les points à surveiller."
       }
     ]
   },
   "audience": {
-    "eyebrow": "06 — Pour qui",
+    "eyebrow": "06 - Pour qui",
     "title": "Trois usages.<br/>Une seule extension.",
     "learn_more": "En savoir plus →",
     "items": [
@@ -92,9 +95,9 @@
     ]
   },
   "coverage": {
-    "eyebrow": "07 — Couverture",
-    "title": "4 plateformes.<br/>15 domaines.<br/>11 pays + .com.",
-    "lead": "La cascade prix marché interroge les 15 domaines selon la géolocalisation du véhicule. AutoScout24 = 12 domaines (11 pays nommés + .com international).",
+    "eyebrow": "07 - Couverture",
+    "title": "4 plateformes.<br/>15 sites.<br/>11 pays.",
+    "lead": "OKazCar s'appuie sur plusieurs sites pour mieux situer le prix d'une annonce par rapport au marché.",
     "col_platform": "Plateforme",
     "col_domain": "Domaine",
     "col_country": "Pays",
@@ -102,7 +105,7 @@
     "status_active": "Actif"
   },
   "numbers": {
-    "eyebrow": "08 — Chiffres",
+    "eyebrow": "08 - Chiffres",
     "title": "Une base technique<br/>conséquente.",
     "stats": [
       { "label": "Véhicules référencés" },
@@ -112,29 +115,29 @@
     ]
   },
   "comparison": {
-    "eyebrow": "09 — Comparatif",
-    "title": "Avant. Après.<br/>La différence est mesurable.",
+    "eyebrow": "09 - Comparatif",
+    "title": "Sans aide.<br/>Avec OKazCar.",
     "col_feature": "Critère",
     "col_without": "Sans OKazCar",
     "col_with": "Avec OKazCar",
     "rows": [
-      { "feat": "Score de fiabilité sur 100",    "without": "—",                       "with": "12 filtres pondérés" },
-      { "feat": "Prix marché géolocalisé",        "without": "Argus générique",          "with": "Médiane temps réel régionale" },
-      { "feat": "Détection véhicule importé",    "without": "—",                       "with": "Cumul de 12 signaux" },
-      { "feat": "Vérification SIRET vendeur",    "without": "Manuelle",                 "with": "API recherche-entreprises.gouv.fr" },
-      { "feat": "Rappels constructeur",          "without": "À chercher manuellement",  "with": "Vérifié auto. (Takata, etc.)" },
-      { "feat": "Fiabilité moteur connue",       "without": "—",                       "with": "Base BMW N47, VW EA189, K9K…" },
-      { "feat": "Analyse statistique du prix",    "without": "—",                       "with": "Détection d'outliers vs annonces similaires" },
-      { "feat": "Temps d'analyse",              "without": "Heures de recherche",      "with": "Quelques secondes" }
+      { "feat": "Vue d'ensemble",                 "without": "Au jugé",                  "with": "Avis clair sur 100" },
+      { "feat": "Prix du marché",                 "without": "Recherche manuelle",       "with": "Prix remis en contexte" },
+      { "feat": "Véhicule possiblement importé",  "without": "Difficile à voir",        "with": "Indices repérés" },
+      { "feat": "Vendeur professionnel",          "without": "À vérifier soi-même",     "with": "Vendeur mieux identifié" },
+      { "feat": "Rappel constructeur",            "without": "Souvent oublié",          "with": "Vérifié" },
+      { "feat": "Moteur à risque",                "without": "Facile à manquer",        "with": "Signalé" },
+      { "feat": "Annonce étrange ou incohérente", "without": "Pas évident",             "with": "Repérée plus vite" },
+      { "feat": "Temps pour se faire un avis",    "without": "Long",                    "with": "Quelques secondes" }
     ]
   },
   "blog": {
-    "eyebrow": "10 — Conseils achat",
+    "eyebrow": "10 - Conseils achat",
     "title": "La méthode<br/>derrière le score.",
     "lead": "Articles techniques sur la détection d'anomalies, le marché de l'occasion, la fiabilité moteur. Sans bullshit, sans SEO bourré, juste les faits."
   },
   "faq": {
-    "eyebrow": "11 — FAQ",
+    "eyebrow": "11 - FAQ",
     "title": "Questions<br/>fréquentes.",
     "items": [
       {
@@ -143,11 +146,11 @@
       },
       {
         "q": "Quels sites sont supportés ?",
-        "a": "4 plateformes et 15 domaines : leboncoin.fr, lacentrale.fr, paruvendu.fr, et AutoScout24 sur 11 pays (France, Allemagne, Suisse, Belgique, Italie, Pays-Bas, Autriche, Espagne, Pologne, Luxembourg, Suède) + le .com international."
+        "a": "OKazCar fonctionne avec les grands sites d'annonces auto, dont Leboncoin, La Centrale, ParuVendu et AutoScout24 dans plusieurs pays européens."
       },
       {
         "q": "Comment fonctionne le score ?",
-        "a": "12 filtres analysent l'annonce en parallèle. Chaque filtre a un poids selon sa criticité — les filtres les plus déterminants (cohérence des données, positionnement prix) comptent davantage. Le score final est une moyenne pondérée arrondie sur 100."
+        "a": "Le score résume plusieurs vérifications importantes comme le prix, le kilométrage, le vendeur ou le moteur. Plus un point est important, plus il compte dans la note finale."
       },
       {
         "q": "Mes données sont-elles collectées ?",
@@ -159,19 +162,19 @@
       },
       {
         "q": "Comment le prix marché est-il calculé ?",
-        "a": "OKazCar compare le prix annoncé aux annonces similaires récentes dans la même zone géographique. Le modèle, la motorisation et la puissance sont pris en compte pour que la comparaison soit pertinente. Si le marché local est trop peu fourni, l'analyse élargit automatiquement son périmètre."
+        "a": "OKazCar compare le prix affiché avec des annonces proches et comparables pour vous dire s'il semble raisonnable ou non."
       }
     ]
   },
   "cta": {
     "title": "Prêt à acheter<br/>rationnel ?",
-    "lead": "Installation en 10 secondes. Aucun compte. Aucune donnée collectée. Votre prochain achat auto mérite mieux qu'un coup de cœur.",
-    "btn_primary": "Ajouter à Chrome — Gratuit →",
+    "lead": "En quelques secondes, vous obtenez un avis plus clair avant de contacter le vendeur.",
+    "btn_primary": "Ajouter à Chrome gratuitement",
     "btn_ghost": "Voir la méthode",
     "badge": "Extension Chrome · v1.3 · Sans inscription"
   },
   "footer": {
-    "tagline": "Analyse en temps réel des annonces auto. 4 plateformes, 15 domaines, 12 filtres.",
+    "tagline": "Une aide simple pour mieux lire les annonces auto et éviter les mauvaises surprises.",
     "product": "Produit",
     "resources": "Ressources",
     "legal": "Légal",

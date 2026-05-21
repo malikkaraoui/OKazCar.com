@@ -2,7 +2,7 @@ const CONTENT = {
   fr: {
     common: {
       home: '← Retour à l’accueil',
-      install: 'Installer — Gratuit',
+      install: 'Installer gratuitement',
       updated: 'Dernière mise à jour',
     },
     legal: {
@@ -86,7 +86,7 @@ const CONTENT = {
       updated: '20 mai 2026',
       sections: [
         {
-          title: 'v1.3 — 20 mai 2026',
+          title: 'v1.3 - 20 mai 2026',
           body: [
             'Refonte responsive mobile approfondie de la landing page.',
             'Simplification de plusieurs sections clés sur mobile : démo, couverture, footer, filtres et audience.',
@@ -113,7 +113,7 @@ const CONTENT = {
   en: {
     common: {
       home: '← Back to home',
-      install: 'Install — Free',
+      install: 'Install for free',
       updated: 'Last updated',
     },
     legal: {
@@ -146,7 +146,7 @@ const CONTENT = {
       intro: 'A changelog is the product change log: it summarizes what was added, changed or fixed in each version.',
       updated: 'May 20, 2026',
       sections: [
-        { title: 'v1.3 — May 20, 2026', body: ['Deep mobile responsive overhaul of the landing page.', 'Simplified several key sections on mobile: demo, coverage, footer, filters and audience.', 'Fixed horizontal overflow and interaction issues.'] },
+        { title: 'v1.3 - May 20, 2026', body: ['Deep mobile responsive overhaul of the landing page.', 'Simplified several key sections on mobile: demo, coverage, footer, filters and audience.', 'Fixed horizontal overflow and interaction issues.'] },
         { title: 'v1.2', body: ['Improved multilingual structure.', 'Consolidated editorial sections and blog pages.'] },
         { title: 'v1.0', body: ['First public version of the OKazCar website.', 'Presentation of the product, analysis filters and use cases.'] },
       ],

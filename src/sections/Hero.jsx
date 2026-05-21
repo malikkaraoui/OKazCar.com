@@ -147,9 +147,9 @@ export default function Hero() {
               initial={{ opacity: 0 }} animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.45, ease }}>
               <span>{t('hero.badge_version')}</span>
-              <span style={{ opacity: 0.4 }}>—</span>
+              <span style={{ opacity: 0.4 }}>•</span>
               <span>{t('hero.badge_no_account')}</span>
-              <span style={{ opacity: 0.4 }}>—</span>
+              <span style={{ opacity: 0.4 }}>•</span>
               <span>{t('hero.badge_speed')}</span>
             </Motion.div>
           </div>

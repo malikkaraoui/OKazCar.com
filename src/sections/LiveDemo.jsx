@@ -6,12 +6,12 @@ import PriceBar from '../components/PriceBar'
 const ease = [0.22, 1, 0.36, 1]
 
 const STEPS = [
-  'Extraction des données',
-  'Détection référentiel',
-  'Collecte prix marché',
-  'Analyse statistique',
-  'Vérification vendeur',
-  'Pondération finale',
+  "Lecture de l'annonce",
+  'Vérification du modèle',
+  'Comparaison des prix',
+  'Recherche des points faibles',
+  'Vérification du vendeur',
+  'Verdict final',
 ]
 
 const FINAL_SCORE = 34
@@ -74,7 +74,7 @@ export default function LiveDemo() {
             <Motion.div className="okc-eyebrow"
               initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.6, ease }}>
-              04 — Démo
+              04 - Démo
             </Motion.div>
             <Motion.h2 className="okc-h2" style={{ marginTop: 20 }}
               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
@@ -85,7 +85,7 @@ export default function LiveDemo() {
           <Motion.p className="okc-lead"
             initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.6, delay: 0.15, ease }}>
-            Simulation de la chaîne d'analyse en temps réel. Dans l'extension, tout cela tourne en moins de 3 secondes au moment où vous ouvrez l'annonce.
+            Exemple d'analyse d'une annonce. En quelques secondes, OKazCar montre si l'affaire semble saine ou risquée.
           </Motion.p>
         </div>
 
@@ -116,7 +116,7 @@ export default function LiveDemo() {
                     <span className="okc-mono okc-live-demo-step-status" style={{
                       color: status === 'done' ? 'var(--okc-pass)' : status === 'running' ? 'var(--okc-warning)' : 'var(--okc-text-muted)',
                     }}>
-                      {status === 'done' ? '✓ ok' : status === 'running' ? '○ run' : '— wait'}
+                      {status === 'done' ? '✓ fait' : status === 'running' ? '○ en cours' : '• à venir'}
                     </span>
                   </div>
                 )
@@ -148,7 +148,7 @@ export default function LiveDemo() {
               </div>
               <div className="okc-live-demo-alerts">
                 <div className="okc-live-demo-alerts-head">
-                  <span className="okc-mono">Filtres déclenchés</span>
+                  <span className="okc-mono">Points à surveiller</span>
                   <span className="okc-mono" style={{ color: 'var(--okc-fail)' }}>{visibleAlerts.length || 0} alerte{visibleAlerts.length > 1 ? 's' : ''}</span>
                 </div>
                 <div className="okc-live-demo-alert-list">
