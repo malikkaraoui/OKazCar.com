@@ -143,6 +143,11 @@ export default function LiveDemo() {
                   letterSpacing="-1.5px"
                 />
               </div>
+              <div className="okc-mobile-only okc-live-demo-mobile-cta">
+                <button onClick={run} disabled={analyzing} className="okc-btn okc-btn--primary" style={{ width: '100%', background: '#16a34a', borderColor: '#16a34a' }}>
+                  {buttonLabel}
+                </button>
+              </div>
               <div style={{ width: '100%', marginTop: 20 }}>
                 <PriceBar marketMin={10900} marketMax={14200} ref_={12800} current={14990} animateInView={done} />
               </div>
@@ -165,11 +170,6 @@ export default function LiveDemo() {
                     )
                   })}
                 </div>
-              </div>
-              <div className="okc-mobile-only" style={{ marginTop: 20 }}>
-                <button onClick={run} disabled={analyzing} className="okc-btn okc-btn--primary" style={{ width: '100%', background: '#16a34a', borderColor: '#16a34a' }}>
-                  {buttonLabel}
-                </button>
               </div>
             </div>
           </Motion.div>

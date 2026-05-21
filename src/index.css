@@ -575,6 +575,10 @@ a { color: inherit; text-decoration: none; -webkit-user-select: none; user-selec
   justify-content: center;
 }
 
+.okc-live-demo-mobile-cta {
+  width: 100%;
+}
+
 .okc-live-demo-alerts {
   margin-top: 20px;
   padding-top: 18px;
@@ -995,6 +999,10 @@ a { color: inherit; text-decoration: none; -webkit-user-select: none; user-selec
   .okc-live-demo-gauge-wrap {
     transform: scale(0.94);
     transform-origin: center top;
+  }
+  .okc-live-demo-mobile-cta {
+    margin-top: 4px;
+    margin-bottom: 16px;
   }
   .okc-live-demo-alerts-head {
     flex-direction: column;
